@@ -1,4 +1,4 @@
-#Estatística 2022
+# Estatística 2022
 
 matreial das disciplinas de métodos quantitativos na FGV
 
@@ -66,5 +66,3 @@ INTERVALO A1
 07/06 - laboratório R
 
 09/06 - laborateorio R
-
-
