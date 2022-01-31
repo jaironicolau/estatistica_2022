@@ -1,4 +1,4 @@
-# estatistica_2022
+#Estatística 2022
 
 matreial das disciplinas de métodos quantitativos na FGV
 
