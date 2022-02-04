@@ -4,6 +4,9 @@
 using Markdown
 using InteractiveUtils
 
+# ╔═╡ c44e9567-3e8d-417c-b120-5e8fefa6c03b
+ using RDatasets
+
 # ╔═╡ da0d0218-a5c4-4e86-b398-d3c586127b51
 using PlutoUI
 
@@ -73,7 +76,7 @@ md"""
 """
 
 # ╔═╡ 2a855a38-80a9-11ec-24ad-41330e14806e
-md"## _Uma história pessoal_
+md"## _Minha história com dados_
 
 Há exatos 40 anos  atrás eu comecei curso de ciências sociais na Universidade Federal Fluminense (UFF), em Nitérói. Quase todas as discplinas do curso  tinham um formato semelhante. O professor indicava um texto para ser lido na aula seguinte; a aula consistia em diversas formas em torno desse texto: exposição do professor, exposição de um aluno (ou grupo de alunos) ou uma discussão livre. Nas primeiras semanas de aula, estranhei esse formato, pois estava acostumado com o modelo do ensino médio, de fazer a leitura dos livros após a aula.
 
@@ -123,9 +126,6 @@ Em uma pesquisa eleitoral a idade, a escolaridade são varieaveis, já que que t
 
 "
 
-# ╔═╡ de8f2220-1091-4900-9a80-e8b16a1a7f9d
-
-
 # ╔═╡ afe1c9bc-a6da-43f0-a041-8ccc732da956
 md"""
 !!! info "O que é significa a letra N nas pesquisas quantitativas?"
@@ -151,28 +151,24 @@ cada observação pertence a uma categoria em conjunto de categorias:
 # ╔═╡ 67a8efb8-f39a-45ef-820c-eab27b3a271c
 md"""
 !!! info " 💡Quizz 1"
-   Identifique se cada uma da variáveis é categórica (factor) ou quantitativa:
-- número de crianças em uma creche
-- domicílio eleitoral
-- estado civil
-- distância (em quilômetros) de deslocamento até a escola
-- código postal
+     Identifique se cada uma da variáveis é categórica (factor) ou quantitativa:
+     - número de crianças em uma creche
+     - domicílio eleitoral
+     - estado civil
+     - distância (em quilômetros) de deslocamento até a escola
+     - código postal
 """
+
 
 # ╔═╡ 0a6d1014-d05e-4e9b-b343-01cfc6a28d80
 md"""
-!!! info " 💡Resposta do Quizz 1"
-
-- número de crianças em uma creche:  **numérica**
-- domicílio eleitoral:  **categórica**
-- estado civil:  **categórica**
-- distância (em quilômetros) de deslocamento até a escola: **numérica**
-- código postal: **serve como uma variável de identificação**
-
+!!! hint "Resposta do Quizz 1"
+    - número de crianças em uma creche:  **numérica**
+    - domicílio eleitoral:  **categórica**
+    - estado civil:  **categórica**
+    - distância (em quilômetros) de deslocamento até a escola: **numérica**
+    - código postal: **serve como uma variável de identificação**
 """
-
-# ╔═╡ 95ffed65-3b4e-4622-b285-b0a69414f138
-
 
 # ╔═╡ f4b0b123-efe4-4be5-9162-5fa266bc97ae
 html"""
@@ -180,15 +176,67 @@ html"""
 """
 
 # ╔═╡ 32311376-80ad-4f7f-b422-a0559e75a28d
+md"""
+## Dados Tabulares
+
+Quase todos  os dados que os pesquisadore lidam estão no formato tabular
+
+Onde:
+
+* Cada **coluna** é uma variável
+* Cada **linha** é uma observação
+* Cada **célula** é uma mensuração única
+"""
+
+# ╔═╡ 1db4f060-d5b3-4de7-84be-d679ffd37bbf
+md"""
+$(Resource("https://github.com/storopoli/Computacao-Cientifica/blob/master/images/tidydata_1.jpg?raw=true"))
+
+> Figura com licença creative commons de [`@allisonhorst`](https://github.com/allisonhorst/stats-illustrations)
+"""
+
+# ╔═╡ def331ca-3061-4d3d-a274-55475c47d6a9
+md"""
+
+#### Exemplo de um  banco em formato tabular
+
+2000 American National Election Studies: Dataframe sobre o nível de informação dos cidadãos
+
+Um banco de dados com 1807 observações e 8 variáveis:
+
+- **y** interviewer rating, categórica com os levels Very Low Fairly Low Average Fairly High Very High
+
+- **collegeDegree** categóricas com levels No Yes
+
+- **female** categórica com os levels No Yes
+
+- **agea** numérica com a idade dos respondente em anos
+
+- **homeOwn** categórica com levels No Yes
+
+- **govt** acategórica com levels No Yes
+
+- **length numérica**, a duração da entrevista em minutos
+
+- **id** um único identificador para cada respondente
+
+"""
+
+# ╔═╡ 64865c3a-9311-4662-8e88-def8f1bce222
+Informação_Política = dataset("pscl", "politicalInformation")
+
+# ╔═╡ fb388fc1-3760-47fa-88d8-5751df93bc2e
 
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
+RDatasets = "ce6b1742-4840-55fa-b093-852dadbb1d8b"
 
 [compat]
 PlutoUI = "~0.7.32"
+RDatasets = "~0.7.7"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -213,29 +261,115 @@ uuid = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
 [[deps.Base64]]
 uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 
+[[deps.CSV]]
+deps = ["CodecZlib", "Dates", "FilePathsBase", "InlineStrings", "Mmap", "Parsers", "PooledArrays", "SentinelArrays", "Tables", "Unicode", "WeakRefStrings"]
+git-tree-sha1 = "9519274b50500b8029973d241d32cfbf0b127d97"
+uuid = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+version = "0.10.2"
+
+[[deps.CategoricalArrays]]
+deps = ["DataAPI", "Future", "Missings", "Printf", "Requires", "Statistics", "Unicode"]
+git-tree-sha1 = "c308f209870fdbd84cb20332b6dfaf14bf3387f8"
+uuid = "324d7699-5711-5eae-9e2f-1d82baa6b597"
+version = "0.10.2"
+
+[[deps.CodecZlib]]
+deps = ["TranscodingStreams", "Zlib_jll"]
+git-tree-sha1 = "ded953804d019afa9a3f98981d99b33e3db7b6da"
+uuid = "944b1d66-785c-5afd-91f1-9de20f533193"
+version = "0.7.0"
+
 [[deps.ColorTypes]]
 deps = ["FixedPointNumbers", "Random"]
 git-tree-sha1 = "024fe24d83e4a5bf5fc80501a314ce0d1aa35597"
 uuid = "3da002f7-5984-5a60-b8a6-cbb66c0b333f"
 version = "0.11.0"
 
+[[deps.Compat]]
+deps = ["Base64", "Dates", "DelimitedFiles", "Distributed", "InteractiveUtils", "LibGit2", "Libdl", "LinearAlgebra", "Markdown", "Mmap", "Pkg", "Printf", "REPL", "Random", "SHA", "Serialization", "SharedArrays", "Sockets", "SparseArrays", "Statistics", "Test", "UUIDs", "Unicode"]
+git-tree-sha1 = "44c37b4636bc54afac5c574d2d02b625349d6582"
+uuid = "34da2185-b29b-5c13-b0c7-acf172513d20"
+version = "3.41.0"
+
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
+
+[[deps.Crayons]]
+git-tree-sha1 = "249fe38abf76d48563e2f4556bebd215aa317e15"
+uuid = "a8cc5b0e-0ffa-5ad4-8c14-923d3ee1735f"
+version = "4.1.1"
+
+[[deps.DataAPI]]
+git-tree-sha1 = "cc70b17275652eb47bc9e5f81635981f13cea5c8"
+uuid = "9a962f9c-6df0-11e9-0e5d-c546b8b5ee8a"
+version = "1.9.0"
+
+[[deps.DataFrames]]
+deps = ["Compat", "DataAPI", "Future", "InvertedIndices", "IteratorInterfaceExtensions", "LinearAlgebra", "Markdown", "Missings", "PooledArrays", "PrettyTables", "Printf", "REPL", "Reexport", "SortingAlgorithms", "Statistics", "TableTraits", "Tables", "Unicode"]
+git-tree-sha1 = "ae02104e835f219b8930c7664b8012c93475c340"
+uuid = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+version = "1.3.2"
+
+[[deps.DataStructures]]
+deps = ["Compat", "InteractiveUtils", "OrderedCollections"]
+git-tree-sha1 = "3daef5523dd2e769dad2365274f760ff5f282c7d"
+uuid = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
+version = "0.18.11"
+
+[[deps.DataValueInterfaces]]
+git-tree-sha1 = "bfc1187b79289637fa0ef6d4436ebdfe6905cbd6"
+uuid = "e2d170a0-9d28-54be-80f0-106bbe20a464"
+version = "1.0.0"
 
 [[deps.Dates]]
 deps = ["Printf"]
 uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
 
+[[deps.DelimitedFiles]]
+deps = ["Mmap"]
+uuid = "8bb1440f-4735-579b-a4ab-409b98df4dab"
+
+[[deps.Distributed]]
+deps = ["Random", "Serialization", "Sockets"]
+uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+
 [[deps.Downloads]]
 deps = ["ArgTools", "LibCURL", "NetworkOptions"]
 uuid = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
+
+[[deps.ExprTools]]
+git-tree-sha1 = "56559bbef6ca5ea0c0818fa5c90320398a6fbf8d"
+uuid = "e2ba6199-217a-4e67-a87a-7c52f15ade04"
+version = "0.1.8"
+
+[[deps.FileIO]]
+deps = ["Pkg", "Requires", "UUIDs"]
+git-tree-sha1 = "67551df041955cc6ee2ed098718c8fcd7fc7aebe"
+uuid = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
+version = "1.12.0"
+
+[[deps.FilePathsBase]]
+deps = ["Compat", "Dates", "Mmap", "Printf", "Test", "UUIDs"]
+git-tree-sha1 = "04d13bfa8ef11720c24e4d840c0033d145537df7"
+uuid = "48062228-2e41-5def-b9a4-89aafe57970f"
+version = "0.9.17"
 
 [[deps.FixedPointNumbers]]
 deps = ["Statistics"]
 git-tree-sha1 = "335bfdceacc84c5cdf16aadc768aa5ddfc5383cc"
 uuid = "53c48c17-4a7d-5ca2-90c5-79b7896eea93"
 version = "0.8.4"
+
+[[deps.Formatting]]
+deps = ["Printf"]
+git-tree-sha1 = "8339d61043228fdd3eb658d86c926cb282ae72a8"
+uuid = "59287772-0a20-5a39-b81b-1366585eb4c0"
+version = "0.4.2"
+
+[[deps.Future]]
+deps = ["Random"]
+uuid = "9fa8497b-333b-5362-9e8d-4d0656e87820"
 
 [[deps.Hyperscript]]
 deps = ["Test"]
@@ -254,15 +388,35 @@ git-tree-sha1 = "f7be53659ab06ddc986428d3a9dcc95f6fa6705a"
 uuid = "b5f81e59-6552-4d32-b1f0-c071b021bf89"
 version = "0.2.2"
 
+[[deps.InlineStrings]]
+deps = ["Parsers"]
+git-tree-sha1 = "61feba885fac3a407465726d0c330b3055df897f"
+uuid = "842dd82b-1e85-43dc-bf29-5d0ee9dffc48"
+version = "1.1.2"
+
 [[deps.InteractiveUtils]]
 deps = ["Markdown"]
 uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
+
+[[deps.InvertedIndices]]
+git-tree-sha1 = "bee5f1ef5bf65df56bdd2e40447590b272a5471f"
+uuid = "41ab1584-1d38-5bbf-9106-f11c6c58b48f"
+version = "1.1.0"
+
+[[deps.IteratorInterfaceExtensions]]
+git-tree-sha1 = "a3f24677c21f5bbe9d2a714f95dcd58337fb2856"
+uuid = "82899510-4779-5014-852e-03e436cf321d"
+version = "1.0.0"
 
 [[deps.JSON]]
 deps = ["Dates", "Mmap", "Parsers", "Unicode"]
 git-tree-sha1 = "8076680b162ada2a031f707ac7b4953e30667a37"
 uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 version = "0.21.2"
+
+[[deps.LazyArtifacts]]
+deps = ["Artifacts", "Pkg"]
+uuid = "4af54fe1-eca0-43a8-85a7-787d91b784e3"
 
 [[deps.LibCURL]]
 deps = ["LibCURL_jll", "MozillaCACerts_jll"]
@@ -298,8 +452,20 @@ uuid = "d6f4376e-aef5-505a-96c1-9c027394607a"
 deps = ["Artifacts", "Libdl"]
 uuid = "c8ffd9c3-330d-5841-b78e-0817d7145fa1"
 
+[[deps.Missings]]
+deps = ["DataAPI"]
+git-tree-sha1 = "bf210ce90b6c9eed32d25dbcae1ebc565df2687f"
+uuid = "e1d29d7a-bbdc-5cf2-9ac0-f12de2c33e28"
+version = "1.0.2"
+
 [[deps.Mmap]]
 uuid = "a63ad114-7e13-5084-954f-fe012c677804"
+
+[[deps.Mocking]]
+deps = ["Compat", "ExprTools"]
+git-tree-sha1 = "29714d0a7a8083bba8427a4fbfb00a540c681ce7"
+uuid = "78c3b35d-d492-501b-9361-3d52fe80e533"
+version = "0.7.3"
 
 [[deps.MozillaCACerts_jll]]
 uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
@@ -310,6 +476,11 @@ uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
 [[deps.OpenBLAS_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
 uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
+
+[[deps.OrderedCollections]]
+git-tree-sha1 = "85f8e6578bf1f9ee0d11e7bb1b1456435479d47c"
+uuid = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
+version = "1.4.1"
 
 [[deps.Parsers]]
 deps = ["Dates"]
@@ -327,9 +498,33 @@ git-tree-sha1 = "ae6145ca68947569058866e443df69587acc1806"
 uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 version = "0.7.32"
 
+[[deps.PooledArrays]]
+deps = ["DataAPI", "Future"]
+git-tree-sha1 = "db3a23166af8aebf4db5ef87ac5b00d36eb771e2"
+uuid = "2dfb63ee-cc39-5dd5-95bd-886bf059d720"
+version = "1.4.0"
+
+[[deps.PrettyTables]]
+deps = ["Crayons", "Formatting", "Markdown", "Reexport", "Tables"]
+git-tree-sha1 = "dfb54c4e414caa595a1f2ed759b160f5a3ddcba5"
+uuid = "08abe8d2-0d0c-5749-adfa-8a2ac140af0d"
+version = "1.3.1"
+
 [[deps.Printf]]
 deps = ["Unicode"]
 uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+
+[[deps.RData]]
+deps = ["CategoricalArrays", "CodecZlib", "DataFrames", "Dates", "FileIO", "Requires", "TimeZones", "Unicode"]
+git-tree-sha1 = "19e47a495dfb7240eb44dc6971d660f7e4244a72"
+uuid = "df47a6cb-8c03-5eed-afd8-b6050d6c41da"
+version = "0.8.3"
+
+[[deps.RDatasets]]
+deps = ["CSV", "CodecZlib", "DataFrames", "FileIO", "Printf", "RData", "Reexport"]
+git-tree-sha1 = "2720e6f6afb3e562ccb70a6b62f8f308ff810333"
+uuid = "ce6b1742-4840-55fa-b093-852dadbb1d8b"
+version = "0.7.7"
 
 [[deps.REPL]]
 deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
@@ -339,19 +534,46 @@ uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
+[[deps.RecipesBase]]
+git-tree-sha1 = "6bf3f380ff52ce0832ddd3a2a7b9538ed1bcca7d"
+uuid = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"
+version = "1.2.1"
+
 [[deps.Reexport]]
 git-tree-sha1 = "45e428421666073eab6f2da5c9d310d99bb12f9b"
 uuid = "189a3867-3050-52da-a836-e630ba90ab69"
 version = "1.2.2"
 
+[[deps.Requires]]
+deps = ["UUIDs"]
+git-tree-sha1 = "838a3a4188e2ded87a4f9f184b4b0d78a1e91cb7"
+uuid = "ae029012-a4dd-5104-9daa-d747884805df"
+version = "1.3.0"
+
 [[deps.SHA]]
 uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
+
+[[deps.SentinelArrays]]
+deps = ["Dates", "Random"]
+git-tree-sha1 = "15dfe6b103c2a993be24404124b8791a09460983"
+uuid = "91c51154-3ec4-41a3-a24f-3f23e20d615c"
+version = "1.3.11"
 
 [[deps.Serialization]]
 uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
 
+[[deps.SharedArrays]]
+deps = ["Distributed", "Mmap", "Random", "Serialization"]
+uuid = "1a1011a3-84de-559e-8e89-a11a2f7dc383"
+
 [[deps.Sockets]]
 uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
+
+[[deps.SortingAlgorithms]]
+deps = ["DataStructures"]
+git-tree-sha1 = "b3363d7460f7d098ca0912c69b082f75625d7508"
+uuid = "a2af1166-a08f-5f64-846c-94a0d3cef48c"
+version = "1.0.1"
 
 [[deps.SparseArrays]]
 deps = ["LinearAlgebra", "Random"]
@@ -365,6 +587,18 @@ uuid = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
 deps = ["Dates"]
 uuid = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
 
+[[deps.TableTraits]]
+deps = ["IteratorInterfaceExtensions"]
+git-tree-sha1 = "c06b2f539df1c6efa794486abfb6ed2022561a39"
+uuid = "3783bdb8-4a98-5b6b-af9a-565f29a5fe9c"
+version = "1.0.1"
+
+[[deps.Tables]]
+deps = ["DataAPI", "DataValueInterfaces", "IteratorInterfaceExtensions", "LinearAlgebra", "TableTraits", "Test"]
+git-tree-sha1 = "bb1064c9a84c52e277f1096cf41434b675cd368b"
+uuid = "bd369af6-aec1-5ad0-b16a-f7cc5008161c"
+version = "1.6.1"
+
 [[deps.Tar]]
 deps = ["ArgTools", "SHA"]
 uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
@@ -373,12 +607,30 @@ uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
 uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
+[[deps.TimeZones]]
+deps = ["Dates", "Downloads", "InlineStrings", "LazyArtifacts", "Mocking", "Printf", "RecipesBase", "Serialization", "Unicode"]
+git-tree-sha1 = "0f1017f68dc25f1a0cb99f4988f78fe4f2e7955f"
+uuid = "f269a46b-ccf7-5d73-abea-4c690281aa53"
+version = "1.7.1"
+
+[[deps.TranscodingStreams]]
+deps = ["Random", "Test"]
+git-tree-sha1 = "216b95ea110b5972db65aa90f88d8d89dcb8851c"
+uuid = "3bb67fe8-82b1-5028-8e26-92a6c54297fa"
+version = "0.9.6"
+
 [[deps.UUIDs]]
 deps = ["Random", "SHA"]
 uuid = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
 
 [[deps.Unicode]]
 uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
+
+[[deps.WeakRefStrings]]
+deps = ["DataAPI", "InlineStrings", "Parsers"]
+git-tree-sha1 = "c69f9da3ff2f4f02e811c3323c22e5dfcb584cfa"
+uuid = "ea10d353-3f73-51f8-a26c-33c1cb351aa5"
+version = "1.4.1"
 
 [[deps.Zlib_jll]]
 deps = ["Libdl"]
@@ -398,22 +650,25 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 """
 
 # ╔═╡ Cell order:
-# ╠═da0d0218-a5c4-4e86-b398-d3c586127b51
-# ╠═a09709c0-c8bf-422e-973d-19b56398ddac
+# ╟─c44e9567-3e8d-417c-b120-5e8fefa6c03b
+# ╟─da0d0218-a5c4-4e86-b398-d3c586127b51
+# ╟─a09709c0-c8bf-422e-973d-19b56398ddac
 # ╟─46c966b4-60d0-4528-92d4-d7602916be96
 # ╟─c5d6f5a0-b6ef-43ca-81b0-8c4f93ab68e0
-# ╠═3e22f68e-7402-4847-a1de-885ecb6fc78f
-# ╠═2ba16c5d-cc73-47fe-b9b3-d4796ccdf549
+# ╟─3e22f68e-7402-4847-a1de-885ecb6fc78f
+# ╟─2ba16c5d-cc73-47fe-b9b3-d4796ccdf549
 # ╟─37895e91-6be0-443a-8422-26bb5aab9234
 # ╟─2a855a38-80a9-11ec-24ad-41330e14806e
-# ╠═a4053934-3722-447b-a348-d88ef2c52472
-# ╠═de8f2220-1091-4900-9a80-e8b16a1a7f9d
+# ╟─a4053934-3722-447b-a348-d88ef2c52472
 # ╟─afe1c9bc-a6da-43f0-a041-8ccc732da956
-# ╠═54813f12-bbe6-4cff-aed0-eeeab29d9f67
+# ╟─54813f12-bbe6-4cff-aed0-eeeab29d9f67
 # ╟─67a8efb8-f39a-45ef-820c-eab27b3a271c
 # ╟─0a6d1014-d05e-4e9b-b343-01cfc6a28d80
-# ╠═95ffed65-3b4e-4622-b285-b0a69414f138
 # ╟─f4b0b123-efe4-4be5-9162-5fa266bc97ae
-# ╠═32311376-80ad-4f7f-b422-a0559e75a28d
+# ╟─32311376-80ad-4f7f-b422-a0559e75a28d
+# ╟─1db4f060-d5b3-4de7-84be-d679ffd37bbf
+# ╟─def331ca-3061-4d3d-a274-55475c47d6a9
+# ╟─64865c3a-9311-4662-8e88-def8f1bce222
+# ╠═fb388fc1-3760-47fa-88d8-5751df93bc2e
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
