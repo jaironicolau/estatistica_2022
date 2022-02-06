@@ -5,12 +5,16 @@ using Markdown
 using InteractiveUtils
 
 # ╔═╡ eae781b5-86ff-4a26-b49e-a37a8b510a8b
-begin
-using PlutoUI
 using SymPy
+
+# ╔═╡ cc2e6319-4be4-44cc-a3a3-79d28ea28fd2
 using RDatasets
-PlutoUI.TableOfContents(title= "Conteúdo", indent= true)
-end
+
+# ╔═╡ e32f7fde-b87d-4687-b944-c1c7d6b91ac1
+using PlutoUI
+
+# ╔═╡ 6ffbd5c8-e0db-4b4d-a75e-b0e10faf8897
+using DataFrames
 
 # ╔═╡ a22c94a0-70af-41f5-a64f-989a116d19cf
 begin
@@ -23,6 +27,9 @@ p = plot(sort(g1), (1:n)./n,
     title = "Empirical Cumulative Distribution", label = "")
 	
 end
+
+# ╔═╡ cb77a3a2-e4c8-4e21-a339-81b5ccce90fa
+PlutoUI.TableOfContents(title= "Conteúdo", indent= true)
 
 # ╔═╡ f6dfb126-8367-11ec-290e-8b3a346eae2c
 md"""
@@ -308,15 +315,52 @@ md"""
 # _Medidas de Dispersão_
 """
 
+# ╔═╡ ab27062e-3132-446b-ad83-ba94a255e31d
+
+
+# ╔═╡ 8f03756e-e3f0-4c10-a14b-f2a41a810198
+
+
 # ╔═╡ c7bb2925-8a44-41af-a464-ee19f63f59f1
 md"""
 ## Desvio Padrão
 """
 
-# ╔═╡ 47348a4f-2387-439f-88a7-1323171fe3bf
-md"""
+# ╔═╡ af22073b-3405-42f1-b28e-5c00e35cb237
+md"
+O desvio padrão é a medida de dispersão mais comum em estatística. Se tivermos que apresentar uma estatística que resuma a dispersão dos dados, geralmente é o desvio padrão. Como o próprio nome sugere, o desvio padrão informa qual é o desvio “normal” dos dados. Na verdade, ele calcula o desvio médio da média . Quanto maior o desvio padrão, mais dispersos são os dados. Pelo contrário, quanto menor o desvio padrão, mais os dados estão centrados em torno da média.
+"
 
-#### $s = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \overline{x})^2}$
+# ╔═╡ d95466e4-4325-4ab7-a066-1ab97f3424f0
+md"
+A fórmula do desvio padrão é denotado pela letra $\sigma$:
+
+$$\sigma = \sqrt{\frac{1}{n}\sum^n_{i = 1}(x_i - \mu)^2}$$
+
+Como você pode ver na fórmula, o desvio padrão é na verdade o desvio médio dos dados em relação à média μ. Veja que o quadrado da diferença entre as observações e a média 
+ é para evitar que diferenças negativas sejam anuladas  pelas diferenças positivas.
+
+Para facilitar, imagine uma população de apenas 3 adultos, com as seguintes alturas (em cm):
+
+160,4 , 175,8 e 181,5
+
+A média é 172,6. O desvio padrão é calculado da seguinte maneira:
+
+$$\sigma = \sqrt{\frac{1}{3} \big[(160.4 - 172.6)^2 \\ + (175.8 - 172.6)^2 \\ + (181.5 - 172.6)^2 \big]}$$
+$$\sigma = 8.91$$
+
+O desvio padrão para as alturas desses três adultos é de 8,91 cm. Isso significa que, em média, a altura dos adultos dessa população se desvia da média em 8,91 cm.
+
+
+"
+
+# ╔═╡ 458e3af8-44b0-4314-b40f-0c1c3af05766
+md"""
+!!! tip " 💡Propriedades do desvio padrão"
+
+    - O valor do desvio padrão é sempre positivo (nunca negativo).
+    - O valor do desvio padrão aumenta dramaticamente com a inclusão de um ou mais valores extremos (outliers).
+     - A unidade do desvio padrão é a mesma unidade dos dados originais.
 
 """
 
@@ -330,12 +374,14 @@ md"""
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 RDatasets = "ce6b1742-4840-55fa-b093-852dadbb1d8b"
 SymPy = "24249f21-da20-56a4-8eb1-6a02cf4ae2e6"
 
 [compat]
+DataFrames = "~1.3.2"
 Plots = "~1.25.7"
 PlutoUI = "~0.7.32"
 RDatasets = "~0.7.7"
@@ -1411,7 +1457,11 @@ version = "0.9.1+5"
 """
 
 # ╔═╡ Cell order:
-# ╟─eae781b5-86ff-4a26-b49e-a37a8b510a8b
+# ╠═eae781b5-86ff-4a26-b49e-a37a8b510a8b
+# ╠═cc2e6319-4be4-44cc-a3a3-79d28ea28fd2
+# ╠═e32f7fde-b87d-4687-b944-c1c7d6b91ac1
+# ╠═cb77a3a2-e4c8-4e21-a339-81b5ccce90fa
+# ╠═6ffbd5c8-e0db-4b4d-a75e-b0e10faf8897
 # ╠═f6dfb126-8367-11ec-290e-8b3a346eae2c
 # ╟─f602cbeb-7fbf-4d29-9cd7-4492a4734a3b
 # ╟─d345ee2b-9d49-4af1-926b-94c99f25a4dd
@@ -1438,8 +1488,12 @@ version = "0.9.1+5"
 # ╟─cf706cc8-d0f7-4495-86a2-db13b8d857cb
 # ╟─a22c94a0-70af-41f5-a64f-989a116d19cf
 # ╟─b2fefd1f-579b-4c96-ba00-7bfe81ce0860
+# ╠═ab27062e-3132-446b-ad83-ba94a255e31d
+# ╠═8f03756e-e3f0-4c10-a14b-f2a41a810198
 # ╟─c7bb2925-8a44-41af-a464-ee19f63f59f1
-# ╟─47348a4f-2387-439f-88a7-1323171fe3bf
+# ╟─af22073b-3405-42f1-b28e-5c00e35cb237
+# ╟─d95466e4-4325-4ab7-a066-1ab97f3424f0
+# ╟─458e3af8-44b0-4314-b40f-0c1c3af05766
 # ╠═b6f2cf22-3e01-4a21-9213-095f2ee3486f
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

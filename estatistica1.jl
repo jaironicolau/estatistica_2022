@@ -5,14 +5,13 @@ using Markdown
 using InteractiveUtils
 
 # ╔═╡ c44e9567-3e8d-417c-b120-5e8fefa6c03b
- using RDatasets
+begin
+using RDatasets
+using PlutoUI
+end
 
 # ╔═╡ da0d0218-a5c4-4e86-b398-d3c586127b51
-using PlutoUI
-
-# ╔═╡ a09709c0-c8bf-422e-973d-19b56398ddac
 PlutoUI.TableOfContents(title= "Conteúdo", indent= true)
-
 
 # ╔═╡ 46c966b4-60d0-4528-92d4-d7602916be96
 md"""
@@ -652,10 +651,9 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╔═╡ Cell order:
 # ╠═c44e9567-3e8d-417c-b120-5e8fefa6c03b
 # ╠═da0d0218-a5c4-4e86-b398-d3c586127b51
-# ╠═a09709c0-c8bf-422e-973d-19b56398ddac
 # ╟─46c966b4-60d0-4528-92d4-d7602916be96
 # ╟─c5d6f5a0-b6ef-43ca-81b0-8c4f93ab68e0
-# ╟─3e22f68e-7402-4847-a1de-885ecb6fc78f
+# ╠═3e22f68e-7402-4847-a1de-885ecb6fc78f
 # ╟─2ba16c5d-cc73-47fe-b9b3-d4796ccdf549
 # ╟─37895e91-6be0-443a-8422-26bb5aab9234
 # ╟─2a855a38-80a9-11ec-24ad-41330e14806e
