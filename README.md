@@ -1,6 +1,6 @@
 # Estatística 2022
 
-matreial das disciplinas de métodos quantitativos na FGV
+material  da disciplina de métodos quantitativos 1
 
 
 Programa:
@@ -65,4 +65,4 @@ INTERVALO A1
 
 07/06 - laboratório R
 
-09/06 - laborateorio R
+09/06 - laboratório R
