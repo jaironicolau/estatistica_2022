@@ -1,6 +1,6 @@
 # Estatística 2022
 
-matreial das disciplinas de métodos quantitativos na FGV
+material  da disciplina de métodos quantitativos 1
 
 
 Programa:
