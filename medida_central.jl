@@ -316,10 +316,15 @@ md"""
 """
 
 # ╔═╡ ab27062e-3132-446b-ad83-ba94a255e31d
+md"
+As média, mediana e moda nos mostra uma medida que nos indica um sumário geral dos dados. Um outro conjunto de medidas revela o padrão de dispersão de dados. 
+
+Podemos imaginar que existe uma variação maior da idade dos torcedores que comparecem a um jogo no Maracanã, do que dos frquentadores de um show de hip-hop ou de um baile da terceira idade.
+
+Que medida usar para mensurar a variabilidade de uma população?
 
 
-# ╔═╡ 8f03756e-e3f0-4c10-a14b-f2a41a810198
-
+"
 
 # ╔═╡ c7bb2925-8a44-41af-a464-ee19f63f59f1
 md"""
@@ -364,12 +369,56 @@ md"""
 
 """
 
+# ╔═╡ 7494d853-9d3d-4c7b-a7a7-11dae4b45884
+md"""
+
+### Z-escore e a padronização
+
+
+"""
+
+# ╔═╡ d22c5f01-e9ad-4c64-b713-09d0778fd47d
+md"""
+
+O Z-escore é uma forma de padronizar os dados, de modo que cada observação "perca" a sua unidade original e seja transformada em desvios-padrão. Para isso, basta subtrair cada valor da média e dividir pelo desvio padrão da distribuição.
+
+$$Z=\frac{x-\mu}{\sigma}$$
+
+
+onde, $$x$$ é a observação, $$\mu$$ a média e $$\sigma$$ é o desvio padrão.
+
+
+"""
+
+# ╔═╡ 1274c1af-9110-4633-be45-80eee80925a1
+md"""
+#### Uso do z-score no pentatlo 
+
+Dois atletas (A e B) competem em uma corrida de 800 metros, cuja média de todos os comeptidores foi de 137 segundos, com desvio padrão de 5 segundos. O corredor A completou a corrida em 129 segundos, enquanto o corredor B gastou 140 segundos. Qula é o z-escore de cada um?
+
+
+
+
+"""
+
+# ╔═╡ d44b0dba-fe6f-4e84-a224-3834cd0c8163
+md"""
+!!! tip " 💡Benefícios da padronização"
+
+    - Os valores padronizados são convertidos das unidades originais para a unidade estatística de desvio padrão da média.
+
+     - assim, podemos comparar valores que são medidos em diferentes escalas, com diferentes unidades e extraídos de diferentes populações.
+"""
+
 # ╔═╡ b6f2cf22-3e01-4a21-9213-095f2ee3486f
 md"""
 
 ## Intervalo Interquartil
 
 """
+
+# ╔═╡ b21cdbcc-b421-4653-a38e-1d35526f4319
+
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1488,12 +1537,16 @@ version = "0.9.1+5"
 # ╟─cf706cc8-d0f7-4495-86a2-db13b8d857cb
 # ╟─a22c94a0-70af-41f5-a64f-989a116d19cf
 # ╟─b2fefd1f-579b-4c96-ba00-7bfe81ce0860
-# ╠═ab27062e-3132-446b-ad83-ba94a255e31d
-# ╠═8f03756e-e3f0-4c10-a14b-f2a41a810198
+# ╟─ab27062e-3132-446b-ad83-ba94a255e31d
 # ╟─c7bb2925-8a44-41af-a464-ee19f63f59f1
 # ╟─af22073b-3405-42f1-b28e-5c00e35cb237
 # ╟─d95466e4-4325-4ab7-a066-1ab97f3424f0
 # ╟─458e3af8-44b0-4314-b40f-0c1c3af05766
+# ╠═7494d853-9d3d-4c7b-a7a7-11dae4b45884
+# ╠═d22c5f01-e9ad-4c64-b713-09d0778fd47d
+# ╠═1274c1af-9110-4633-be45-80eee80925a1
+# ╟─d44b0dba-fe6f-4e84-a224-3834cd0c8163
 # ╠═b6f2cf22-3e01-4a21-9213-095f2ee3486f
+# ╠═b21cdbcc-b421-4653-a38e-1d35526f4319
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
