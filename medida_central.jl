@@ -5,16 +5,12 @@ using Markdown
 using InteractiveUtils
 
 # ╔═╡ eae781b5-86ff-4a26-b49e-a37a8b510a8b
+begin
 using SymPy
-
-# ╔═╡ cc2e6319-4be4-44cc-a3a3-79d28ea28fd2
-using RDatasets
-
-# ╔═╡ e32f7fde-b87d-4687-b944-c1c7d6b91ac1
-using PlutoUI
-
-# ╔═╡ 6ffbd5c8-e0db-4b4d-a75e-b0e10faf8897
 using DataFrames
+using PlutoUI
+using RDatasets
+end
 
 # ╔═╡ a22c94a0-70af-41f5-a64f-989a116d19cf
 begin
@@ -28,7 +24,7 @@ p = plot(sort(g1), (1:n)./n,
 	
 end
 
-# ╔═╡ cb77a3a2-e4c8-4e21-a339-81b5ccce90fa
+# ╔═╡ e32f7fde-b87d-4687-b944-c1c7d6b91ac1
 PlutoUI.TableOfContents(title= "Conteúdo", indent= true)
 
 # ╔═╡ f6dfb126-8367-11ec-290e-8b3a346eae2c
@@ -312,7 +308,7 @@ Para o valor 0, por exemplo, o percential é de cerca de 0,48; ou seja, cerca de
 
 # ╔═╡ b2fefd1f-579b-4c96-ba00-7bfe81ce0860
 md"""
-# _Medidas de Dispersão_
+# _Medida de Dispersão_
 """
 
 # ╔═╡ ab27062e-3132-446b-ad83-ba94a255e31d
@@ -387,19 +383,56 @@ $$Z=\frac{x-\mu}{\sigma}$$
 
 onde, $$x$$ é a observação, $$\mu$$ a média e $$\sigma$$ é o desvio padrão.
 
+Observe que um z-score negativo indica que o valor está abaixo da média, enquanto um z-score positivo mostra que o valor está acima da média.
+
 
 """
 
 # ╔═╡ 1274c1af-9110-4633-be45-80eee80925a1
 md"""
-#### Uso do z-score no pentatlo 
+#### Uso do z-score apara padronizar resultados do pentatlo
 
 Dois atletas (A e B) competem em uma corrida de 800 metros, cuja média de todos os comeptidores foi de 137 segundos, com desvio padrão de 5 segundos. O corredor A completou a corrida em 129 segundos, enquanto o corredor B gastou 140 segundos. Qula é o z-escore de cada um?
 
+- O corredor A:  
 
+$$Z=\frac{129-137}{5} = -1.6$$
+
+
+- O corredor B: 
+
+$$Z=\frac{140-137}{5} = 0.6$$
+
+Os desempenho dos atletas A e B no salto a distância. A média é de 6 metros e desvio-padrão de 30 cm. Qual é o z-score do atlea A que saltou 6.60cm e do atleta B que saltou 5.84 cm.
+
+- O saltador A:  
+
+$$Z=\frac{6.60-6.00}{30} = 2.0$$
+
+
+- O saltador B: 
+
+$$Z=\frac{5.84- 6.00}{30} = -0.4$$
+
+
+Desse modo, é possivel padronizar (transformar em desvis-padrão em relação à média) valores de diferentes distribuições. 
 
 
 """
+
+# ╔═╡ 74e0ec83-2ca4-464b-9cdb-d045d27bb90d
+md"""
+!!! info "Exercício"
+    - Um aluno de economina tirou nota 7 em cálculo (média 5 e desvio padrão de 3).
+
+    - Um aluno de ciencias sociais tirou nota 9 em teoria antropológica (média 8 e desvio padrão de 1).
+
+    Quem obteve um melhor desempenho relativo?
+
+"""
+
+# ╔═╡ 5e64eb80-f6eb-4962-9560-8d5688b54e41
+
 
 # ╔═╡ d44b0dba-fe6f-4e84-a224-3834cd0c8163
 md"""
@@ -410,10 +443,48 @@ md"""
      - assim, podemos comparar valores que são medidos em diferentes escalas, com diferentes unidades e extraídos de diferentes populações.
 """
 
-# ╔═╡ b6f2cf22-3e01-4a21-9213-095f2ee3486f
+# ╔═╡ f4ea9be6-400f-44ce-b263-78c42a6d72b3
 md"""
 
-## Intervalo Interquartil
+### Z-escore e a curva normal
+
+
+"""
+
+# ╔═╡ cf536371-7f77-4412-99c8-411a473d32c3
+md"""
+Imagine que nós empilhassemos as observações de uma determinada população (por exemplo, as notas de uma turma, ou a altura das pessoas que compareceram ao último Fla-Flu) já padronizadas. Esse empilhamento das observação produziria um gráfico semelhante a uma curva normal,que tem o formato de um sino. 
+
+A curva normal é a distribuição mais conhecida da estatística e tem uma propriedade: sabemos quantos casos estão abaixo de cada segmento da curva, quando observamos os desvios-padrão.
+
+- 68,2 % dos casos estão a 1 desvio-padrão em relação à média 
+
+- 95,4% dos casos estão a 2 desvios-padrão em relação à média
+
+- 99.7% dos casos estão a 3 desvios-padrão em relação à média
+
+"""
+
+# ╔═╡ 4d1d7607-e556-4e49-99d6-71d9487c5de5
+Resource("https://kanbanize.com/blog/wp-content/uploads/2014/07/Standard_deviation_diagram.png", :width => 900)
+
+# ╔═╡ 86ae5742-14f7-42be-a7ea-54e11eba0ec0
+md"""
+
+Se a população  de casos, se distribui em um formato de uma curva  normal, e sabemos o z-score de um caso, é possivel saber em que percentil da distribuição ele está.
+
+O saltador A do exemplo acima está a 2 desvios-padrão em relação à média. Olhando para o gráfico acima, observamos que a faixa vermelha contempla 2,2 % (2,1 % + 0,1 %) dos casos;  ou seja, o saltador A está entre os top 97,8 % da distibuição. 
+
+Os livros antigos de estatística traziam uma tabela em anexo, onde era possivel fazer a conversão entre o z-score eo percential de um caso.
+
+"""
+
+# ╔═╡ 21e8c405-c8d3-4ac1-a13f-416fe1effd42
+md"""
+!!! danger "⚠️ A Regra dos dois desvio de Leo Monastério"
+    
+    Nunca brigue se o adversário estiver a mais de dois desvios padrão de você em qualquer dimensão: conhecimento, ideologia, inteligência ou porte físico
+
 
 """
 
@@ -1506,13 +1577,10 @@ version = "0.9.1+5"
 """
 
 # ╔═╡ Cell order:
-# ╠═eae781b5-86ff-4a26-b49e-a37a8b510a8b
-# ╠═cc2e6319-4be4-44cc-a3a3-79d28ea28fd2
-# ╠═e32f7fde-b87d-4687-b944-c1c7d6b91ac1
-# ╠═cb77a3a2-e4c8-4e21-a339-81b5ccce90fa
-# ╠═6ffbd5c8-e0db-4b4d-a75e-b0e10faf8897
-# ╠═f6dfb126-8367-11ec-290e-8b3a346eae2c
-# ╟─f602cbeb-7fbf-4d29-9cd7-4492a4734a3b
+# ╟─eae781b5-86ff-4a26-b49e-a37a8b510a8b
+# ╟─e32f7fde-b87d-4687-b944-c1c7d6b91ac1
+# ╟─f6dfb126-8367-11ec-290e-8b3a346eae2c
+# ╠═f602cbeb-7fbf-4d29-9cd7-4492a4734a3b
 # ╟─d345ee2b-9d49-4af1-926b-94c99f25a4dd
 # ╟─456f635d-69b2-491f-bbf6-3ec2439ccf8c
 # ╟─f9fb0ff9-cbae-4c6a-9c51-d97274b3c312
@@ -1542,11 +1610,17 @@ version = "0.9.1+5"
 # ╟─af22073b-3405-42f1-b28e-5c00e35cb237
 # ╟─d95466e4-4325-4ab7-a066-1ab97f3424f0
 # ╟─458e3af8-44b0-4314-b40f-0c1c3af05766
-# ╠═7494d853-9d3d-4c7b-a7a7-11dae4b45884
-# ╠═d22c5f01-e9ad-4c64-b713-09d0778fd47d
-# ╠═1274c1af-9110-4633-be45-80eee80925a1
+# ╟─7494d853-9d3d-4c7b-a7a7-11dae4b45884
+# ╟─d22c5f01-e9ad-4c64-b713-09d0778fd47d
+# ╟─1274c1af-9110-4633-be45-80eee80925a1
+# ╠═74e0ec83-2ca4-464b-9cdb-d045d27bb90d
+# ╠═5e64eb80-f6eb-4962-9560-8d5688b54e41
 # ╟─d44b0dba-fe6f-4e84-a224-3834cd0c8163
-# ╠═b6f2cf22-3e01-4a21-9213-095f2ee3486f
+# ╟─f4ea9be6-400f-44ce-b263-78c42a6d72b3
+# ╟─cf536371-7f77-4412-99c8-411a473d32c3
+# ╟─4d1d7607-e556-4e49-99d6-71d9487c5de5
+# ╟─86ae5742-14f7-42be-a7ea-54e11eba0ec0
+# ╟─21e8c405-c8d3-4ac1-a13f-416fe1effd42
 # ╠═b21cdbcc-b421-4653-a38e-1d35526f4319
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

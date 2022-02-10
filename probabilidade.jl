@@ -4,221 +4,55 @@
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ c44e9567-3e8d-417c-b120-5e8fefa6c03b
+# ╔═╡ e0998c92-89f3-11ec-1d97-b1b52a22c36c
 begin
 using RDatasets
 using PlutoUI
 end
 
-# ╔═╡ da0d0218-a5c4-4e86-b398-d3c586127b51
+# ╔═╡ fd587680-4773-4d17-99d7-221e5a8314d4
 PlutoUI.TableOfContents(title= "Conteúdo", indent= true)
 
-# ╔═╡ 46c966b4-60d0-4528-92d4-d7602916be96
-md"""
-# _Ciências Sociais e estatística_
-"""
-
-# ╔═╡ c5d6f5a0-b6ef-43ca-81b0-8c4f93ab68e0
-md"""
-## _Por que estudar métodos quantitativos?_
-
-### Aperfeiçoamento da forma de pensar sobre o mundo
-
-- Qual é a probabilidade de uma mulher que testa positivo para câncer em um exame de mamografia realmente estar com a doença?
-
-- Por que os gráficos sobre a evolução dos casos e mortos por Covid-19 são apresentados em escala logarítimica?
-
-- O que quer  dizer uma margem de erro com intervalo de confiança de 95% nas pesquisas de opinião?
-
-- Por que a taxa de homicídios é calculada por 100 mil?
-
-- Como podemos ter segurança para dizer  que as mulheres apoiam majoritariamente Lula nas pesquisas de opinião?
-
-- A desigualdade está crescendo ou diminuindo no Brasil?
-
-
-### Quantificação da ciência, das ciências sociais e do jornalismo
-
-- Máquina de aprendizagem, big dada e algorítimos
-
-- Ciência de dados e massificação de programação (R, Python, Julia)
-
-- Jornalismo de dados
-
-- Novas fronteiras da pesquisa quantitativa em ciências sociais: análise de textos, redes sociais, documentos históricos
-
-- Causalidade e estatística bayesiana
-
-### Ampliação das oportunidades profissionais
-
-- Estágio e oportunidades profissionais para versados em programação e estatística
-
-- Predileção das revistas por artigos baseados em pesquisa quantitativa
-
-"""
-
-# ╔═╡ 3e22f68e-7402-4847-a1de-885ecb6fc78f
-md"""
-!!! tip " 💡Hans Roling:  um mestre da arte de apresentar dados"
-    Hans Roling foi um médico sueco que se notabilizou nos anos 2010 por suas apresentações fabulosas sobre estateisticas sobre demografia e pobreza. Faleceu em 2017, com 68 anos.
-"""
-
-# ╔═╡ 2ba16c5d-cc73-47fe-b9b3-d4796ccdf549
-html"""
-<div style="max-width:854px"><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://embed.ted.com/talks/lang/en/hans_rosling_global_population_growth_box_by_box" width="854" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen></iframe></div></div> 
-"""
-
-# ╔═╡ 2a855a38-80a9-11ec-24ad-41330e14806e
-md"## _Minha história com dados_
-
-Há exatos 40 anos  atrás eu comecei o curso de ciências sociais na Universidade Federal Fluminense (UFF), em Nitérói. Quase todas as discplinas do curso  tinham um formato semelhante. O professor indicava um texto para ser lido na aula seguinte; a aula consistia em diversas formas em torno do texto selecionado: exposição do professor, exposição de um aluno (ou grupo de alunos) ou uma discussão livre. Nas primeiras semanas de aula, estranhei esse formato, pois estava acostumado com o modelo do ensino médio, de fazer a leitura dos livros após a aula.
-
-Um dos poucos cursos que fugia a esse modelo era o de Estatística. Na época, uma aula de matemática, com uma avaliação final consistindo em uma série de exercícios feitos em casa e entregues ao professor, um argentino boa praça, do Departamento de Matemática, que acabava aprovando todo mundo.
-
-Imagino que o professor soubesse que aquele curso não fizesse nenhum sentido para os alunos de Ciências Sociais. Afinal, fomos para a grande área de humanas justamente porque erámos péssimos alunos de matemática e no fim do segundo grau tínhamos uma certeza: nunca mais precisaríamos de usar matemática na vida. E de fato, ao longo da graduação, foram poucos os textos em que  havia uma menção a números. Li alguns livros e muitos artigos de antropologia, teoria política, teoria sociológica, filosofia e história política. Professores que faziam trabalhos empíricos usavam entrevistas ou etnografia.
-
-O primeiro texto com o qual eu tive contato que usava extensivamente estatística foi  foio livro _Discriminação e Desigualdades Raciais no Brasil_, de Carlos Hasenbalg (1979). O livro fazia  parte da bibliografia da prova de mestrado que tive que ler em 1987. Era um texto cheio de tabelas e de leitura árida e um trabalho praticamente único da nascente sociologia da estratificação social brasileira. Uma das questões da prova consistiu em analisar um das tabelas do livro.
-
-No mestrado, a disciplina de métodos quantitativos também era odiada pelos alunos, já que quase todos vinham da cultura anti-matemática que sempre dominou as humanidades no Brasil. Nos anos 1980, o IUPERJ era uma das centros de ciências sociais que exigiam que os alunos cursassem uma disciplina de métodos quantitativos e tinha em seus quadro professores que usavam estatatística. As aulas eram completadas por exercicios em um computador que tinha uma versão instalada do SPSS, uma raridade.
-
-Nos anos 1990 houve uma ampla massificação do uso do computador pessoal. Comprávamos as peças separadas e alguém nmontava o computador. Não havia computador pronto para usar. Meu primeiro computador foi comprado em 1992. No começo ele funcionava praticamente como uma máquina de escrever a qual acrescentávamos alguns jogos. Na segunda metade dos 1990 o e-mail se espandiu e a internet foi inventada, o que revolucionou a forma que os cientistas sociais passaram a trabalhar. 
-
-À medida que os computadores foram ficando mais potentes eles tornaram-se aptos a rodar programas estatísticos. No começo dos anos 2000 já era possivel instalar o SPSS no computador. Como a licença era carrísima, todos recorreriam aos ambulantes do Edifício Central, onde versões atualizadas (que quase sempre funcionavam) eram vendidas por uma bagatela.
-
-Na tese de doutorado, escrita na primeira metade dos anos 1990, usei estatística descritiva;  todos os dados foram feitos por uma modesta calculadora pessoal. Nos anos seguintes, já como professor do IUPERJ, continuei a usar amplamente estatística em meu trabalho (basicamente índices e estatística básica). Nesse período, fazia o que a maioria dos professores fazia: contava com a ajuda de alunos e pesquisadores versados no usos do EXCEL e do SPPS para me ajudar. Comecei a ganhar alguma autonomia, quando fiz em meados dos anos 2000 alguns cursos de SPSS. 
-
-No meu pós-doutorado em 2005/2006 investi em aprender um pouco mais de estatística. Li muitos livros, fiz alguns cursos e passei a usar o SPSS razoavelmente bem. Na volta ao Brasil, tive confiança para ensinar a temida disciplina de metodologia quantitativa. Tentei inovar usando slides e integrando um pouco mais as aulas ao laboratório de SPSS. 
-
-Com a descoberta do Tableau (um software amigável que faz gráficos bem bonitos) em 2009 passei a me interessar por visualização de dados. Na década seguinte, minha vida mudou com o uso do Stata (2013) e posteriormente com a descoberta da programação. Aos poucos, comecei a utilizar o R, o Python e até o Julia para analisar os meu dados e fazer os meus gráficos.
-
-Uma das melhores coisas que aconteceram na minha carreira foi ter aprendido a usar a programaação para fazer análises estatísticas e gráficos. Todos os passos da minha atividade ficam registrados, o que é fundamental na comunidade ciêntifica atual. Gosto de dizer que isso aconteceu quando eu me aproximava dos 50 anos. Quase tudo que sei aprendi sozinho. E como todo autodidata sei coisas muito avnçadas e não sei outras bem básicas. Falo isso porque acho que acho que posso incentivar os mais jovens. Sobretudo, os que acham que já decidiram que não querem aprender estatística e acham que programação é coisa de nerd.
-
-
-
-"
-
-# ╔═╡ a4053934-3722-447b-a348-d88ef2c52472
-md"## Casos e Variáveis
-
-Nas pesquisas quantitativas é fundamental enteder o que é um caso, o que é uma variável.
-
-##### Caso
-
-Um caso é um indivíduo/objeto de uma determinada população.
-
-Imagine, por exemplo, a população de municípios brasileiros (5570 municípios). O municipio do Rio de Janeiro é um caso da população.
-
-Um pesquisador que estuda o PSDB estuda um caso de uma população de partidos b=no Brasil. Atualmente, existem 34 partidos regsitrados.
-
-##### Variável
-
-Uma variável é um atributo ou característica dos indivíduos/objetos.
-
-O termo variável dá ênfase ao fato de que os atributos dos indivíduos. Numa população de mulheres, o sexo não é uma variável.
-
-Em uma pesquisa eleitoral a idade, a escolaridade são variáveis, já que que temos pessoas de idades e escolaridades diferentes na população.
-
-
-"
-
-# ╔═╡ afe1c9bc-a6da-43f0-a041-8ccc732da956
-md"""
-!!! info "O que é significa a letra N nas pesquisas quantitativas?"
-    O  **n** faz referência ao número de casos de uma população. A população de municípios brasileiros é de 5570, portanto o **n = 5570**.
-"""
-
-# ╔═╡ 54813f12-bbe6-4cff-aed0-eeeab29d9f67
-md"""
-### Tipos de variáveis 
-
-#### Variável quantitativa (numérica)
-porta algum  valor numéricos que são passíveis de operação matemática (soma, divisão, multiplicação): idade, número de filhos, renda per capita, anos de estudo
-
-#### Variável categórica
-cada observação pertence a uma categoria em conjunto de categorias:
-- gênero: masculino, feminino
-- religião: católica, evangélica, espírita, budista 
-- tipo de moradia: apartamento, casa
-- crença na vida após a morte: sim, não
-
-"""
-
-# ╔═╡ 67a8efb8-f39a-45ef-820c-eab27b3a271c
-md"""
-!!! info " 💡Quizz 1"
-     Identifique se cada uma da variáveis é categórica (factor) ou quantitativa:
-     - número de crianças em uma creche
-     - domicílio eleitoral
-     - estado civil
-     - distância (em quilômetros) de deslocamento até a escola
-     - código postal
-"""
-
-
-# ╔═╡ 0a6d1014-d05e-4e9b-b343-01cfc6a28d80
-md"""
-!!! hint "Resposta do Quizz 1"
-    - número de crianças em uma creche:  **numérica**
-    - domicílio eleitoral:  **categórica**
-    - estado civil:  **categórica**
-    - distância (em quilômetros) de deslocamento até a escola: **numérica**
-    - código postal: **serve como uma variável de identificação**
-"""
-
-# ╔═╡ f4b0b123-efe4-4be5-9162-5fa266bc97ae
-html"""
-<div style="max-width:854px"><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://embed.ted.com/talks/lang/pt/nate_silver_does_racism_affect_how_you_vote" width="854" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen></iframe></div></div>
-"""
-
-# ╔═╡ 32311376-80ad-4f7f-b422-a0559e75a28d
-md"""
-## Dados Tabulares
-
-Quase todos  os dados que os pesquisadore lidam estão no formato tabular
-
-Onde:
-
-* Cada **coluna** é uma variável
-* Cada **linha** é uma observação
-* Cada **célula** é uma mensuração única
-"""
-
-# ╔═╡ 1db4f060-d5b3-4de7-84be-d679ffd37bbf
-md"""
-$(Resource("https://github.com/storopoli/Computacao-Cientifica/blob/master/images/tidydata_1.jpg?raw=true"))
-
-> Figura com licença creative commons de [`@allisonhorst`](https://github.com/allisonhorst/stats-illustrations)
-"""
-
-# ╔═╡ def331ca-3061-4d3d-a274-55475c47d6a9
+# ╔═╡ ae977203-f450-4f93-a925-f8786085ecdb
 md"""
 
-#### Exemplo de um  banco em formato tabular
-
-2000 American National Election Studies: Dataframe sobre o nível de informação dos cidadãos
-
-Um banco de dados com 1807 observações e 8 variáveis:
-
-- **y** interviewer rating, categórica com os levels Very Low Fairly Low Average Fairly High Very High
-
-- **collegeDegree** categóricas com levels No Yes
-
-- **female** categórica com os levels No Yes
-
-- **agea** numérica com a idade dos respondente em anos
-
-- **homeOwn** categórica com levels No Yes
-
-- **govt** acategórica com levels No Yes
-
-- **length numérica**, a duração da entrevista em minutos
-
-- **id** um único identificador para cada respondente
+# _Probabilidade_
 
 """
 
-# ╔═╡ 64865c3a-9311-4662-8e88-def8f1bce222
-Informação_Política = dataset("pscl", "politicalInformation")
+# ╔═╡ de01400e-3f75-4d5c-83c0-f540e80ac57e
+md"""
+
+## O que é probabilidade
+
+"""
+
+# ╔═╡ 060de628-b54b-43ea-835a-181584c25287
+md"""
+## Quatro regras da probabilidade
+   - **A probabilidade de um evento é um número entre 0 e 1**: 0 para eventos impossíveis (por exemplo, não tirar nem cara nem coroa), 1 para eventos certos (tirar qualquer uma das quatro combinações possíveis).
+
+   - **A regra do complemento**: a probabilidade de um evento ocorrer é igual a 1 menos a probabilidade de o evento não ocorrer. Por exemplo, a probabilidade de “pelo menos uma coroa” é 1 menos a probabilidade de “duas caras”: 1 – ¼ = ¾.
+
+   - **A regra da adição, ou do OU**: some as probabilidades de dois eventos mutuamente excludentes (ou seja, que não podem ocorrer ao mesmo tempo) para obter a probabilidade total. Por exemplo, a probabilidade de “pelo menos uma cara” é ¾, já que compreende “duas caras” OU “cara + coroa” OU “coroa + cara”, cada uma com probabilidade de ¼.
+
+   - **A regra da multiplicação, ou do E**: multiplique probabilidades para obter a probabilidade total de que ocorra uma sequência de eventos independentes (ou seja, que não afetam um ao outro). Por exemplo, a probabilidade de uma cara E de uma coroa é ½ × ½ = ¼.
+
+"""
+
+# ╔═╡ 01d1c6d9-8a9c-48b4-8247-b6c7dc611417
+md"""
+
+## Probabilidade Condicional
+
+"""
+
+# ╔═╡ 86131dea-9d9b-4d68-9ccd-49774557e68d
+md"""
+
+## Teorema de Bayes
+
+"""
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -227,7 +61,7 @@ PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 RDatasets = "ce6b1742-4840-55fa-b093-852dadbb1d8b"
 
 [compat]
-PlutoUI = "~0.7.32"
+PlutoUI = "~0.7.34"
 RDatasets = "~0.7.7"
 """
 
@@ -337,9 +171,9 @@ version = "0.1.8"
 
 [[deps.FileIO]]
 deps = ["Pkg", "Requires", "UUIDs"]
-git-tree-sha1 = "67551df041955cc6ee2ed098718c8fcd7fc7aebe"
+git-tree-sha1 = "80ced645013a5dbdc52cf70329399c35ce007fae"
 uuid = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
-version = "1.12.0"
+version = "1.13.0"
 
 [[deps.FilePathsBase]]
 deps = ["Compat", "Dates", "Mmap", "Printf", "Test", "UUIDs"]
@@ -486,9 +320,9 @@ uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
 [[deps.PlutoUI]]
 deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
-git-tree-sha1 = "ae6145ca68947569058866e443df69587acc1806"
+git-tree-sha1 = "8979e9802b4ac3d58c503a20f2824ad67f9074dd"
 uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
-version = "0.7.32"
+version = "0.7.34"
 
 [[deps.PooledArrays]]
 deps = ["DataAPI", "Future"]
@@ -642,22 +476,12 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 """
 
 # ╔═╡ Cell order:
-# ╟─c44e9567-3e8d-417c-b120-5e8fefa6c03b
-# ╟─da0d0218-a5c4-4e86-b398-d3c586127b51
-# ╟─46c966b4-60d0-4528-92d4-d7602916be96
-# ╟─c5d6f5a0-b6ef-43ca-81b0-8c4f93ab68e0
-# ╟─3e22f68e-7402-4847-a1de-885ecb6fc78f
-# ╟─2ba16c5d-cc73-47fe-b9b3-d4796ccdf549
-# ╟─2a855a38-80a9-11ec-24ad-41330e14806e
-# ╟─a4053934-3722-447b-a348-d88ef2c52472
-# ╟─afe1c9bc-a6da-43f0-a041-8ccc732da956
-# ╟─54813f12-bbe6-4cff-aed0-eeeab29d9f67
-# ╟─67a8efb8-f39a-45ef-820c-eab27b3a271c
-# ╟─0a6d1014-d05e-4e9b-b343-01cfc6a28d80
-# ╟─f4b0b123-efe4-4be5-9162-5fa266bc97ae
-# ╟─32311376-80ad-4f7f-b422-a0559e75a28d
-# ╟─1db4f060-d5b3-4de7-84be-d679ffd37bbf
-# ╟─def331ca-3061-4d3d-a274-55475c47d6a9
-# ╟─64865c3a-9311-4662-8e88-def8f1bce222
+# ╠═e0998c92-89f3-11ec-1d97-b1b52a22c36c
+# ╠═fd587680-4773-4d17-99d7-221e5a8314d4
+# ╟─ae977203-f450-4f93-a925-f8786085ecdb
+# ╟─de01400e-3f75-4d5c-83c0-f540e80ac57e
+# ╟─060de628-b54b-43ea-835a-181584c25287
+# ╟─01d1c6d9-8a9c-48b4-8247-b6c7dc611417
+# ╟─86131dea-9d9b-4d68-9ccd-49774557e68d
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
