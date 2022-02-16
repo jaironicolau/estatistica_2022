@@ -97,6 +97,30 @@ Uma das melhores coisas que aconteceram na minha carreira foi ter aprendido a us
 
 "
 
+# ╔═╡ 0a4f64f5-2ccf-4b38-9b85-79c340452fe0
+md"""
+
+## População e amostra
+
+##### População
+
+É o conjunto de todas as observações de interesse: os moradores do Complexo da Maré, os estudantes do Pedro II, os jogadores que participam da Série A do brasileiro
+
+##### Amostra
+
+É um segmento da população cujos os dados estão disponíveis: Indivíduos que responderam a PNAD; alunos sorteados do Pedro II para um teste de desempenho escolar; respondentes de uma pesquisa de opinião do Instituto Quaest.
+
+
+O objetivo da maioria das análises de dados é aprender sobre as populações. Mas quase sempre é necessário, e mais prático, observar apenas amostras dessas populações. Por exemplo, organizações de pesquisa, como Datafolha, ouvem cerca de 1.000 a 2.000 brasileiros para coletar informações sobre opiniões e crenças da população.
+
+A **estatística inferencial** fornece avaliações sobre uma população, com base em dados de uma amostra. Por exemplo, uma pesquisa realizada nos EUA em 2018 perguntou: “Você acredita no céu?” A população de interesse foram todos os adultos nos Estados Unidos. Dos 1.141 sujeitos da amostra, 81% responderam que sim. Estaríamos interessados, no entanto, não apenas nessas 1.141 pessoas, mas na população de mais de 250 milhões de adultos nos Estados Unidos.
+
+
+"""
+
+# ╔═╡ 221fafed-5ff1-4c4a-9628-63098de442b8
+
+
 # ╔═╡ a4053934-3722-447b-a348-d88ef2c52472
 md"## Casos e Variáveis
 
@@ -142,6 +166,9 @@ cada observação pertence a uma categoria em conjunto de categorias:
 - crença na vida após a morte: sim, não
 
 """
+
+# ╔═╡ abc1e1ad-be8a-492a-bf98-adf18ec994a2
+
 
 # ╔═╡ 67a8efb8-f39a-45ef-820c-eab27b3a271c
 md"""
@@ -649,9 +676,12 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╟─3e22f68e-7402-4847-a1de-885ecb6fc78f
 # ╟─2ba16c5d-cc73-47fe-b9b3-d4796ccdf549
 # ╟─2a855a38-80a9-11ec-24ad-41330e14806e
+# ╟─0a4f64f5-2ccf-4b38-9b85-79c340452fe0
+# ╠═221fafed-5ff1-4c4a-9628-63098de442b8
 # ╟─a4053934-3722-447b-a348-d88ef2c52472
 # ╟─afe1c9bc-a6da-43f0-a041-8ccc732da956
 # ╟─54813f12-bbe6-4cff-aed0-eeeab29d9f67
+# ╠═abc1e1ad-be8a-492a-bf98-adf18ec994a2
 # ╟─67a8efb8-f39a-45ef-820c-eab27b3a271c
 # ╟─0a6d1014-d05e-4e9b-b343-01cfc6a28d80
 # ╟─f4b0b123-efe4-4be5-9162-5fa266bc97ae

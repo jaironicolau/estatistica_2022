@@ -4,7 +4,14 @@
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ eae781b5-86ff-4a26-b49e-a37a8b510a8b
+# ╔═╡ a6b1f073-9324-4986-b97d-8984b8457480
+begin
+	
+using Plots, StatsPlots, Distributions, LaTeXStrings
+
+end
+
+# ╔═╡ ec8f1bad-a9b0-477b-9627-b0b9d6dd584f
 begin
 using SymPy
 using DataFrames
@@ -12,503 +19,189 @@ using PlutoUI
 using RDatasets
 end
 
-# ╔═╡ a22c94a0-70af-41f5-a64f-989a116d19cf
-begin
-	
-using Plots
-n=100
-g1 = [randn() for i = 1:n] 
-p = plot(sort(g1), (1:n)./n, 
-    xlabel = "classificação em 5 pontos", ylabel = "Perecentil", 
-    title = "Empirical Cumulative Distribution", label = "")
-	
-end
-
-# ╔═╡ e32f7fde-b87d-4687-b944-c1c7d6b91ac1
+# ╔═╡ 3d671ce3-0752-4c67-8817-ab23512f4361
 PlutoUI.TableOfContents(title= "Conteúdo", indent= true)
 
-# ╔═╡ f6dfb126-8367-11ec-290e-8b3a346eae2c
-md"""
-# _Medidas de Tendência Central_
-"""
-
-# ╔═╡ f602cbeb-7fbf-4d29-9cd7-4492a4734a3b
-md"""
-Quando queremos um único número que resuma uma variável quantitativa de um banco de dados pensamos logo na média. 
-- Qual é a nota média dos alunos de uma turma?
-- Por que homens têm uma renda meedia superior a das mulheres?
-- Qual é a média de gols que um atacante faz por jogo?
-"""
-
-# ╔═╡ d345ee2b-9d49-4af1-926b-94c99f25a4dd
-md"""
-## _Média_
-
-A média é a mais simples medida estatística. Basta somar os valores de uma distribuição numérica e dividir pelo número de casos (observações).
-
-média = soma de valores/ número de casos
-"""
-
-# ╔═╡ 456f635d-69b2-491f-bbf6-3ec2439ccf8c
-md"""
-Na distribuição composta por nove números:
-
-- 78, 91, 94, 98, 99, 101, 103, 105, 114 
-
-A média  é  (..../ 9) = 98
-"""
-
-# ╔═╡ f9fb0ff9-cbae-4c6a-9c51-d97274b3c312
-md"""
-## _Mediana_
-
-A mediana é menos conhecida, mas é uma medida de tendência central importante, quando existem valores extremos na distribuição.
-
-Quando ordenamos uma distribuição de casos do menor para o maior número (ou vice-versa), a mediana é o número que divide a distribuição ao meio; ou seja, metade dos números estão acima, metade abaixo.
-
-Na distribuição abaixo a mediana é 99
-
--  78, 91, 94, 98, **99**,101, 103, 105, 114
-
-No caso de a distribuição ter um número par de dados, as duas observações centrais são somadas e dividas por dois
-
-- 78, 91, 94, 98, **99**, **101**, 103, 105, 114, 121.   
-A mediana é = 100 (99 + 101)/2  
-
-
-"""
-
-# ╔═╡ 7c75e10d-ef51-4bd1-ac02-a1cb70645815
-md"""
-!!! info "Exercício"
-    Use uma calculadora e calcule: é a média e a mediana se acrescentarmos uma observação de valor 1200 na distribuição acima
-"""
-
-# ╔═╡ 0b69f896-153c-4d52-904a-1ed87ecbdf13
-md"""
-!!! hint "Resposta"
-    média   = 100
-
-    mediana = 208
-"""
-
-# ╔═╡ d4d4fd1c-567e-4e21-9d53-09c9a08213be
-md"""
-## _Moda_
-
-A moda é valor que aparece com mais frequência na distribuição 
-
-Na distribuição abaixo a moda é 101, já que aparece duas vezes
-
--  78, 91, 94, 98, 99, **101**, **101**, 103, 105, 114
- 
-
-
-"""
-
-# ╔═╡ 35c09606-f73f-4fe1-8d10-3848708047e5
-md"""
-!!! danger "⚠️ Cuidado com a média"
-    
-    A média é  sensível a observações com valores extremos:
-
-    - Uma pessoa com renda extremamente alta pode oferecer um número enviezado da renda de um grupo
-
-    - A presença da cidade São Paulo envieza a média de morados nos municípios da reginao Metropolitana do estado de São Paulo
-
-     Nesses casos, melhor utilizar a mediana
-
-"""
-
-# ╔═╡ 847a26d9-26ab-404e-afe2-f53237099727
-md"""
-### _A mediana não é a mensagem_
-
-texto do biólogo americano, Stephen Jay Gould (1941-2002)
-"""
-
-# ╔═╡ dc4b2aa7-70b7-4fb8-a78b-2f85e6e8504c
-Resource("https://upload.wikimedia.org/wikipedia/en/2/21/Stephen_Jay_Gould_2015%2C_portrait_%28unknown_date%29.jpg", :width => 200)
-
-# ╔═╡ dadcf91b-35d4-4eb2-b160-4c977696c580
+# ╔═╡ 0a58253c-8d5c-11ec-0baa-8fdaaea26ced
 md"""
 
-Minha vida recentemente se deparou, de uma maneira muito pessoal, com duas das célebres frases de Mark Twain. Uma eu deixarei para o fim deste ensaio. A outra (por vezes atribuída a Disraeli), identifica três tipos de inverdades, cada uma pior que a outra: mentiras, mentiras descaradas, e estatísticas.
-
-Considere o exemplo clássico de estender a verdade com números — um caso bastante relevante à minha estória. A estatística reconhece diferentes medidas para “na média”, ou para a tendência central. Média aritmética é nosso conceito usual de “na média” — adicione todos os itens e divida pelo número que os compartilha (100 doces coletados por cinco crianças no próximo Halloween irão dar 20 para cada uma num mundo justo). A mediana, uma medida diferente da tendência central, é o ponto no meio do caminho. Se eu colocar em fila indiana cinco crianças em ordem de tamanho, a criança mediana é mais baixa que duas, e mais alta que as outras duas (que podem ter dificuldade em obter a fração justa dos doces). Um político no poder pode dizer com orgulho, “A renda média de nossos cidadãos é de $15.000 por ano.” O líder da oposição pode responder “Mas metade de nossos cidadãos ganha menos que $10.000 por ano.” Ambos estão corretos, mas nenhum cita a estatística com objetividade fria. O primeiro invoca a média aritmética, o segundo a mediana. (Médias são mais altas que medianas nesses casos porque um milionário vale mais que centenas de pobres ao determinar a média, mas ele pode contrabalancear apenas um mendigo no cálculo da mediana).
-
-A questão maior que comunmente cria desconfiança ou desdenho pela ciência estatística é mais perturbadora. Muitas pessoas fazem uma separação infeliz e inválida entre coração e mente, sentimento e intelecto. Em algumas tradições contemporâneas, incentivadas por atitudes estereotipicamente centradas no sul da Califórnia, o sentimento é exaltado como sendo mais “real” e a única base apropriada para agir — se a sensação é boa, faça — enquanto o intelecto é minimizado como sendo apêndice de um elitismo fora de moda. A Estatística, nessa dicotomia absurda, acaba muitas vezes se tornando o símbolo do inimigo. Como Hilaire Belloc escreveu, “A Estatística é o triunfo do método quantitativo, e o método quantitativo é a vitória da esterilidade e da morte.”
-
-Esta é uma estória pessoal da estatística, propriamente interpretada, como profundamente doce e portadora de vida. Ela declara uma guerra santa à desclassificação do intelecto contando uma pequena estória sobre a utilidade de conhecimento acadêmico, árido, científico. O coração e a cabeça são pontos focais de um só corpo, de uma só personalidade.
-
-Em julho de 1982 eu descobri que sofria de mesotelioma abdominal, um câncer raro e grave normalmente associado com a exposição a abestos. Quando acordei depos da cirurgia , fiz minha primeira pergunta à minha médica e quimioterapeuta: “Qual a melhor literatura técnica sobre mesotelioma ?” Ela respondeu, com um toque de diplomacia (a única vez que fugiu da franqueza direta), que a literatura médica não continha nada que realmente valesse a pena ler.
-
-Claro que manter um intelectual longe da literatura funciona tão bem quanto recomendar castidade ao Homo Sapiens, o mais sexuado de todos os primatas. Assim que pude andar, fui direto para a biblioteca médica Countway, em Harvard, e digitei mesotelioma no programa de computador de pesquisas bibliográficas. Uma hora mais tarde, cercado da mais recente literatura sobre mesotelioma abdominal, eu entendi com um nó na garganta por quê minha médica havia me dado aquele conselho humano. A literatura não poderia ser mais brutalmente clara: mesotelioma é incurável, com uma mortalidade mediana de apenas oito meses após o diagnóstico. Eu fiquei sentado atordoado por cerca de quinze minutos, então sorri e disse para mim mesmo: ah, é por isso que não me deram nada para ler. Então minha cabeça voltou a funcionar, ainda bem.
-
-Se um pouco de aprendizado puder ser, em algum momento, algo perigoso, eu tinha encontrado o exemplo clássico. Atitude claramente importa ao lutar com o câncer. Não sabemos por quê (de minha visão materialista clássica, eu suspeito de estados mentais reforçando o sistema imunológico). Mas equalize pessoas com câncer por idade, sexo, saúde, status socio-econômico, e, em geral, aqueles com atitudes positivas, com forte propósito e vontade de viver, com compromisso para lutar, com uma resposta ativa de auxiliar seu próprio tratamento, e não apenas uma aceitação passiva do que o médico diz, tenderão a viver por mais tempo. Alguns meses mais tarde eu perguntei a Sir Peter Medawar, meu guru científico pessoal e prêmio Nobel em imunologia, qual a melhor receita para ter sucesso contra o câncer. “Uma personalidade sanguínea”, ele respondeu. Por sorte (pois uma pessoa não consegue se reconstruir no curto prazo e para um propósito definido), eu sou, se alguma coisa, de temperamento constante e confiante exatamente como receitado.
-
-Vê-se o dilema para médicos humanos: se a atitude importa tão criticamente, deveria uma conclusão tão sombria ser propagandeada, especialmente sabendo que tão poucas pessoas possuem entendimento de estatística para avaliar o quê essas afirmações realmente signficam ? De meus anos de experiência com a evolução em pequena escala dos caramujos terrestres das Bahamas, tratada quantitativamente, eu desenvolvi esse entendimento técnico — e estou convencido que ele teve um papel central em salvar a minha vida. Conhecimento é poder, como diz o provérbio.
-
-O problema pode ser posto de forma breve: O que significa “mortalidade mediana de 8 meses” em nosso vernáculo ? Eu suspeito que a maior parte das pessoas, sem treinamento em estatística, leria essa afirmação como “Eu provavelmente vou estar morto em oito meses” — exatamente a conclusão que deveria ser evitada, porque não é verdadeira, e porque a atitude importa tanto.
-
-Eu não estava, claro, muito feliz, mas não li a afirmação de acordo com esse vernáculo fatalista. Meu treinamento técnico formou uma perspectiva diferente para “8 meses de mortalidade mediana”. O ponto é sutil, mas profundo — pois ele incorpora o modo de pensar caracterísitico do meu campo de estudo, biologia evolucionária e história natural.
-
-Nós ainda carregamos a bagagem histórica da herança Platônica que busca essências puras e fronteiras definidas. (Por isso nós esperamos encontrar um “começo da vida” ou uma “definição de morte” sem ambiguidade, apesar da natureza frequentemente se apresentar como um contínuo irredutível). Essa herança Platônica, com sua ênfase em distinções claras e entidades imutáveis separadas, nos leva a ver medidas estatísticas de tendência central de forma errada, na verdade de forma oposta à interpretação apropriada ao nosso mundo real de variações, tonalidades, e continuidade. Ou seja, nós olhamos médias e medianas como “dura realidade,” e a variação que permite o seu cálculo como uma massa de medidas transientes e imperfeitas dessa verdadeira essência. Se a mediana é a realidade e a variação em torno da mediana um artifício para seu cálculo, então “provavelmente vou estar morto em oito meses” pode passar como uma interpretação razoável.
-
-Mas todos biólogos evolucionários sabem que a própria variação é a única essência irredutível da natureza. Variação é a dura realidade, não um conjunto de medidas imperfeitas da tendência central. Médias e medianas são a abstração. Portanto, eu olhei as estatísticas do mesothelioma bem diferente — e não só porque eu sou um otimista que tende a ver a rosca ao invés do buraco, mas primariamente porque sei que a própria variação é a realidade. Eu precisava me colocar dentro da variação.
-
-Quando eu soube da mediana de oito meses, minha primeira reação intelectual foi: ótimo, metade das pessoas vive mais que isso; agora, quais são as minhas chances de estar naquela metade? Eu li por uma hora nervosa e furiosa, e conclui, com alívio: danadas de boas. Eu possuia cada uma das características que conferiam a probabilidade de uma vida mais longa: Eu era jovem; minha doença havia sido identificada em um estágio relativamente inicial; eu iria receber o melhor tratamento médico disponível; eu tinha um mundo pelo qual viver; eu sabia como ler os dados corretamente e não me desesperar.
-
-Outro ponto técnico adicionou ainda mais consolo. Eu imediatamente me dei conta de que a distribuição da variação em torno da mediana de oito meses quase que certamente seria aquilo que os estatísticos chamam de “skewed para a direita”. (Em uma distribuição simétrica, o perfil da variação à esquerda da tendência central é uma imagem espelhada da variação para a direita. Em distribuições enviesadas, a variação para um lado da tendência central é mais esticada — enviesada para esquerda quando se extende para a esquerda, enviesada para direita quando se estica para a direita.) A distribuição da variação tinha que ser enviesada para direita, eu raciocinei. Afinal, a esquerda da distribuição continha uma fronteira irrevocável no zero (pois o mesothelioma só pode ser identificado no momento da morte ou antes). Portanto, não há muito espaço para a metade baixa (ou esquerda) da variação — ela precisa estar comprimida entre zero e oito meses. Mas a metade alta (ou direita) pode se estender por anos e anos, mesmo que ninguém sobreviva no fim. A distribuição tinha que ser enviesada para a direita, e eu precisava saber o quão longe a rabeira da direita chegava — pois eu já havia concluído que meu perfil favorável me fazia um bom candidato para aquela parte da curva.
-
-A distribuição era, de fato, fortemente enviesada para direita, com uma rabeira longa (embora pequena) que se extendia por muitos anos além da mediana de oito meses. Eu não vi nenhuma razão para eu não estar naquela pequena rabeira, e pude respirar um longo suspiro de alívio. Meu conhecimento técnico havia ajudado. Eu havia lido o gráfico corretamente. Eu fiz a pergunta certa e encontrei as respostas. Eu tinha conseguido, bem provavelmente, o mais precioso presente — tempo substancial. Eu não teria que parar e seguir imediatamente a injunção de Isaías para Ezequias — coloque sua casa em ordem pois tu irás morrer, e não viver. Eu teria tempo para pensar, para planejar, e para lutar.
-
-Um último ponto sobre distribuições estatísticas. Elas se aplicam somente para um conjunto determinado de circunstâncias — neste caso a sobrevivência com mesothelioma sob métodos convencionais de tratamento. Se as circunstâncias mudam, a distribuição pode se alterar. Eu fui colocado em um protocolo experimental de tratamento e, com sorte, estarei no primeiro grupo amostral de uma nova distribuição com mediana alta e uma rabeira direita esticando até uma morte natural em idade avançada.
-
-Parece-me que se tornou excessivamente chique olhar a aceitação da morte como algo equivalente à posse de dignidade intrínseca. Claro que eu concordo com o pastor do Eclesiastes, que há um tempo para amar e um tempo para morrer — e quando meus dias terminarem espero encarar o fim calmamente, de minha própria maneira. Na maior parte das situações, no entanto, prefiro o ponto de vista mais marcial de que a morte é o terrível inimigo — e não acho nada criticável naqueles que se enfurecem com o apagar das luzes.
-
-As espadas da batalha são muitas, e nenhuma mais efetiva do que o humor. Minha morte foi anunciada em um encontro de meus colegas na Escócia, e eu quase experimentei o delicioso prazer de ler o meu obituário escrito por um de meus melhores amigos (que suspeitou e checou; ele também é um estatístico, e não esperava me encontrar tão longe na rabeira direita.) Ainda asssim, o incidente me deu as primeiras gargalhadas depois do diagnóstico. Pense só, eu quase pude repetir uma das frases mais famosas de Mark Twain: as notícias de minha morte foram fortemente exageradas.
-
-Epílogo por Steve Dunn
-
-Muitos me escreveram para perguntar o que aconteceu com Stephen Jay Gould. Infelizmente, o Dr. Gould faleceu em Maio de 2002, com 60 anos de idade. O Dr. Gould viveu 20 anos muito produtivos após seu diagnóstico, portanto excedendo sua mediana de oito meses por um fator de trinta! Apesar dele ter morrido de câncer, aparentemente não foi mesothelioma, mas sim um segundo câncer não relacionado.
-
-Em Março de 2002, o Dr. Gould publicou sua Obra Prima de 1342 páginas, “A Estrutura da Teoria Evolucionária”. É justo que Gould, um dos cientistas e escritores mais prolíficos do mundo, tenha conseguido completar a expressão definitiva de seu trabalho científico e sua filosofia — e bem a tempo. O texto é longo demais e denso demais para quase qualquer leigo — mas os trabalhos de Stephen Jay Gould vão continuar vivos. Especialmente, espero, “A Mediana Não É a Mensagem”.
-
-Texto original de Stephen Jay Gould e Steven Dunn traduzido para o português em Maio de 2007, por Ricardo Castro. Original em inglês: The Median Isn’t the Message.
+# Amostras 
 
 """
 
-# ╔═╡ 121f0345-2ed2-40f6-a373-644809412c46
-md"""
-# _Quantis_
-
-O quantil é definido como segmentos de tamanhos iguais de uma população. Uma das métricas mais comuns em análise estatística, a mediana, é na verdade apenas o resultado da divisão de uma população em dois quantis. Um quintil é um dos cinco valores que dividem um intervalo de dados em cinco partes iguais, cada uma sendo 1/5 (20%) do intervalo. Uma população dividida em três partes iguais é dividida em tercis, enquanto uma dividida em quartos é dividida em quartis. 
-
-Os quantis são nmensurados de formas de fdiferentes, mas sempre parte de uma distribuição de dados ordenado do menor para o maior vlaor, ou vice-versa.
-
-
-"""
-
-# ╔═╡ ae165add-2b1e-4daa-8448-7716ccd342b5
-md"""
-## _Quartil_
-
-Um quartil divide os dados em três pontos – um quartil inferior, mediano e quartil superior – para formar quatro grupos do conjunto de dados. 
-
-Assim como a mediana divide os dados ao meio, de modo que 50% da medida fique abaixo da mediana e 50% acima dela, o quartil divide os dados em quartos para que 25% das medidas sejam menores que o quartil inferior, 50 % são menores que a mediana e 75% são menores que o quartil superior. 
-
-Na distribuição:   78, 91, 94, 98, 99, 101, 103, 105, 114, 117, 121 
-
-- O 94 é o quartil inferior, também conhecido como Q1
-
-- O 101 é  a mediana: metade dos números estão abaixo dele, metade acima
-
-- O 114 é o quartil superior , também conhecido como o Q3
-
-78, 91, **94**, 98, 99, **101**, 103, 105, **114**, 117, 121 
-
-Observe que 25% dos casos estão abaixo de 94; 50% dos casos estão abaixo de 101; 75% dos casos estnao abaixo de 114 
-
-"""
-
-# ╔═╡ d14f8fc6-6d89-4814-aa46-cc42cb9da59f
-md"""
-## _Quintil_
-
-Um quintil é um valor estatístico de um conjunto de dados que representa 20% de uma determinada população, portanto, o primeiro quintil representa o quinto mais baixo dos dados (1% a 20%); o segundo quintil representa o segundo quinto (21% a 40%) e assim por diante. 
-"""
-
-# ╔═╡ 47a1477e-12ad-4a46-b03f-11e723db941f
-md"""
-#### _Qual é o percentual de renda que cada quintil recebe no Brasil?_
-
- 1) Ordenar as famílias (ou indivíduos) do menor para o maior.
-
- 2) Calcular os quatro valores que dividirão a distribuição em 5 faixas
-
- 3) Somar a renda de todos os indivíduos de um determinado quintil e calcular quanto esse resultado representa do precentual total
-
- 4) Em 2015, por exemplo, os 20% mais pobres ficavam com 3,6% da renda; enquanto os 20% mais ricos ficavam com 56% da renda
- 
-"""
-
-# ╔═╡ 9fe1940c-f4e8-4fb5-a249-e6048efa2080
-Resource("https://github.com/jaironicolau/estatistica_2022/blob/main/imagens/income-shares-by-quintile.png?raw=true", :width => 900)
-
-# ╔═╡ 76cafa96-02a2-4d64-a161-375c2e19182d
+# ╔═╡ 378a9860-8288-4ea7-af60-215a99b97aac
 md"""
 
-Veja o gráfico com os valores do Brasil e de outros países:  [Our world in data](https://ourworldindata.org/grapher/income-shares-by-quintile?country=~BRA)
+## Distribuições amostrais
 
 """
 
-# ╔═╡ b1c42974-370b-4302-8a71-3a29285908ad
-md"""
-## _Decil_
-
-Se divirmos uma distribuição em dez segmentos temos os decis. O procedimento é o mesmo: o primeiro decil representa o décimo  mais baixo dos dados (1% a 10%); o decil o seguinte representa o segundo décimo (11 a 20% dos dados).
-
-Imagine uma turma em qos alunos tenham tirado diferentes notas entre 2 e 10. Digamos que a nota do primeiro decil seja 3,5. Isso significa que os alunos que tiraram que estão no primeiro decil tiraram a nota abaixo de 3,5. Se a nota que divide o decil superior é 9, isso significa que os alunos que estão nessa faixa tirararm pelo menos 9.
-
-"""
-
-# ╔═╡ 1c2d2d67-c475-49c3-a03f-c0120c7c33f6
-md"""
-##### Esse vídeo usa os quintis e decis para mostrar a desigualdade de renda nos Estados Unidos. 
-"""
-
-# ╔═╡ c9938cc2-71d8-4449-a283-3d6e50284ea2
-html"""
-<div style="max-width:854px"><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/QPKKQnijnsM" width="854" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen></iframe></div></div>
-"""
-
-# ╔═╡ 6e647771-69b7-4500-bd94-c6c650d43e5f
-md"""
-## _Percentil_
-
-Uma distribuição numérica também pode ser segmentada em 99 percentis, representados por p1, p2, p3... p99, que dividem os dados em cem partes com cerca de 1% dos casos em cada um.
-
-Um jovem com 1,80 metros  está no 90 percentil da altura de uma dada população, significa que 90% jovens estão abaixo desse patamar e 10% dos jovens têm pelo menos 1,80 de altura.
-
-"""
-
-# ╔═╡ 80b7f807-4345-45bb-91a8-2dd649113784
-md"""
-!!! danger "⚠️ Programas estatísticos e percentil"
-    
-    Todos os programas estatísticos (R, Python, Julia, Stata, SPPS) calculam o percentil os quintis de uma distribuição de maneira relativamente simples. 
-
-     O usuário pode definir um quintil que ele gostaria de conhecer, ou trabalhar com os três mais comuns (quartil, quintil e decil).
-
-    O uso mais frequente é aplicar uma outra medida para comparar os quintis, particularmente em estudos sobre a desigualdade. Por exemplo:
-    - Qual é a renda média de cada quintil?
-    - Qual é a mediana de votos gastos de campanha dos deputados em cada decil?
-    - Qual é o percentual de renda somada das pessoas de um quintil sobre a renda agregada de toda a população?
-
-
-
-
-
-"""
-
-# ╔═╡ cf706cc8-d0f7-4495-86a2-db13b8d857cb
-md"""
-### _Um gráfico para observar os quintis_
-
-Um gráfico pouco usado, mas útil para observar a distribuição de observações é o ECDF
- (_Empirical Cumulative Distribution Function_).
-
-No gráfico abaixo, observamos uma distribuição de cinco valores (-2, -1, 0, 1, 2). 
-Fixe o olhar na linha em um ponto do eixo horizontal (x) e trace uma linha até o eixo vertical (y). O ponto em que a a linha imaginaria corta y observamos o percentil.
-
-Para o valor 0, por exemplo, o percential é de cerca de 0,48; ou seja, cerca de 48% de casos encontram-se abaixo de zero
-
-"""
-
-# ╔═╡ b2fefd1f-579b-4c96-ba00-7bfe81ce0860
-md"""
-# _Medida de Dispersão_
-"""
-
-# ╔═╡ ab27062e-3132-446b-ad83-ba94a255e31d
-md"
-As média, mediana e moda nos mostra uma medida que nos indica um sumário geral dos dados. Um outro conjunto de medidas revela o padrão de dispersão de dados. 
-
-Podemos imaginar que existe uma variação maior da idade dos torcedores que comparecem a um jogo no Maracanã, do que dos frquentadores de um show de hip-hop ou de um baile da terceira idade.
-
-Que medida usar para mensurar a variabilidade de uma população?
-
-
-"
-
-# ╔═╡ c7bb2925-8a44-41af-a464-ee19f63f59f1
-md"""
-## Desvio Padrão
-"""
-
-# ╔═╡ af22073b-3405-42f1-b28e-5c00e35cb237
-md"
-O desvio padrão é a medida de dispersão mais comum em estatística. Se tivermos que apresentar uma estatística que resuma a dispersão dos dados, geralmente é o desvio padrão. Como o próprio nome sugere, o desvio padrão informa qual é o desvio “normal” dos dados. Na verdade, ele calcula o desvio médio da média . Quanto maior o desvio padrão, mais dispersos são os dados. Pelo contrário, quanto menor o desvio padrão, mais os dados estão centrados em torno da média.
-"
-
-# ╔═╡ d95466e4-4325-4ab7-a066-1ab97f3424f0
-md"
-A fórmula do desvio padrão é denotado pela letra $\sigma$:
-
-$$\sigma = \sqrt{\frac{1}{n}\sum^n_{i = 1}(x_i - \mu)^2}$$
-
-Como você pode ver na fórmula, o desvio padrão é na verdade o desvio médio dos dados em relação à média μ. Veja que o quadrado da diferença entre as observações e a média 
- é para evitar que diferenças negativas sejam anuladas  pelas diferenças positivas.
-
-Para facilitar, imagine uma população de apenas 3 adultos, com as seguintes alturas (em cm):
-
-160,4 , 175,8 e 181,5
-
-A média é 172,6. O desvio padrão é calculado da seguinte maneira:
-
-$$\sigma = \sqrt{\frac{1}{3} \big[(160.4 - 172.6)^2 \\ + (175.8 - 172.6)^2 \\ + (181.5 - 172.6)^2 \big]}$$
-$$\sigma = 8.91$$
-
-O desvio padrão para as alturas desses três adultos é de 8,91 cm. Isso significa que, em média, a altura dos adultos dessa população se desvia da média em 8,91 cm.
-
-
-"
-
-# ╔═╡ 458e3af8-44b0-4314-b40f-0c1c3af05766
-md"""
-!!! tip " 💡Propriedades do desvio padrão"
-
-    - O valor do desvio padrão é sempre positivo (nunca negativo).
-    - O valor do desvio padrão aumenta dramaticamente com a inclusão de um ou mais valores extremos (outliers).
-     - A unidade do desvio padrão é a mesma unidade dos dados originais.
-
-"""
-
-# ╔═╡ 7494d853-9d3d-4c7b-a7a7-11dae4b45884
+# ╔═╡ 3bacbc5c-3f07-43ae-a237-8bb27a632d92
 md"""
 
-### Z-escore e a padronização
+Imagine que queremos estimar o percentual de votos de um candidato em uma determinada eleição. Para isso, extraimos uma amostra de adultos de digamos 100 eleitores (n=100),  e estimarmos o percentual. 
 
+Por conta de fatores aleatórios, sabemos que se extraimos outra amostra de 100 eleitores o resultado dificilmente será igual. Existe uma variação entre as pesquisas.
+
+O que acontece se "empilharmos" um estimativas extraidas de um grande número de amostras da mesma população? 
 
 """
 
-# ╔═╡ d22c5f01-e9ad-4c64-b713-09d0778fd47d
+# ╔═╡ bd9a30a0-5225-4e0d-b22e-46c571a92f88
 md"""
 
-O Z-escore é uma forma de padronizar os dados, de modo que cada observação "perca" a sua unidade original e seja transformada em desvios-padrão. Para isso, basta subtrair cada valor da média e dividir pelo desvio padrão da distribuição.
+### Uma simulação de uma eleição
 
-$$Z=\frac{x-\mu}{\sigma}$$
+Vamos simular o voto de 2000 eleitores escolhidos aleatoriamente de uma população, usando o R.
 
-
-onde, $$x$$ é a observação, $$\mu$$ a média e $$\sigma$$ é o desvio padrão.
-
-Observe que um z-score negativo indica que o valor está abaixo da média, enquanto um z-score positivo mostra que o valor está acima da média.
+Imagine um cenário que a probabilidade de voto em um candidato a presidente de uma pesquisa eleitoral seja de 40% (p= 0.40).
 
 
-"""
+> set.seed(76418) <-> para fixar um valor aleatório
 
-# ╔═╡ 1274c1af-9110-4633-be45-80eee80925a1
-md"""
-#### Uso do z-score apara padronizar resultados do pentatlo
+> rbinom(1, 2000, 0.40) <-> para gerar uma distribuição aleatória de 2000 casos e proporção de 40%
 
-Dois atletas (A e B) competem em uma corrida de 800 metros, cuja média de todos os comeptidores foi de 137 segundos, com desvio padrão de 5 segundos. O corredor A completou a corrida em 129 segundos, enquanto o corredor B gastou 140 segundos. Qula é o z-escore de cada um?
+> 821 <-> o valor da simulação
 
-- O corredor A:  
+Na simulação, dos 2000 eleitores, 821 votam em Lula
 
-$$Z=\frac{129-137}{5} = -1.6$$
+> 821/2000 = 0,41
 
 
-- O corredor B: 
+Agora, vamos retirar 1 milhão de amostras de 2000 casos de uma população:
 
-$$Z=\frac{140-137}{5} = 0.6$$
+> resultados <- rbinom(1000000, 2000, 0.40)/2000 
 
-Os desempenho dos atletas A e B no salto a distância. A média é de 6 metros e desvio-padrão de 30 cm. Qual é o z-score do atlea A que saltou 6.60cm e do atleta B que saltou 5.84 cm.
+> mean(resultados); sd(resultados)
 
-- O saltador A:  
+- A média de 1 milhão de amostras é: 0,40
 
-$$Z=\frac{6.60-6.00}{30} = 2.0$$
-
-
-- O saltador B: 
-
-$$Z=\frac{5.84- 6.00}{30} = -0.4$$
+- O desvio-padrão de 1 milhão de amostras é: 0,10
 
 
-Desse modo, é possivel padronizar (transformar em desvis-padrão em relação à média) valores de diferentes distribuições. 
+Se  fizermos um histograma dos resultados a figura é a seguinte
 
 
 """
 
-# ╔═╡ 74e0ec83-2ca4-464b-9cdb-d045d27bb90d
-md"""
-!!! info "Exercício"
-    - Um aluno de economina tirou nota 7 em cálculo (média 5 e desvio padrão de 3).
-
-    - Um aluno de ciencias sociais tirou nota 9 em teoria antropológica (média 8 e desvio padrão de 1).
-
-    Quem obteve um melhor desempenho relativo?
-
-"""
-
-# ╔═╡ 5e64eb80-f6eb-4962-9560-8d5688b54e41
+# ╔═╡ 579c7dfc-395c-44ed-92f3-ecc7f29b5d94
 
 
-# ╔═╡ d44b0dba-fe6f-4e84-a224-3834cd0c8163
-md"""
-!!! tip " 💡Benefícios da padronização"
-
-    - Os valores padronizados são convertidos das unidades originais para a unidade estatística de desvio padrão da média.
-
-     - assim, podemos comparar valores que são medidos em diferentes escalas, com diferentes unidades e extraídos de diferentes populações.
-"""
-
-# ╔═╡ f4ea9be6-400f-44ce-b263-78c42a6d72b3
+# ╔═╡ 18c6f193-4202-4a2b-aa32-d34742a146ab
 md"""
 
-### Z-escore e a curva normal
-
-
+Observe que a maioria das amostras estão empilhadas entre 0.38 e 0.42
 """
 
-# ╔═╡ cf536371-7f77-4412-99c8-411a473d32c3
-md"""
-Imagine que nós empilhassemos as observações de uma determinada população (por exemplo, as notas de uma turma, ou a altura das pessoas que compareceram ao último Fla-Flu) já padronizadas. Esse empilhamento das observação produziria um gráfico semelhante a uma curva normal,que tem o formato de um sino. 
-
-A curva normal é a distribuição mais conhecida da estatística e tem uma propriedade: sabemos quantos casos estão abaixo de cada segmento da curva, quando observamos os desvios-padrão.
-
-- 68,2 % dos casos estão a 1 desvio-padrão em relação à média 
-
-- 95,4% dos casos estão a 2 desvios-padrão em relação à média
-
-- 99.7% dos casos estão a 3 desvios-padrão em relação à média
-
-"""
-
-# ╔═╡ 7c4de643-4264-419f-992a-7b09a6484ca3
+# ╔═╡ ef9e342b-2180-4224-b074-364a558f87f6
 
 
-# ╔═╡ 4d1d7607-e556-4e49-99d6-71d9487c5de5
-Resource("https://kanbanize.com/blog/wp-content/uploads/2014/07/Standard_deviation_diagram.png", :width => 900)
-
-# ╔═╡ 86ae5742-14f7-42be-a7ea-54e11eba0ec0
+# ╔═╡ 52e96a25-8d21-423f-b554-c2a199061a44
 md"""
 
-Se a população  de casos, se distribui em um formato de uma curva  normal, e sabemos o z-score de um caso, é possivel saber em que percentil da distribuição ele está.
+1. A média das médias amostrais mxé igual à média da população m. mx = m 
 
-O saltador A do exemplo acima está a 2 desvios-padrão em relação à média. Olhando para o gráfico acima, observamos que a faixa vermelha contempla 2,2 % (2,1 % + 0,1 %) dos casos;  ou seja, o saltador A está entre os top 97,8 % da distibuição. 
+2. O desvio padrão das médias amostrais sx é igual ao desvio padrão da população
+s dividido pela raiz quadrada do tamanho da amostra n.
+s
+sx
+= 2n
 
-Os livros antigos de estatística traziam uma tabela em anexo, onde era possivel fazer a conversão entre o z-score eo percential de um caso.
+
+O desvio padrão da distribuição amostral das médias amostrais é chamado de erro padrão da média
 
 """
 
-# ╔═╡ 21e8c405-c8d3-4ac1-a13f-416fe1effd42
+# ╔═╡ 94abbd38-cd4f-4239-a6e1-80eb9baf3fa9
 md"""
-!!! danger "⚠️ A Regra dos dois desvio de Leo Monastério"
-    
-    Nunca brigue se o adversário estiver a mais de dois desvios padrão de você em qualquer dimensão: conhecimento, ideologia, inteligência ou porte físico
+
+### Erro Padrão
+
+A média amostral *_y_* é uma variável, pois seu valor varia de amostra para amostra. Para amostras aleatórias, ele flutua em torno da média populacional μ, às vezes sendo menor e às vezes maior. De fato, a média da distribuição amostral de y é igual a μ. Se tirássemos amostras repetidamente, então, a longo prazo, a média das médias amostrais seria igual à média populacional μ. O espalhamento da distribuição amostral de y é descrito pelo seu desvio padrão, que é chamado de erro padrão de y.
+
+
+O erro padrão descreve o quanto y varia de amostra para amostra. Suponha
+selecionamos repetidamente amostras de tamanho n da população, encontrando y para cada conjunto de n observações. Então, a longo prazo, o desvio padrão dos valores y seria igual ao erro padrão. O símbolo σ¯y (em vez de σ) e o erro padrão da terminologia (em vez do desvio padrão) distinguem esta medida do desvio padrão σ da distribuição da população. Na prática, não precisamos coletar amostras repetidamente para encontrar o erro padrão de y, porque uma fórmula está disponível. Para uma amostra aleatória de tamanho n, o erro padrão de ¯y depende de n e o desvio padrão da população 
+
+ erro padrão:
+
+$$\sigma_{M} = frac{sigma}{sqrt(N)}$$
 
 
 """
 
-# ╔═╡ b21cdbcc-b421-4653-a38e-1d35526f4319
+# ╔═╡ 5b27e919-a345-4611-8e10-8b2d8fe7bf9f
+md"""
 
+mostrar a natureza do erro
+
+"""
+
+# ╔═╡ 3012b101-4619-45fd-8672-1e4dea6f9055
+md"""
+
+## Teorema do Limite Central
+
+O Teorema do Limite Central (CLT) é um conceito estatístico que afirma que a distribuição média amostral de uma variável aleatória assumirá uma distribuição quase normal ou normal se o tamanho da amostra for grande o suficiente. Em termos simples, o teorema afirma que a distribuição amostral da média se aproxima de uma distribuição normal à medida que o tamanho da amostra aumenta, independentemente da forma da distribuição original da população.
+
+"""
+
+# ╔═╡ 4cca701b-c394-4106-b82b-6cc977163669
+Resource("https://cdn.corporatefinanceinstitute.com/assets/Central-Limit-Theorem-CLT-Diagram-1200x734.png", :width => 900)
+
+# ╔═╡ 47b27910-8a1a-48ea-9f77-478ec68834b9
+
+
+# ╔═╡ b1affed8-6808-49a0-8b97-a4f8f6964b9b
+md"""
+
+À medida que o usuário aumenta o número de amostras para 30, 40, 50, etc., o gráfico das médias amostrais se move para uma distribuição normal. O tamanho da amostra deve ser 30 ou superior para que o teorema do limite central seja válido.
+
+Um dos componentes mais importantes do teorema é que a média da amostra será a média de toda a população. Se você calcular a média de várias amostras da população, somá-las e encontrar sua média, o resultado será a estimativa da média populacional.
+
+O mesmo se aplica ao usar o desvio padrão. Se você calcular o desvio padrão de todas as amostras da população, somá-las e encontrar a média, o resultado será o desvio padrão de toda a população.
+
+"""
+
+# ╔═╡ 4e4dbe6f-c003-43c7-a429-0e350e81def9
+
+
+# ╔═╡ b6f56227-0680-47df-b253-33fcc491efff
+md"""
+
+### História do Teorema do Limite Central
+
+A versão inicial do teorema do limite central foi cunhada por Abraham De Moivre, um matemático nascido na França. Em um artigo publicado em 1733, De Moivre usou a distribuição normal para encontrar o número de caras resultantes de vários lançamentos de uma moeda. O conceito era impopular na época e foi esquecido rapidamente.
+
+No entanto, em 1812, o conceito foi reintroduzido por Pierre-Simon Laplace, outro famoso matemático francês. Laplace reintroduziu o conceito de distribuição normal em seu trabalho intitulado “Théorie Analytique des Probabilités”, onde tentou aproximar a distribuição binomial com a distribuição normal.
+
+O matemático descobriu que a média das variáveis ​​aleatórias independentes, quando aumentadas em número, tende a seguir uma distribuição normal. Naquela época, as descobertas de Laplace sobre o teorema do limite central atraíram a atenção de outros teóricos e acadêmicos.
+
+Mais tarde, em 1901, o teorema do limite central foi expandido por Aleksandr Lyapunov, um matemático russo. Lyapunov deu um passo à frente para definir o conceito em termos gerais e provar como o conceito funcionava matematicamente. As funções características que ele usou para fornecer o teorema foram adotadas na moderna teoria da probabilidade.
+
+"""
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 RDatasets = "ce6b1742-4840-55fa-b093-852dadbb1d8b"
+StatsPlots = "f3b207a7-027a-5e70-b257-86293d7955fd"
 SymPy = "24249f21-da20-56a4-8eb1-6a02cf4ae2e6"
 
 [compat]
 DataFrames = "~1.3.2"
-Plots = "~1.25.7"
-PlutoUI = "~0.7.32"
+Distributions = "~0.25.48"
+LaTeXStrings = "~1.3.0"
+Plots = "~1.25.9"
+PlutoUI = "~0.7.34"
 RDatasets = "~0.7.7"
-SymPy = "~1.1.3"
+StatsPlots = "~0.14.33"
+SymPy = "~1.1.4"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -517,6 +210,12 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.7.1"
 manifest_format = "2.0"
+
+[[deps.AbstractFFTs]]
+deps = ["ChainRulesCore", "LinearAlgebra"]
+git-tree-sha1 = "6f1d9bc1c08f9f4a8fa92e3ea3cb50153a1b40d4"
+uuid = "621f4979-c628-5d54-868e-fcf4e3e8185c"
+version = "1.1.0"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]
@@ -533,8 +232,26 @@ version = "3.3.3"
 [[deps.ArgTools]]
 uuid = "0dad84c5-d112-42e6-8d28-ef12dabb789f"
 
+[[deps.Arpack]]
+deps = ["Arpack_jll", "Libdl", "LinearAlgebra", "Logging"]
+git-tree-sha1 = "91ca22c4b8437da89b030f08d71db55a379ce958"
+uuid = "7d9fca2a-8960-54d3-9f78-7d1dccf2cb97"
+version = "0.5.3"
+
+[[deps.Arpack_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "JLLWrappers", "Libdl", "OpenBLAS_jll", "Pkg"]
+git-tree-sha1 = "5ba6c757e8feccf03a1554dfaf3e26b3cfc7fd5e"
+uuid = "68821587-b530-5797-8361-c406ea357684"
+version = "3.5.1+1"
+
 [[deps.Artifacts]]
 uuid = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
+
+[[deps.AxisAlgorithms]]
+deps = ["LinearAlgebra", "Random", "SparseArrays", "WoodburyMatrices"]
+git-tree-sha1 = "66771c8d21c8ff5e3a93379480a2307ac36863f7"
+uuid = "13072b0f-2c55-5437-9ae7-d433b7a33950"
+version = "1.0.1"
 
 [[deps.Base64]]
 uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
@@ -575,6 +292,12 @@ git-tree-sha1 = "bf98fa45a0a4cee295de98d4c1462be26345b9a1"
 uuid = "9e997f8a-9a97-42d5-a9f1-ce6bfc15e2c0"
 version = "0.1.2"
 
+[[deps.Clustering]]
+deps = ["Distances", "LinearAlgebra", "NearestNeighbors", "Printf", "SparseArrays", "Statistics", "StatsBase"]
+git-tree-sha1 = "75479b7df4167267d75294d14b58244695beb2ac"
+uuid = "aaaa29a8-35af-508c-8bc3-b662a17a0fe5"
+version = "0.14.2"
+
 [[deps.CodecZlib]]
 deps = ["TranscodingStreams", "Zlib_jll"]
 git-tree-sha1 = "ded953804d019afa9a3f98981d99b33e3db7b6da"
@@ -583,9 +306,9 @@ version = "0.7.0"
 
 [[deps.ColorSchemes]]
 deps = ["ColorTypes", "Colors", "FixedPointNumbers", "Random"]
-git-tree-sha1 = "6b6f04f93710c71550ec7e16b650c1b9a612d0b6"
+git-tree-sha1 = "12fc73e5e0af68ad3137b886e3f7c1eacfca2640"
 uuid = "35d6a980-a343-548e-a6ea-1d62b119f2f4"
-version = "3.16.0"
+version = "3.17.1"
 
 [[deps.ColorTypes]]
 deps = ["FixedPointNumbers", "Random"]
@@ -621,9 +344,9 @@ uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
 
 [[deps.Conda]]
 deps = ["Downloads", "JSON", "VersionParsing"]
-git-tree-sha1 = "6cdc8832ba11c7695f494c9d9a1c31e90959ce0f"
+git-tree-sha1 = "6e47d11ea2776bc5627421d59cdcc1296c058071"
 uuid = "8f4d0f93-b110-5947-807f-2305c1781a2d"
-version = "1.6.0"
+version = "1.7.0"
 
 [[deps.Contour]]
 deps = ["StaticArrays"]
@@ -658,6 +381,12 @@ git-tree-sha1 = "bfc1187b79289637fa0ef6d4436ebdfe6905cbd6"
 uuid = "e2d170a0-9d28-54be-80f0-106bbe20a464"
 version = "1.0.0"
 
+[[deps.DataValues]]
+deps = ["DataValueInterfaces", "Dates"]
+git-tree-sha1 = "d88a19299eba280a6d062e135a43f00323ae70bf"
+uuid = "e7dc6d0d-1eca-5fa6-8ad6-5aecde8b7ea5"
+version = "0.4.13"
+
 [[deps.Dates]]
 deps = ["Printf"]
 uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
@@ -666,9 +395,27 @@ uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
 deps = ["Mmap"]
 uuid = "8bb1440f-4735-579b-a4ab-409b98df4dab"
 
+[[deps.DensityInterface]]
+deps = ["InverseFunctions", "Test"]
+git-tree-sha1 = "80c3e8639e3353e5d2912fb3a1916b8455e2494b"
+uuid = "b429d917-457f-4dbc-8f4c-0cc954292b1d"
+version = "0.4.0"
+
+[[deps.Distances]]
+deps = ["LinearAlgebra", "SparseArrays", "Statistics", "StatsAPI"]
+git-tree-sha1 = "3258d0659f812acde79e8a74b11f17ac06d0ca04"
+uuid = "b4f34e82-e78d-54a5-968a-f98e89d6e8f7"
+version = "0.10.7"
+
 [[deps.Distributed]]
 deps = ["Random", "Serialization", "Sockets"]
 uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+
+[[deps.Distributions]]
+deps = ["ChainRulesCore", "DensityInterface", "FillArrays", "LinearAlgebra", "PDMats", "Printf", "QuadGK", "Random", "SparseArrays", "SpecialFunctions", "Statistics", "StatsBase", "StatsFuns", "Test"]
+git-tree-sha1 = "38012bf3553d01255e83928eec9c998e19adfddf"
+uuid = "31c24e10-a181-5473-b8eb-7969acd0382f"
+version = "0.25.48"
 
 [[deps.DocStringExtensions]]
 deps = ["LibGit2"]
@@ -709,17 +456,35 @@ git-tree-sha1 = "d8a578692e3077ac998b50c0217dfd67f21d1e5f"
 uuid = "b22a6f82-2f65-5046-a5b2-351ab43fb4e5"
 version = "4.4.0+0"
 
+[[deps.FFTW]]
+deps = ["AbstractFFTs", "FFTW_jll", "LinearAlgebra", "MKL_jll", "Preferences", "Reexport"]
+git-tree-sha1 = "463cb335fa22c4ebacfd1faba5fde14edb80d96c"
+uuid = "7a1cc6ca-52ef-59f5-83cd-3a7055c09341"
+version = "1.4.5"
+
+[[deps.FFTW_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "c6033cc3892d0ef5bb9cd29b7f2f0331ea5184ea"
+uuid = "f5851436-0d7a-5f13-b9de-f02708fd171a"
+version = "3.3.10+0"
+
 [[deps.FileIO]]
 deps = ["Pkg", "Requires", "UUIDs"]
-git-tree-sha1 = "67551df041955cc6ee2ed098718c8fcd7fc7aebe"
+git-tree-sha1 = "80ced645013a5dbdc52cf70329399c35ce007fae"
 uuid = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
-version = "1.12.0"
+version = "1.13.0"
 
 [[deps.FilePathsBase]]
 deps = ["Compat", "Dates", "Mmap", "Printf", "Test", "UUIDs"]
 git-tree-sha1 = "04d13bfa8ef11720c24e4d840c0033d145537df7"
 uuid = "48062228-2e41-5def-b9a4-89aafe57970f"
 version = "0.9.17"
+
+[[deps.FillArrays]]
+deps = ["LinearAlgebra", "Random", "SparseArrays", "Statistics"]
+git-tree-sha1 = "deed294cde3de20ae0b2e0355a6c4e1c6a5ceffc"
+uuid = "1a297f60-69ca-5386-bcde-b61e274b549b"
+version = "0.12.8"
 
 [[deps.FixedPointNumbers]]
 deps = ["Statistics"]
@@ -843,9 +608,21 @@ git-tree-sha1 = "61feba885fac3a407465726d0c330b3055df897f"
 uuid = "842dd82b-1e85-43dc-bf29-5d0ee9dffc48"
 version = "1.1.2"
 
+[[deps.IntelOpenMP_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "d979e54b71da82f3a65b62553da4fc3d18c9004c"
+uuid = "1d5cc7b8-4909-519e-a0f8-d0f5ad9712d0"
+version = "2018.0.3+2"
+
 [[deps.InteractiveUtils]]
 deps = ["Markdown"]
 uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
+
+[[deps.Interpolations]]
+deps = ["AxisAlgorithms", "ChainRulesCore", "LinearAlgebra", "OffsetArrays", "Random", "Ratios", "Requires", "SharedArrays", "SparseArrays", "StaticArrays", "WoodburyMatrices"]
+git-tree-sha1 = "b15fc0a95c564ca2e0a7ae12c1f095ca848ceb31"
+uuid = "a98d9a8b-a2ab-59e6-89dd-64a1c18fca59"
+version = "0.13.5"
 
 [[deps.InverseFunctions]]
 deps = ["Test"]
@@ -881,15 +658,21 @@ version = "1.4.1"
 
 [[deps.JSON]]
 deps = ["Dates", "Mmap", "Parsers", "Unicode"]
-git-tree-sha1 = "8076680b162ada2a031f707ac7b4953e30667a37"
+git-tree-sha1 = "3c837543ddb02250ef42f4738347454f95079d4e"
 uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
-version = "0.21.2"
+version = "0.21.3"
 
 [[deps.JpegTurbo_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "d735490ac75c5cb9f1b00d8b5509c11984dc6943"
+git-tree-sha1 = "b53380851c6e6664204efb2e62cd24fa5c47e4ba"
 uuid = "aacddb02-875f-59d6-b918-886e6ef4fbf8"
-version = "2.1.0+0"
+version = "2.1.2+0"
+
+[[deps.KernelDensity]]
+deps = ["Distributions", "DocStringExtensions", "FFTW", "Interpolations", "StatsBase"]
+git-tree-sha1 = "591e8dc09ad18386189610acafb970032c519707"
+uuid = "5ab0869b-81aa-558d-bb23-cbf5423bbe9b"
+version = "0.6.3"
 
 [[deps.LAME_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -998,6 +781,12 @@ version = "0.3.6"
 [[deps.Logging]]
 uuid = "56ddb016-857b-54e1-b83d-db4d58db5568"
 
+[[deps.MKL_jll]]
+deps = ["Artifacts", "IntelOpenMP_jll", "JLLWrappers", "LazyArtifacts", "Libdl", "Pkg"]
+git-tree-sha1 = "5455aef09b40e5020e1520f551fa3135040d4ed0"
+uuid = "856f044c-d86e-5d09-b602-aeab76dc8ba7"
+version = "2021.1.1+2"
+
 [[deps.MacroTools]]
 deps = ["Markdown", "Random"]
 git-tree-sha1 = "3d3e902b31198a27340d0bf00d6ac452866021cf"
@@ -1041,13 +830,36 @@ version = "0.7.3"
 [[deps.MozillaCACerts_jll]]
 uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
 
+[[deps.MultivariateStats]]
+deps = ["Arpack", "LinearAlgebra", "SparseArrays", "Statistics", "StatsBase"]
+git-tree-sha1 = "6d019f5a0465522bbfdd68ecfad7f86b535d6935"
+uuid = "6f286f6a-111f-5878-ab1e-185364afe411"
+version = "0.9.0"
+
 [[deps.NaNMath]]
 git-tree-sha1 = "b086b7ea07f8e38cf122f5016af580881ac914fe"
 uuid = "77ba4419-2d1f-58cd-9bb1-8ffee604a2e3"
 version = "0.3.7"
 
+[[deps.NearestNeighbors]]
+deps = ["Distances", "StaticArrays"]
+git-tree-sha1 = "16baacfdc8758bc374882566c9187e785e85c2f0"
+uuid = "b8a86587-4115-5ab1-83bc-aa920d37bbce"
+version = "0.4.9"
+
 [[deps.NetworkOptions]]
 uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
+
+[[deps.Observables]]
+git-tree-sha1 = "fe29afdef3d0c4a8286128d4e45cc50621b1e43d"
+uuid = "510215fc-4207-5dde-b226-833fc4488ee2"
+version = "0.4.0"
+
+[[deps.OffsetArrays]]
+deps = ["Adapt"]
+git-tree-sha1 = "043017e0bdeff61cfbb7afeb558ab29536bbb5ed"
+uuid = "6fe1bfb0-de20-5000-8ca7-80f57d26f881"
+version = "1.10.8"
 
 [[deps.Ogg_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1092,11 +904,17 @@ git-tree-sha1 = "b2a7af664e098055a7529ad1a900ded962bca488"
 uuid = "2f80f16e-611a-54ab-bc61-aa92de5b98fc"
 version = "8.44.0+0"
 
+[[deps.PDMats]]
+deps = ["LinearAlgebra", "SparseArrays", "SuiteSparse"]
+git-tree-sha1 = "ee26b350276c51697c9c2d88a072b339f9f03d73"
+uuid = "90014a1f-27ba-587c-ab20-58faa44d9150"
+version = "0.11.5"
+
 [[deps.Parsers]]
 deps = ["Dates"]
-git-tree-sha1 = "0b5cfbb704034b5b4c1869e36634438a047df065"
+git-tree-sha1 = "13468f237353112a01b2d6b32f3d0f80219944aa"
 uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
-version = "2.2.1"
+version = "2.2.2"
 
 [[deps.Pixman_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1122,15 +940,15 @@ version = "1.1.3"
 
 [[deps.Plots]]
 deps = ["Base64", "Contour", "Dates", "Downloads", "FFMPEG", "FixedPointNumbers", "GR", "GeometryBasics", "JSON", "Latexify", "LinearAlgebra", "Measures", "NaNMath", "PlotThemes", "PlotUtils", "Printf", "REPL", "Random", "RecipesBase", "RecipesPipeline", "Reexport", "Requires", "Scratch", "Showoff", "SparseArrays", "Statistics", "StatsBase", "UUIDs", "UnicodeFun", "Unzip"]
-git-tree-sha1 = "7e4920a7d4323b8ffc3db184580598450bde8a8e"
+git-tree-sha1 = "1d0a11654dbde41dc437d6733b68ce4b28fbe866"
 uuid = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
-version = "1.25.7"
+version = "1.25.9"
 
 [[deps.PlutoUI]]
 deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
-git-tree-sha1 = "ae6145ca68947569058866e443df69587acc1806"
+git-tree-sha1 = "8979e9802b4ac3d58c503a20f2824ad67f9074dd"
 uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
-version = "0.7.32"
+version = "0.7.34"
 
 [[deps.PooledArrays]]
 deps = ["DataAPI", "Future"]
@@ -1166,6 +984,12 @@ git-tree-sha1 = "ad368663a5e20dbb8d6dc2fddeefe4dae0781ae8"
 uuid = "ea2cea3b-5b76-57ae-a6ef-0a8af62496e1"
 version = "5.15.3+0"
 
+[[deps.QuadGK]]
+deps = ["DataStructures", "LinearAlgebra"]
+git-tree-sha1 = "78aadffb3efd2155af139781b8a8df1ef279ea39"
+uuid = "1fd47b50-473d-5c70-9696-f719f8f3bcdc"
+version = "2.4.2"
+
 [[deps.RData]]
 deps = ["CategoricalArrays", "CodecZlib", "DataFrames", "Dates", "FileIO", "Requires", "TimeZones", "Unicode"]
 git-tree-sha1 = "19e47a495dfb7240eb44dc6971d660f7e4244a72"
@@ -1185,6 +1009,12 @@ uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 [[deps.Random]]
 deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+
+[[deps.Ratios]]
+deps = ["Requires"]
+git-tree-sha1 = "01d341f502250e81f6fec0afe662aa861392a3aa"
+uuid = "c84ed2f1-dad5-54f0-aa8e-dbefe2724439"
+version = "0.4.2"
 
 [[deps.RecipesBase]]
 git-tree-sha1 = "6bf3f380ff52ce0832ddd3a2a7b9538ed1bcca7d"
@@ -1214,6 +1044,18 @@ git-tree-sha1 = "838a3a4188e2ded87a4f9f184b4b0d78a1e91cb7"
 uuid = "ae029012-a4dd-5104-9daa-d747884805df"
 version = "1.3.0"
 
+[[deps.Rmath]]
+deps = ["Random", "Rmath_jll"]
+git-tree-sha1 = "bf3188feca147ce108c76ad82c2792c57abe7b1f"
+uuid = "79098fc4-a85e-5d69-aa6a-4863f24498fa"
+version = "0.7.0"
+
+[[deps.Rmath_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "68db32dff12bb6127bac73c209881191bf0efbb7"
+uuid = "f50d1b31-88e8-58de-be2c-1cc44531875f"
+version = "0.3.0+0"
+
 [[deps.SHA]]
 uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
 
@@ -1225,9 +1067,9 @@ version = "1.1.0"
 
 [[deps.SentinelArrays]]
 deps = ["Dates", "Random"]
-git-tree-sha1 = "15dfe6b103c2a993be24404124b8791a09460983"
+git-tree-sha1 = "6a2f7d70512d205ca8c7ee31bfa9f142fe74310c"
 uuid = "91c51154-3ec4-41a3-a24f-3f23e20d615c"
-version = "1.3.11"
+version = "1.3.12"
 
 [[deps.Serialization]]
 uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
@@ -1257,9 +1099,9 @@ uuid = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 
 [[deps.SpecialFunctions]]
 deps = ["ChainRulesCore", "IrrationalConstants", "LogExpFunctions", "OpenLibm_jll", "OpenSpecFun_jll"]
-git-tree-sha1 = "e6bf188613555c78062842777b116905a9f9dd49"
+git-tree-sha1 = "8d0c8e3d0ff211d9ff4a0c2307d876c99d10bdf1"
 uuid = "276daf66-3868-5448-9aa4-cd146d93841b"
-version = "2.1.0"
+version = "2.1.2"
 
 [[deps.StaticArrays]]
 deps = ["LinearAlgebra", "Random", "Statistics"]
@@ -1278,9 +1120,21 @@ version = "1.2.0"
 
 [[deps.StatsBase]]
 deps = ["DataAPI", "DataStructures", "LinearAlgebra", "LogExpFunctions", "Missings", "Printf", "Random", "SortingAlgorithms", "SparseArrays", "Statistics", "StatsAPI"]
-git-tree-sha1 = "51383f2d367eb3b444c961d485c565e4c0cf4ba0"
+git-tree-sha1 = "118e8411d506d583fbbcf4f3a0e3c5a9e83370b8"
 uuid = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
-version = "0.33.14"
+version = "0.33.15"
+
+[[deps.StatsFuns]]
+deps = ["ChainRulesCore", "InverseFunctions", "IrrationalConstants", "LogExpFunctions", "Reexport", "Rmath", "SpecialFunctions"]
+git-tree-sha1 = "f35e1879a71cca95f4826a14cdbf0b9e253ed918"
+uuid = "4c63d2b9-4356-54db-8cca-17b64c39e42c"
+version = "0.9.15"
+
+[[deps.StatsPlots]]
+deps = ["AbstractFFTs", "Clustering", "DataStructures", "DataValues", "Distributions", "Interpolations", "KernelDensity", "LinearAlgebra", "MultivariateStats", "Observables", "Plots", "RecipesBase", "RecipesPipeline", "Reexport", "StatsBase", "TableOperations", "Tables", "Widgets"]
+git-tree-sha1 = "4d9c69d65f1b270ad092de0abe13e859b8c55cad"
+uuid = "f3b207a7-027a-5e70-b257-86293d7955fd"
+version = "0.14.33"
 
 [[deps.StructArrays]]
 deps = ["Adapt", "DataAPI", "StaticArrays", "Tables"]
@@ -1288,15 +1142,25 @@ git-tree-sha1 = "d21f2c564b21a202f4677c0fba5b5ee431058544"
 uuid = "09ab397b-f2b6-538f-b94a-2f83cf4a842a"
 version = "0.6.4"
 
+[[deps.SuiteSparse]]
+deps = ["Libdl", "LinearAlgebra", "Serialization", "SparseArrays"]
+uuid = "4607b0f0-06f3-5cda-b6b1-a6196a1729e9"
+
 [[deps.SymPy]]
 deps = ["CommonEq", "CommonSolve", "Latexify", "LinearAlgebra", "Markdown", "PyCall", "RecipesBase", "SpecialFunctions"]
-git-tree-sha1 = "571bf3b61bcd270c33e22e2e459e9049866a2d1f"
+git-tree-sha1 = "1763d267a68a4e58330925b7ce8b9ea2ec06c882"
 uuid = "24249f21-da20-56a4-8eb1-6a02cf4ae2e6"
-version = "1.1.3"
+version = "1.1.4"
 
 [[deps.TOML]]
 deps = ["Dates"]
 uuid = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
+
+[[deps.TableOperations]]
+deps = ["SentinelArrays", "Tables", "Test"]
+git-tree-sha1 = "e383c87cf2a1dc41fa30c093b2a19877c83e1bc1"
+uuid = "ab02a1b2-a7df-11e8-156e-fb1833f50b87"
+version = "1.2.0"
 
 [[deps.TableTraits]]
 deps = ["IteratorInterfaceExtensions"]
@@ -1375,6 +1239,18 @@ deps = ["DataAPI", "InlineStrings", "Parsers"]
 git-tree-sha1 = "c69f9da3ff2f4f02e811c3323c22e5dfcb584cfa"
 uuid = "ea10d353-3f73-51f8-a26c-33c1cb351aa5"
 version = "1.4.1"
+
+[[deps.Widgets]]
+deps = ["Colors", "Dates", "Observables", "OrderedCollections"]
+git-tree-sha1 = "505c31f585405fc375d99d02588f6ceaba791241"
+uuid = "cc8bc4a8-27d6-5769-a93b-9d913e69aa62"
+version = "0.6.5"
+
+[[deps.WoodburyMatrices]]
+deps = ["LinearAlgebra", "SparseArrays"]
+git-tree-sha1 = "de67fa59e33ad156a590055375a30b23c40299d3"
+uuid = "efce3f68-66dc-5838-9240-27a6d6f5f9b6"
+version = "0.5.5"
 
 [[deps.XML2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Libiconv_jll", "Pkg", "Zlib_jll"]
@@ -1520,9 +1396,9 @@ uuid = "83775a58-1f1d-513f-b197-d71354ab007a"
 
 [[deps.Zstd_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "cc4bf3fdde8b7e3e9fa0351bdeedba1cf3b7f6e6"
+git-tree-sha1 = "e45044cd873ded54b6a5bac0eb5c971392cf1927"
 uuid = "3161d3a3-bdf6-5164-811a-617609db77b4"
-version = "1.5.0+0"
+version = "1.5.2+0"
 
 [[deps.libass_jll]]
 deps = ["Artifacts", "Bzip2_jll", "FreeType2_jll", "FriBidi_jll", "HarfBuzz_jll", "JLLWrappers", "Libdl", "Pkg", "Zlib_jll"]
@@ -1580,51 +1456,24 @@ version = "0.9.1+5"
 """
 
 # ╔═╡ Cell order:
-# ╟─eae781b5-86ff-4a26-b49e-a37a8b510a8b
-# ╟─e32f7fde-b87d-4687-b944-c1c7d6b91ac1
-# ╟─f6dfb126-8367-11ec-290e-8b3a346eae2c
-# ╠═f602cbeb-7fbf-4d29-9cd7-4492a4734a3b
-# ╟─d345ee2b-9d49-4af1-926b-94c99f25a4dd
-# ╟─456f635d-69b2-491f-bbf6-3ec2439ccf8c
-# ╟─f9fb0ff9-cbae-4c6a-9c51-d97274b3c312
-# ╟─7c75e10d-ef51-4bd1-ac02-a1cb70645815
-# ╟─0b69f896-153c-4d52-904a-1ed87ecbdf13
-# ╟─d4d4fd1c-567e-4e21-9d53-09c9a08213be
-# ╟─35c09606-f73f-4fe1-8d10-3848708047e5
-# ╟─847a26d9-26ab-404e-afe2-f53237099727
-# ╟─dc4b2aa7-70b7-4fb8-a78b-2f85e6e8504c
-# ╟─dadcf91b-35d4-4eb2-b160-4c977696c580
-# ╟─121f0345-2ed2-40f6-a373-644809412c46
-# ╟─ae165add-2b1e-4daa-8448-7716ccd342b5
-# ╟─d14f8fc6-6d89-4814-aa46-cc42cb9da59f
-# ╟─47a1477e-12ad-4a46-b03f-11e723db941f
-# ╟─9fe1940c-f4e8-4fb5-a249-e6048efa2080
-# ╟─76cafa96-02a2-4d64-a161-375c2e19182d
-# ╟─b1c42974-370b-4302-8a71-3a29285908ad
-# ╟─1c2d2d67-c475-49c3-a03f-c0120c7c33f6
-# ╟─c9938cc2-71d8-4449-a283-3d6e50284ea2
-# ╟─6e647771-69b7-4500-bd94-c6c650d43e5f
-# ╟─80b7f807-4345-45bb-91a8-2dd649113784
-# ╟─cf706cc8-d0f7-4495-86a2-db13b8d857cb
-# ╟─a22c94a0-70af-41f5-a64f-989a116d19cf
-# ╟─b2fefd1f-579b-4c96-ba00-7bfe81ce0860
-# ╟─ab27062e-3132-446b-ad83-ba94a255e31d
-# ╟─c7bb2925-8a44-41af-a464-ee19f63f59f1
-# ╟─af22073b-3405-42f1-b28e-5c00e35cb237
-# ╠═d95466e4-4325-4ab7-a066-1ab97f3424f0
-# ╟─458e3af8-44b0-4314-b40f-0c1c3af05766
-# ╟─7494d853-9d3d-4c7b-a7a7-11dae4b45884
-# ╟─d22c5f01-e9ad-4c64-b713-09d0778fd47d
-# ╟─1274c1af-9110-4633-be45-80eee80925a1
-# ╟─74e0ec83-2ca4-464b-9cdb-d045d27bb90d
-# ╠═5e64eb80-f6eb-4962-9560-8d5688b54e41
-# ╟─d44b0dba-fe6f-4e84-a224-3834cd0c8163
-# ╟─f4ea9be6-400f-44ce-b263-78c42a6d72b3
-# ╟─cf536371-7f77-4412-99c8-411a473d32c3
-# ╠═7c4de643-4264-419f-992a-7b09a6484ca3
-# ╠═4d1d7607-e556-4e49-99d6-71d9487c5de5
-# ╟─86ae5742-14f7-42be-a7ea-54e11eba0ec0
-# ╟─21e8c405-c8d3-4ac1-a13f-416fe1effd42
-# ╠═b21cdbcc-b421-4653-a38e-1d35526f4319
+# ╟─a6b1f073-9324-4986-b97d-8984b8457480
+# ╟─ec8f1bad-a9b0-477b-9627-b0b9d6dd584f
+# ╟─3d671ce3-0752-4c67-8817-ab23512f4361
+# ╟─0a58253c-8d5c-11ec-0baa-8fdaaea26ced
+# ╟─378a9860-8288-4ea7-af60-215a99b97aac
+# ╟─3bacbc5c-3f07-43ae-a237-8bb27a632d92
+# ╟─bd9a30a0-5225-4e0d-b22e-46c571a92f88
+# ╠═579c7dfc-395c-44ed-92f3-ecc7f29b5d94
+# ╟─18c6f193-4202-4a2b-aa32-d34742a146ab
+# ╠═ef9e342b-2180-4224-b074-364a558f87f6
+# ╠═52e96a25-8d21-423f-b554-c2a199061a44
+# ╟─94abbd38-cd4f-4239-a6e1-80eb9baf3fa9
+# ╠═5b27e919-a345-4611-8e10-8b2d8fe7bf9f
+# ╟─3012b101-4619-45fd-8672-1e4dea6f9055
+# ╟─4cca701b-c394-4106-b82b-6cc977163669
+# ╠═47b27910-8a1a-48ea-9f77-478ec68834b9
+# ╟─b1affed8-6808-49a0-8b97-a4f8f6964b9b
+# ╠═4e4dbe6f-c003-43c7-a429-0e350e81def9
+# ╟─b6f56227-0680-47df-b253-33fcc491efff
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
