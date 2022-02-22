@@ -55,7 +55,7 @@ Na distribuição composta por nove números:
 
 - 78, 91, 94, 98, 99, 101, 103, 105, 114 
 
-A média  é  (..../ 9) = 98
+A média  é  (883/ 9) = 98
 """
 
 # ╔═╡ f9fb0ff9-cbae-4c6a-9c51-d97274b3c312
@@ -75,6 +75,9 @@ No caso de a distribuição ter um número par de dados, as duas observações c
 - 78, 91, 94, 98, **99**, **101**, 103, 105, 114, 121.   
 A mediana é = 100 (99 + 101)/2  
 
+- 78, 91, 94, 98, **99**, **101**, 103, 105, 114, 121, 1200
+
+
 
 """
 
@@ -87,9 +90,9 @@ md"""
 # ╔═╡ 0b69f896-153c-4d52-904a-1ed87ecbdf13
 md"""
 !!! hint "Resposta"
-    média   = 100
+    média   = 200
 
-    mediana = 208
+    mediana = 101
 """
 
 # ╔═╡ d4d4fd1c-567e-4e21-9d53-09c9a08213be
@@ -1583,7 +1586,7 @@ version = "0.9.1+5"
 # ╟─eae781b5-86ff-4a26-b49e-a37a8b510a8b
 # ╟─e32f7fde-b87d-4687-b944-c1c7d6b91ac1
 # ╟─f6dfb126-8367-11ec-290e-8b3a346eae2c
-# ╠═f602cbeb-7fbf-4d29-9cd7-4492a4734a3b
+# ╟─f602cbeb-7fbf-4d29-9cd7-4492a4734a3b
 # ╟─d345ee2b-9d49-4af1-926b-94c99f25a4dd
 # ╟─456f635d-69b2-491f-bbf6-3ec2439ccf8c
 # ╟─f9fb0ff9-cbae-4c6a-9c51-d97274b3c312
@@ -1611,7 +1614,7 @@ version = "0.9.1+5"
 # ╟─ab27062e-3132-446b-ad83-ba94a255e31d
 # ╟─c7bb2925-8a44-41af-a464-ee19f63f59f1
 # ╟─af22073b-3405-42f1-b28e-5c00e35cb237
-# ╠═d95466e4-4325-4ab7-a066-1ab97f3424f0
+# ╟─d95466e4-4325-4ab7-a066-1ab97f3424f0
 # ╟─458e3af8-44b0-4314-b40f-0c1c3af05766
 # ╟─7494d853-9d3d-4c7b-a7a7-11dae4b45884
 # ╟─d22c5f01-e9ad-4c64-b713-09d0778fd47d
@@ -1622,7 +1625,7 @@ version = "0.9.1+5"
 # ╟─f4ea9be6-400f-44ce-b263-78c42a6d72b3
 # ╟─cf536371-7f77-4412-99c8-411a473d32c3
 # ╠═7c4de643-4264-419f-992a-7b09a6484ca3
-# ╠═4d1d7607-e556-4e49-99d6-71d9487c5de5
+# ╟─4d1d7607-e556-4e49-99d6-71d9487c5de5
 # ╟─86ae5742-14f7-42be-a7ea-54e11eba0ec0
 # ╟─21e8c405-c8d3-4ac1-a13f-416fe1effd42
 # ╠═b21cdbcc-b421-4653-a38e-1d35526f4319

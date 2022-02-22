@@ -28,11 +28,11 @@ md"""
 
 - Por que os gráficos sobre a evolução dos casos e mortos por Covid-19 são apresentados em escala logarítimica?
 
-- O que quer  dizer uma margem de erro com intervalo de confiança de 95% nas pesquisas de opinião?
+- O que quer  dizer a "margem de erro com intervalo de confiança de 95%" nas pesquisas de opinião?
 
 - Por que a taxa de homicídios é calculada por 100 mil?
 
-- Como podemos ter segurança para dizer  que as mulheres apoiam majoritariamente Lula nas pesquisas de opinião?
+- Como baseados em pesquisas de opinâno podemos ter segurança para dizer  que as mulheres apoiam majoritariamente Lula na corrida para presidente em 2022?
 
 - A desigualdade está crescendo ou diminuindo no Brasil?
 
@@ -73,27 +73,25 @@ md"## _Minha história com dados_
 
 Há exatos 40 anos  atrás eu comecei o curso de ciências sociais na Universidade Federal Fluminense (UFF), em Nitérói. Quase todas as discplinas do curso  tinham um formato semelhante. O professor indicava um texto para ser lido na aula seguinte; a aula consistia em diversas formas em torno do texto selecionado: exposição do professor, exposição de um aluno (ou grupo de alunos) ou uma discussão livre. Nas primeiras semanas de aula, estranhei esse formato, pois estava acostumado com o modelo do ensino médio, de fazer a leitura dos livros após a aula.
 
-Um dos poucos cursos que fugia a esse modelo era o de Estatística. Na época, uma aula de matemática, com uma avaliação final consistindo em uma série de exercícios feitos em casa e entregues ao professor, um argentino boa praça, do Departamento de Matemática, que acabava aprovando todo mundo.
+Um dos poucos cursos que fugiu desse modelo foi o de Estatística. Na época, uma aula de matemática, com uma avaliação final consistindo em uma série de exercícios feitos em casa e entregues ao professor, um argentino boa praça, do Departamento de Matemática, que acabava aprovando todo mundo.
 
-Imagino que o professor soubesse que aquele curso não fizesse nenhum sentido para os alunos de Ciências Sociais. Afinal, fomos para a grande área de humanas justamente porque erámos péssimos alunos de matemática e no fim do segundo grau tínhamos uma certeza: nunca mais precisaríamos de usar matemática na vida. E de fato, ao longo da graduação, foram poucos os textos em que  havia uma menção a números. Li alguns livros e muitos artigos de antropologia, teoria política, teoria sociológica, filosofia e história política. Professores que faziam trabalhos empíricos usavam entrevistas ou etnografia.
+Imagino que o professor soubesse que aquele curso não fazia nenhum sentido para os alunos de Ciências Sociais. Afinal, fomos para a grande área de humanas justamente porque erámos péssimos alunos de matemática e no fim do segundo grau tínhamos uma certeza: nunca mais precisaríamos de usar matemática na vida. E de fato, ao longo da graduação, foram poucos os textos em que  havia uma menção a números. Li alguns livros e muitos artigos de antropologia, teoria política, teoria sociológica, filosofia e história política. Professores que faziam trabalhos empíricos usavam entrevistas ou etnografia.
 
-O primeiro texto com o qual eu tive contato que usava extensivamente estatística foi  foio livro _Discriminação e Desigualdades Raciais no Brasil_, de Carlos Hasenbalg (1979). O livro fazia  parte da bibliografia da prova de mestrado que tive que ler em 1987. Era um texto cheio de tabelas e de leitura árida e um trabalho praticamente único da nascente sociologia da estratificação social brasileira. Uma das questões da prova consistiu em analisar um das tabelas do livro.
+O primeiro texto com o qual eu tive contato que usava extensivamente estatística foi  o livro _Discriminação e Desigualdades Raciais no Brasil_, de Carlos Hasenbalg (1979). O livro fazia  parte da bibliografia da prova de mestrado que tive que ler em 1987. Era um texto cheio de tabelas e de leitura árida e um trabalho praticamente único da nascente sociologia da estratificação social brasileira. Uma das questões da prova consistiu em analisar um das tabelas do livro.
 
-No mestrado, a disciplina de métodos quantitativos também era odiada pelos alunos, já que quase todos vinham da cultura anti-matemática que sempre dominou as humanidades no Brasil. Nos anos 1980, o IUPERJ era uma das centros de ciências sociais que exigiam que os alunos cursassem uma disciplina de métodos quantitativos e tinha em seus quadro professores que usavam estatatística. As aulas eram completadas por exercicios em um computador que tinha uma versão instalada do SPSS, uma raridade.
+No mestrado, a disciplina de métodos quantitativos também era odiada pelos alunos, já que quase todos vinham da cultura anti-matemática que sempre dominou as humanidades no Brasil. Nos anos 1980, o IUPERJ era uma das centros de ciências sociais que exigiam que os alunos cursassem uma disciplina de métodos quantitativos e tinha em seus quadro professores que usavam estatatística. As aulas eram completadas por exercicios em um computador que tinha uma versão instalada do SPSS, o que era uma raridade.
 
-Nos anos 1990 houve uma ampla massificação do uso do computador pessoal. Comprávamos as peças separadas e alguém nmontava o computador. Não havia computador pronto para usar. Meu primeiro computador foi comprado em 1992. No começo ele funcionava praticamente como uma máquina de escrever a qual acrescentávamos alguns jogos. Na segunda metade dos 1990 o e-mail se espandiu e a internet foi inventada, o que revolucionou a forma que os cientistas sociais passaram a trabalhar. 
+Nos anos 1990 houve uma ampla massificação do uso do computador pessoal. Comprávamos as peças separadas e alguém montava o computador. Não havia computador pronto para usar. Meu primeiro computador foi comprado em 1992. No começo, ele funcionava praticamente como uma máquina de escrever a qual acrescentávamos alguns jogos. Na segunda metade dos 1990 o e-mail se espandiu e a internet foi inventada, o que revolucionou a forma que os cientistas sociais passaram a trabalhar. 
 
 À medida que os computadores foram ficando mais potentes eles tornaram-se aptos a rodar programas estatísticos. No começo dos anos 2000 já era possivel instalar o SPSS no computador. Como a licença era carrísima, todos recorreriam aos ambulantes do Edifício Central, onde versões atualizadas (que quase sempre funcionavam) eram vendidas por uma bagatela.
 
-Na tese de doutorado, escrita na primeira metade dos anos 1990, usei estatística descritiva;  todos os dados foram feitos por uma modesta calculadora pessoal. Nos anos seguintes, já como professor do IUPERJ, continuei a usar amplamente estatística em meu trabalho (basicamente índices e estatística básica). Nesse período, fazia o que a maioria dos professores fazia: contava com a ajuda de alunos e pesquisadores versados no usos do EXCEL e do SPPS para me ajudar. Comecei a ganhar alguma autonomia, quando fiz em meados dos anos 2000 alguns cursos de SPSS. 
+Na tese de doutorado, escrita na primeira metade dos anos 1990, usei estatística descritiva;  todos os dados foram feitos por uma modesta calculadora pessoal. Nos anos seguintes, já como professor do IUPERJ, continuei a usar amplamente estatística em meu trabalho (basicamente índices e estatística básica). Nesse período, fazia o que a maioria dos professores fazia: contava com a ajuda de alunos e pesquisadores versados no usos do EXCEL e do SPPS para me ajudar. Comecei a ganhar alguma autonomia, quando fiz, em meados dos anos 2000, alguns cursos sobre o SPSS. 
 
 No meu pós-doutorado em 2005/2006 investi em aprender um pouco mais de estatística. Li muitos livros, fiz alguns cursos e passei a usar o SPSS razoavelmente bem. Na volta ao Brasil, tive confiança para ensinar a temida disciplina de metodologia quantitativa. Tentei inovar usando slides e integrando um pouco mais as aulas ao laboratório de SPSS. 
 
 Com a descoberta do Tableau (um software amigável que faz gráficos bem bonitos) em 2009 passei a me interessar por visualização de dados. Na década seguinte, minha vida mudou com o uso do Stata (2013) e posteriormente com a descoberta da programação. Aos poucos, comecei a utilizar o R, o Python e até o Julia para analisar os meu dados e fazer os meus gráficos.
 
-Uma das melhores coisas que aconteceram na minha carreira foi ter aprendido a usar a programaação para fazer análises estatísticas e gráficos. Todos os passos da minha atividade ficam registrados, o que é fundamental na comunidade ciêntifica atual. Gosto de dizer que isso aconteceu quando eu me aproximava dos 50 anos. Quase tudo que sei aprendi sozinho. E como todo autodidata sei coisas muito avnçadas e não sei outras bem básicas. Falo isso porque acho que acho que posso incentivar os mais jovens. Sobretudo, os que acham que já decidiram que não querem aprender estatística e acham que programação é coisa de nerd.
-
-
+Uma das melhores coisas que aconteceram na minha carreira foi ter aprendido a usar a programaação para fazer análises estatísticas e gráficos. Todos os passos da minha atividade ficam registrados, o que é fundamental na comunidade científica atual. Gosto de dizer que isso aconteceu quando eu me aproximava dos 50 anos. Quase tudo que sei aprendi sozinho. E como todo autodidata sei coisas muito avançadas e não sei outras bem básicas. Falo isso porque creio que posso incentivar os mais jovens. Sobretudo, os que acham que já decidiram que não querem aprender estatística e consideram que programação é coisa de nerd.
 
 "
 
@@ -108,18 +106,15 @@ md"""
 
 ##### Amostra
 
-É um segmento da população cujos os dados estão disponíveis: Indivíduos que responderam a PNAD; alunos sorteados do Pedro II para um teste de desempenho escolar; respondentes de uma pesquisa de opinião do Instituto Quaest.
+É um segmento da população cujos os dados estão disponíveis: os ndivíduos que responderam à PNAD; os alunos do Pedro II sorteados para realizar um teste de desempenho escolar; os respondentes de uma pesquisa de opinião do Instituto Quaest.
 
 
-O objetivo da maioria das análises de dados é aprender sobre as populações. Mas quase sempre é necessário, e mais prático, observar apenas amostras dessas populações. Por exemplo, organizações de pesquisa, como Datafolha, ouvem cerca de 1.000 a 2.000 brasileiros para coletar informações sobre opiniões e crenças da população.
+O objetivo da maioria das análises de dados é aprender sobre as populações. Mas quase sempre é necessário, e mais prático, observar apenas amostras dessas populações. Por exemplo: as organizações de pesquisa, como Datafolha, ouvem cerca de 1.000 a 2.000 brasileiros para coletar informações sobre as opiniões e as crenças da população.
 
-A **estatística inferencial** fornece avaliações sobre uma população, com base em dados de uma amostra. Por exemplo, uma pesquisa realizada nos EUA em 2018 perguntou: “Você acredita no céu?” A população de interesse foram todos os adultos nos Estados Unidos. Dos 1.141 sujeitos da amostra, 81% responderam que sim. Estaríamos interessados, no entanto, não apenas nessas 1.141 pessoas, mas na população de mais de 250 milhões de adultos nos Estados Unidos.
+A **estatística inferencial** fornece avaliações sobre uma população com base em dados de uma amostra. Por exemplo, uma pesquisa realizada nos EUA em 2018 perguntou: “Você acredita no céu?” A população de interesse era composta por todos os adultos dos Estados Unidos. Dos 1.141 sujeitos da amostra, 81% responderam que sim. Estamos interessados, no entanto, não apenas nessas 1.141 pessoas, mas na população de mais de 250 milhões de adultos nos Estados Unidos.
 
 
 """
-
-# ╔═╡ 221fafed-5ff1-4c4a-9628-63098de442b8
-
 
 # ╔═╡ a4053934-3722-447b-a348-d88ef2c52472
 md"## Casos e Variáveis
@@ -132,15 +127,15 @@ Um caso é um indivíduo/objeto de uma determinada população.
 
 Imagine, por exemplo, a população de municípios brasileiros (5570 municípios). O municipio do Rio de Janeiro é um caso da população.
 
-Um pesquisador que estuda o PSDB estuda um caso de uma população de partidos b=no Brasil. Atualmente, existem 34 partidos regsitrados.
+Um pesquisador que estuda o PSDB, dedica-se a entender um caso de uma população de partidos brasileiros. Atualmente, existem 34 partidos regsitrados no Brasil.
 
 ##### Variável
 
 Uma variável é um atributo ou característica dos indivíduos/objetos.
 
-O termo variável dá ênfase ao fato de que os atributos dos indivíduos. Numa população de mulheres, o sexo não é uma variável.
+O termo variável dá ênfase ao fato de que os atributos dos indivíduos variam. Numa população de mulheres, o sexo não é uma variável.
 
-Em uma pesquisa eleitoral a idade, a escolaridade são variáveis, já que que temos pessoas de idades e escolaridades diferentes na população.
+Em uma pesquisa eleitoral, a idade e a escolaridade são variáveis, já que que temos pessoas de idades e escolaridades diferentes na população.
 
 
 "
@@ -156,29 +151,26 @@ md"""
 ### Tipos de variáveis 
 
 #### Variável quantitativa (numérica)
-porta algum  valor numéricos que são passíveis de operação matemática (soma, divisão, multiplicação): idade, número de filhos, renda per capita, anos de estudo
+Porta algum valor numérico que é passíveil de operação matemática (soma, divisão, multiplicação): idade, número de filhos, renda per capita, anos de estudo
 
 #### Variável categórica
-cada observação pertence a uma categoria em conjunto de categorias:
-- gênero: masculino, feminino
-- religião: católica, evangélica, espírita, budista 
-- tipo de moradia: apartamento, casa
-- crença na vida após a morte: sim, não
+Cada observação pertence a uma categoria, em conjunto de categorias:
+- Gênero: masculino, feminino
+- Religião: católica, evangélica, espírita, budista 
+- Tipo de moradia: apartamento, casa
+- Crença na vida após a morte: sim, não
 
 """
-
-# ╔═╡ abc1e1ad-be8a-492a-bf98-adf18ec994a2
-
 
 # ╔═╡ 67a8efb8-f39a-45ef-820c-eab27b3a271c
 md"""
 !!! info " 💡Quizz 1"
      Identifique se cada uma da variáveis é categórica (factor) ou quantitativa:
      - número de crianças em uma creche
-     - domicílio eleitoral
+     - sessão eleitoral em uma pesquisa sobre geografia do voto
      - estado civil
      - distância (em quilômetros) de deslocamento até a escola
-     - código postal
+     - CPF
 """
 
 
@@ -186,10 +178,16 @@ md"""
 md"""
 !!! hint "Resposta do Quizz 1"
     - número de crianças em uma creche:  **numérica**
-    - domicílio eleitoral:  **categórica**
+    - sessão eleitoral em uma pesquisa sobre geografia do voto:  **categórica**
     - estado civil:  **categórica**
     - distância (em quilômetros) de deslocamento até a escola: **numérica**
-    - código postal: **serve como uma variável de identificação**
+    - CPF: **serve como uma variável de identificação**
+"""
+
+# ╔═╡ fcbb584e-28e2-49de-9791-7ff63a0f639e
+md"""
+!!! tip " 💡Nate Silver:  o mais conhecido analista de dados"
+    Nate Silver é fundador do site 538, especializado em jornalismo de dados e autor do livro *O Sinal e o Ruído* (recomendo a leitura).
 """
 
 # ╔═╡ f4b0b123-efe4-4be5-9162-5fa266bc97ae
@@ -677,13 +675,12 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╟─2ba16c5d-cc73-47fe-b9b3-d4796ccdf549
 # ╟─2a855a38-80a9-11ec-24ad-41330e14806e
 # ╟─0a4f64f5-2ccf-4b38-9b85-79c340452fe0
-# ╠═221fafed-5ff1-4c4a-9628-63098de442b8
 # ╟─a4053934-3722-447b-a348-d88ef2c52472
 # ╟─afe1c9bc-a6da-43f0-a041-8ccc732da956
 # ╟─54813f12-bbe6-4cff-aed0-eeeab29d9f67
-# ╠═abc1e1ad-be8a-492a-bf98-adf18ec994a2
-# ╟─67a8efb8-f39a-45ef-820c-eab27b3a271c
+# ╠═67a8efb8-f39a-45ef-820c-eab27b3a271c
 # ╟─0a6d1014-d05e-4e9b-b343-01cfc6a28d80
+# ╟─fcbb584e-28e2-49de-9791-7ff63a0f639e
 # ╟─f4b0b123-efe4-4be5-9162-5fa266bc97ae
 # ╟─32311376-80ad-4f7f-b422-a0559e75a28d
 # ╟─1db4f060-d5b3-4de7-84be-d679ffd37bbf
