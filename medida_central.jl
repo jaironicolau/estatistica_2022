@@ -186,12 +186,15 @@ Texto original de Stephen Jay Gould e Steven Dunn traduzido para o português em
 md"""
 # _Quantis_
 
-O quantil é definido como segmentos de tamanhos iguais de uma população. Uma das métricas mais comuns em análise estatística, a mediana, é na verdade apenas o resultado da divisão de uma população em dois quantis. Um quintil é um dos cinco valores que dividem um intervalo de dados em cinco partes iguais, cada uma sendo 1/5 (20%) do intervalo. Uma população dividida em três partes iguais é dividida em tercis, enquanto uma dividida em quartos é dividida em quartis. 
+O quantil é definido como segmento de tamanhos iguais de uma população. Uma das métricas mais comuns em análise estatística, a mediana, é na verdade apenas o resultado da divisão de uma população em dois quantis. Um quintil é um dos cinco valores que dividem um intervalo de dados em cinco partes iguais, cada uma sendo 1/5 (20%) do intervalo. Uma população dividida em três partes iguais é dividida em tercis, enquanto uma dividida em quartos é dividida em quartis. 
 
-Os quantis são nmensurados de formas de fdiferentes, mas sempre parte de uma distribuição de dados ordenado do menor para o maior vlaor, ou vice-versa.
+Os quantis são mensurados de formas de diferentes, mas sempre parte de uma distribuição de dados ordenado do menor para o maior vlaor, ou vice-versa.
 
 
 """
+
+# ╔═╡ a6ea2767-bd7b-4521-9da2-20c06237834d
+
 
 # ╔═╡ ae165add-2b1e-4daa-8448-7716ccd342b5
 md"""
@@ -252,9 +255,12 @@ md"""
 
 Se divirmos uma distribuição em dez segmentos temos os decis. O procedimento é o mesmo: o primeiro decil representa o décimo  mais baixo dos dados (1% a 10%); o decil o seguinte representa o segundo décimo (11 a 20% dos dados).
 
-Imagine uma turma em qos alunos tenham tirado diferentes notas entre 2 e 10. Digamos que a nota do primeiro decil seja 3,5. Isso significa que os alunos que tiraram que estão no primeiro decil tiraram a nota abaixo de 3,5. Se a nota que divide o decil superior é 9, isso significa que os alunos que estão nessa faixa tirararm pelo menos 9.
+Imagine uma turma em que os alunos tenham tirado diferentes notas entre 2 e 10. Digamos que a nota do primeiro decil seja 3,5. Isso significa que os alunos que tiraram até 3,5  estão no primeiro decil. Se a nota que divide o decil superior é 9, isso significa que os alunos que estão nessa faixa tirararm pelo menos 9.
 
 """
+
+# ╔═╡ 64009c2e-ceca-41ab-8eff-09f67760df75
+
 
 # ╔═╡ 1c2d2d67-c475-49c3-a03f-c0120c7c33f6
 md"""
@@ -1598,12 +1604,14 @@ version = "0.9.1+5"
 # ╟─dc4b2aa7-70b7-4fb8-a78b-2f85e6e8504c
 # ╟─dadcf91b-35d4-4eb2-b160-4c977696c580
 # ╟─121f0345-2ed2-40f6-a373-644809412c46
+# ╠═a6ea2767-bd7b-4521-9da2-20c06237834d
 # ╟─ae165add-2b1e-4daa-8448-7716ccd342b5
 # ╟─d14f8fc6-6d89-4814-aa46-cc42cb9da59f
 # ╟─47a1477e-12ad-4a46-b03f-11e723db941f
 # ╟─9fe1940c-f4e8-4fb5-a249-e6048efa2080
 # ╟─76cafa96-02a2-4d64-a161-375c2e19182d
 # ╟─b1c42974-370b-4302-8a71-3a29285908ad
+# ╠═64009c2e-ceca-41ab-8eff-09f67760df75
 # ╟─1c2d2d67-c475-49c3-a03f-c0120c7c33f6
 # ╟─c9938cc2-71d8-4449-a283-3d6e50284ea2
 # ╟─6e647771-69b7-4500-bd94-c6c650d43e5f
