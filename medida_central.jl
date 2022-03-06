@@ -32,17 +32,15 @@ md"""
 # _Medidas de Tendência Central_
 """
 
-# ╔═╡ f602cbeb-7fbf-4d29-9cd7-4492a4734a3b
+# ╔═╡ d345ee2b-9d49-4af1-926b-94c99f25a4dd
 md"""
+## _Média_
+
 Quando queremos um único número que resuma uma variável quantitativa de um banco de dados pensamos logo na média. 
 - Qual é a nota média dos alunos de uma turma?
 - Por que homens têm uma renda meedia superior a das mulheres?
 - Qual é a média de gols que um atacante faz por jogo?
-"""
 
-# ╔═╡ d345ee2b-9d49-4af1-926b-94c99f25a4dd
-md"""
-## _Média_
 
 A média é a mais simples medida estatística. Basta somar os valores de uma distribuição numérica e dividir pelo número de casos (observações).
 
@@ -62,7 +60,7 @@ A média  é  (883/ 9) = 98
 md"""
 ## _Mediana_
 
-A mediana é menos conhecida, mas é uma medida de tendência central importante, quando existem valores extremos na distribuição.
+A mediana é menos conhecida, mas é uma medida de tendência central usada, sobretudo, quando existem valores extremos na distribuição.
 
 Quando ordenamos uma distribuição de casos do menor para o maior número (ou vice-versa), a mediana é o número que divide a distribuição ao meio; ou seja, metade dos números estão acima, metade abaixo.
 
@@ -72,19 +70,22 @@ Na distribuição abaixo a mediana é 99
 
 No caso de a distribuição ter um número par de dados, as duas observações centrais são somadas e dividas por dois
 
+Na distribuição abaixo a mediana é  100 =  99 + 101/2
+
 - 78, 91, 94, 98, **99**, **101**, 103, 105, 114, 121.   
-A mediana é = 100 (99 + 101)/2  
-
-- 78, 91, 94, 98, **99**, **101**, 103, 105, 114, 121, 1200
-
-
+  
 
 """
 
 # ╔═╡ 7c75e10d-ef51-4bd1-ac02-a1cb70645815
 md"""
 !!! info "Exercício"
-    Use uma calculadora e calcule: é a média e a mediana se acrescentarmos uma observação de valor 1200 na distribuição acima
+
+     Use uma calculadora e calcule: a média e a mediana se acrescentarmos uma observação de valor 1200 na distribuição abaixo:
+
+     - 78, 91, 94, 98, 99, 101, 103, 105, 114, 121.
+
+     Qual dos dois valores parece mais represntataivo dos valores da distribuição?
 """
 
 # ╔═╡ 0b69f896-153c-4d52-904a-1ed87ecbdf13
@@ -93,6 +94,8 @@ md"""
     média   = 200
 
     mediana = 101
+
+    - 78, 91, 94, 98, 99, **101**, 103, 105, 114, 121, 1200
 """
 
 # ╔═╡ d4d4fd1c-567e-4e21-9d53-09c9a08213be
@@ -186,23 +189,20 @@ Texto original de Stephen Jay Gould e Steven Dunn traduzido para o português em
 md"""
 # _Quantis_
 
-O quantil é definido como segmento de tamanhos iguais de uma população. Uma das métricas mais comuns em análise estatística, a mediana, é na verdade apenas o resultado da divisão de uma população em dois quantis. Um quintil é um dos cinco valores que dividem um intervalo de dados em cinco partes iguais, cada uma sendo 1/5 (20%) do intervalo. Uma população dividida em três partes iguais é dividida em tercis, enquanto uma dividida em quartos é dividida em quartis. 
+O quantil é definido como segmento de tamanho igual de uma determinada população. Uma das métricas mais comuns em análise estatística, a mediana, é na verdade apenas o resultado da divisão de uma população em dois quantis. Um quintil é um dos 4 valores que dividem os dados em 5 partes iguais, cada uma sendo 1/5 (20%). Uma população dividida em tercis tem 3 partes iguais, enquanto uma dividida em quartis tem 4 partes. 
 
-Os quantis são mensurados de formas de diferentes, mas sempre parte de uma distribuição de dados ordenado do menor para o maior vlaor, ou vice-versa.
+Os quantis são mensurados de formas de diferentes, mas sempre parte de uma distribuição de dados ordenado do menor para o maior valor, ou vice-versa.
 
 
 """
-
-# ╔═╡ a6ea2767-bd7b-4521-9da2-20c06237834d
-
 
 # ╔═╡ ae165add-2b1e-4daa-8448-7716ccd342b5
 md"""
 ## _Quartil_
 
-Um quartil divide os dados em três pontos – um quartil inferior, mediano e quartil superior – para formar quatro grupos do conjunto de dados. 
+Um quartil divide os dados em três pontos – um quartil inferior, a mediana e o quartil superior – para formar quatro grupos do conjunto de dados. 
 
-Assim como a mediana divide os dados ao meio, de modo que 50% da medida fique abaixo da mediana e 50% acima dela, o quartil divide os dados em quartos para que 25% das medidas sejam menores que o quartil inferior, 50 % são menores que a mediana e 75% são menores que o quartil superior. 
+Assim como a mediana divide os dados na metade, de modo que 50% da medida fique abaixo da mediana e 50% acima dela, o quartil divide os dados em quartos para que 25% das medidas sejam menores que o quartil inferior, 50 % sejam menores que a mediana e 75% sejam menores do que o quartil superior. 
 
 Na distribuição:   78, 91, 94, 98, 99, 101, 103, 105, 114, 117, 121 
 
@@ -210,7 +210,7 @@ Na distribuição:   78, 91, 94, 98, 99, 101, 103, 105, 114, 117, 121
 
 - O 101 é  a mediana: metade dos números estão abaixo dele, metade acima
 
-- O 114 é o quartil superior , também conhecido como o Q3
+- O 114 é o quartil superior, também conhecido como o Q3
 
 78, 91, **94**, 98, 99, **101**, 103, 105, **114**, 117, 121 
 
@@ -229,11 +229,11 @@ Um quintil é um valor estatístico de um conjunto de dados que representa 20% d
 md"""
 #### _Qual é o percentual de renda que cada quintil recebe no Brasil?_
 
- 1) Ordenar as famílias (ou indivíduos) do menor para o maior.
+ 1) Ordene as famílias (ou indivíduos) do menor para o maior.
 
- 2) Calcular os quatro valores que dividirão a distribuição em 5 faixas
+ 2) Calcule os quatro valores que dividirão a distribuição em 5 faixas
 
- 3) Somar a renda de todos os indivíduos de um determinado quintil e calcular quanto esse resultado representa do precentual total
+ 3) Some a renda de todos os indivíduos de um determinado quintil e calcule quanto esse resultado representa do precentual total
 
  4) Em 2015, por exemplo, os 20% mais pobres ficavam com 3,6% da renda; enquanto os 20% mais ricos ficavam com 56% da renda
  
@@ -259,9 +259,6 @@ Imagine uma turma em que os alunos tenham tirado diferentes notas entre 2 e 10. 
 
 """
 
-# ╔═╡ 64009c2e-ceca-41ab-8eff-09f67760df75
-
-
 # ╔═╡ 1c2d2d67-c475-49c3-a03f-c0120c7c33f6
 md"""
 ##### Esse vídeo usa os quintis e decis para mostrar a desigualdade de renda nos Estados Unidos. 
@@ -286,11 +283,11 @@ Um jovem com 1,80 metros  está no 90 percentil da altura de uma dada populaçã
 md"""
 !!! danger "⚠️ Programas estatísticos e percentil"
     
-    Todos os programas estatísticos (R, Python, Julia, Stata, SPPS) calculam o percentil os quintis de uma distribuição de maneira relativamente simples. 
+    Todos os programas estatísticos (R, Python, Julia, Stata, SPPS) calculam o os quintis de uma distribuição de maneira relativamente simples. 
 
-     O usuário pode definir um quintil que ele gostaria de conhecer, ou trabalhar com os três mais comuns (quartil, quintil e decil).
+     O usuário pode definir um percentil que ele gostaria de conhecer, ou trabalhar com os quintis mais comuns (quartil, quintil e decil).
 
-    O uso mais frequente é aplicar uma outra medida para comparar os quintis, particularmente em estudos sobre a desigualdade. Por exemplo:
+    O uso mais frequente dos quintis está associado a uma outra medida para compará-los, particularmente nos estudos sobre a desigualdade; por exemplo:
     - Qual é a renda média de cada quintil?
     - Qual é a mediana de votos gastos de campanha dos deputados em cada decil?
     - Qual é o percentual de renda somada das pessoas de um quintil sobre a renda agregada de toda a população?
@@ -322,9 +319,9 @@ md"""
 
 # ╔═╡ ab27062e-3132-446b-ad83-ba94a255e31d
 md"
-As média, mediana e moda nos mostra uma medida que nos indica um sumário geral dos dados. Um outro conjunto de medidas revela o padrão de dispersão de dados. 
+A média, a mediana e  a moda  mostra uma medida com um sumário geral dos dados. Um outro conjunto de medidas revela o padrão de dispersão de dados. 
 
-Podemos imaginar que existe uma variação maior da idade dos torcedores que comparecem a um jogo no Maracanã, do que dos frquentadores de um show de hip-hop ou de um baile da terceira idade.
+Podemos imaginar que existe uma variação maior da idade dos torcedores que comparecem a um jogo no Maracanã, do que dos frequentadores de um show de hip-hop, ou de um baile da terceira idade.
 
 Que medida usar para mensurar a variabilidade de uma população?
 
@@ -338,7 +335,7 @@ md"""
 
 # ╔═╡ af22073b-3405-42f1-b28e-5c00e35cb237
 md"
-O desvio padrão é a medida de dispersão mais comum em estatística. Se tivermos que apresentar uma estatística que resuma a dispersão dos dados, geralmente é o desvio padrão. Como o próprio nome sugere, o desvio padrão informa qual é o desvio “normal” dos dados. Na verdade, ele calcula o desvio médio da média . Quanto maior o desvio padrão, mais dispersos são os dados. Pelo contrário, quanto menor o desvio padrão, mais os dados estão centrados em torno da média.
+O desvio padrão é a medida de dispersão mais comum em estatística. Se tivermos que apresentar uma estatística que resuma a dispersão dos dados, geralmente a escolhida será o desvio padrão. Como o próprio nome sugere, o desvio padrão informa qual é o desvio “normal” dos dados. Na verdade, ele calcula o desvio médio dos valores em relação à média . Quanto maior o desvio padrão, mais dispersos são os dados; quanto menor o desvio padrão, mais os dados estão centrados em torno da média.
 "
 
 # ╔═╡ d95466e4-4325-4ab7-a066-1ab97f3424f0
@@ -347,7 +344,7 @@ A fórmula do desvio padrão é denotado pela letra $\sigma$:
 
 $$\sigma = \sqrt{\frac{1}{n}\sum^n_{i = 1}(x_i - \mu)^2}$$
 
-Como você pode ver na fórmula, o desvio padrão é na verdade o desvio médio dos dados em relação à média μ. Veja que o quadrado da diferença entre as observações e a média 
+Como você pode ver na fórmula, o desvio padrão é o desvio médio dos dados em relação à média μ. Observe  que o uso do quadrado da diferença entre as observações e a média 
  é para evitar que diferenças negativas sejam anuladas  pelas diferenças positivas.
 
 Para facilitar, imagine uma população de apenas 3 adultos, com as seguintes alturas (em cm):
@@ -359,7 +356,7 @@ A média é 172,6. O desvio padrão é calculado da seguinte maneira:
 $$\sigma = \sqrt{\frac{1}{3} \big[(160.4 - 172.6)^2 \\ + (175.8 - 172.6)^2 \\ + (181.5 - 172.6)^2 \big]}$$
 $$\sigma = 8.91$$
 
-O desvio padrão para as alturas desses três adultos é de 8,91 cm. Isso significa que, em média, a altura dos adultos dessa população se desvia da média em 8,91 cm.
+O desvio padrão das alturas desses três adultos é de 8,91 cm. Isso significa que, em média, a altura dos adultos se desvia da média em 8,91 cm.
 
 
 "
@@ -424,7 +421,7 @@ $$Z=\frac{6.60-6.00}{30} = 2.0$$
 $$Z=\frac{5.84- 6.00}{30} = -0.4$$
 
 
-Desse modo, é possivel padronizar (transformar em desvis-padrão em relação à média) valores de diferentes distribuições. 
+Desse modo, é possivel padronizar (transformar em desvios-padrão em relação à média) valores de diferentes distribuições. 
 
 
 """
@@ -432,9 +429,9 @@ Desse modo, é possivel padronizar (transformar em desvis-padrão em relação �
 # ╔═╡ 74e0ec83-2ca4-464b-9cdb-d045d27bb90d
 md"""
 !!! info "Exercício"
-    - Um aluno de economina tirou nota 7 em cálculo (média 5 e desvio padrão de 3).
+    - Um aluno de economia tirou nota 7 em cálculo (média 5 e desvio padrão de 3).
 
-    - Um aluno de ciencias sociais tirou nota 9 em teoria antropológica (média 8 e desvio padrão de 1).
+    - Um aluno de ciências sociais tirou nota 9 em teoria antropológica (média 8 e desvio padrão de 1).
 
     Quem obteve um melhor desempenho relativo?
 
@@ -475,7 +472,11 @@ A curva normal é a distribuição mais conhecida da estatística e tem uma prop
 """
 
 # ╔═╡ 7c4de643-4264-419f-992a-7b09a6484ca3
+md"""
 
+#### Curva normal e a regra dos desvios
+
+"""
 
 # ╔═╡ 4d1d7607-e556-4e49-99d6-71d9487c5de5
 Resource("https://kanbanize.com/blog/wp-content/uploads/2014/07/Standard_deviation_diagram.png", :width => 900)
@@ -483,9 +484,9 @@ Resource("https://kanbanize.com/blog/wp-content/uploads/2014/07/Standard_deviati
 # ╔═╡ 86ae5742-14f7-42be-a7ea-54e11eba0ec0
 md"""
 
-Se a população  de casos, se distribui em um formato de uma curva  normal, e sabemos o z-score de um caso, é possivel saber em que percentil da distribuição ele está.
+Se a população  de casos, se distribui em um formato de uma curva  normal, e sabemos o z-score de uma observação, é possivel conhecer em que percentil da distribuição ele está.
 
-O saltador A do exemplo acima está a 2 desvios-padrão em relação à média. Olhando para o gráfico acima, observamos que a faixa vermelha contempla 2,2 % (2,1 % + 0,1 %) dos casos;  ou seja, o saltador A está entre os top 97,8 % da distibuição. 
+O saltador A do exemplo do exemplo anterior está a 2 desvios-padrão em relação à média. No gráfico acima podemos observar que a faixa vermelha contempla 2,2 % (2,1% + 0,1 %) dos casos;  ou seja, o saltador A está entre os top 97,8 % da distibuição. 
 
 Os livros antigos de estatística traziam uma tabela em anexo, onde era possivel fazer a conversão entre o z-score eo percential de um caso.
 
@@ -499,9 +500,6 @@ md"""
 
 
 """
-
-# ╔═╡ b21cdbcc-b421-4653-a38e-1d35526f4319
-
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -906,6 +904,12 @@ git-tree-sha1 = "f6250b16881adf048549549fba48b1161acdac8c"
 uuid = "c1c5ebd0-6772-5130-a774-d5fcae4a789d"
 version = "3.100.1+0"
 
+[[deps.LERC_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "bf36f528eec6634efc60d7ec062008f171071434"
+uuid = "88015f11-f218-50d7-93a8-a6af411a945d"
+version = "3.0.0+1"
+
 [[deps.LZO_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "e5b909bcf985c5e2605737d2ce278ed791b89be6"
@@ -983,10 +987,10 @@ uuid = "4b2f31a3-9ecc-558c-b454-b3730dcb73e9"
 version = "2.35.0+0"
 
 [[deps.Libtiff_jll]]
-deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
-git-tree-sha1 = "340e257aada13f95f98ee352d316c3bed37c8ab9"
+deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "LERC_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
+git-tree-sha1 = "c9551dd26e31ab17b86cbd00c2ede019c08758eb"
 uuid = "89763e89-9b03-5906-acba-b20f662cd828"
-version = "4.3.0+0"
+version = "4.3.0+1"
 
 [[deps.Libuuid_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1592,7 +1596,6 @@ version = "0.9.1+5"
 # ╟─eae781b5-86ff-4a26-b49e-a37a8b510a8b
 # ╟─e32f7fde-b87d-4687-b944-c1c7d6b91ac1
 # ╟─f6dfb126-8367-11ec-290e-8b3a346eae2c
-# ╟─f602cbeb-7fbf-4d29-9cd7-4492a4734a3b
 # ╟─d345ee2b-9d49-4af1-926b-94c99f25a4dd
 # ╟─456f635d-69b2-491f-bbf6-3ec2439ccf8c
 # ╟─f9fb0ff9-cbae-4c6a-9c51-d97274b3c312
@@ -1604,14 +1607,12 @@ version = "0.9.1+5"
 # ╟─dc4b2aa7-70b7-4fb8-a78b-2f85e6e8504c
 # ╟─dadcf91b-35d4-4eb2-b160-4c977696c580
 # ╟─121f0345-2ed2-40f6-a373-644809412c46
-# ╠═a6ea2767-bd7b-4521-9da2-20c06237834d
 # ╟─ae165add-2b1e-4daa-8448-7716ccd342b5
 # ╟─d14f8fc6-6d89-4814-aa46-cc42cb9da59f
 # ╟─47a1477e-12ad-4a46-b03f-11e723db941f
 # ╟─9fe1940c-f4e8-4fb5-a249-e6048efa2080
 # ╟─76cafa96-02a2-4d64-a161-375c2e19182d
 # ╟─b1c42974-370b-4302-8a71-3a29285908ad
-# ╠═64009c2e-ceca-41ab-8eff-09f67760df75
 # ╟─1c2d2d67-c475-49c3-a03f-c0120c7c33f6
 # ╟─c9938cc2-71d8-4449-a283-3d6e50284ea2
 # ╟─6e647771-69b7-4500-bd94-c6c650d43e5f
@@ -1632,10 +1633,9 @@ version = "0.9.1+5"
 # ╟─d44b0dba-fe6f-4e84-a224-3834cd0c8163
 # ╟─f4ea9be6-400f-44ce-b263-78c42a6d72b3
 # ╟─cf536371-7f77-4412-99c8-411a473d32c3
-# ╠═7c4de643-4264-419f-992a-7b09a6484ca3
+# ╟─7c4de643-4264-419f-992a-7b09a6484ca3
 # ╟─4d1d7607-e556-4e49-99d6-71d9487c5de5
 # ╟─86ae5742-14f7-42be-a7ea-54e11eba0ec0
 # ╟─21e8c405-c8d3-4ac1-a13f-416fe1effd42
-# ╠═b21cdbcc-b421-4653-a38e-1d35526f4319
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

@@ -6,21 +6,18 @@ using InteractiveUtils
 
 # ╔═╡ c44e9567-3e8d-417c-b120-5e8fefa6c03b
 begin
-using RDatasets
+using SymPy
+using DataFrames
 using PlutoUI
+using RDatasets
 end
 
 # ╔═╡ da0d0218-a5c4-4e86-b398-d3c586127b51
 PlutoUI.TableOfContents(title= "Conteúdo", indent= true)
 
-# ╔═╡ 46c966b4-60d0-4528-92d4-d7602916be96
-md"""
-# _Ciências Sociais e estatística_
-"""
-
 # ╔═╡ c5d6f5a0-b6ef-43ca-81b0-8c4f93ab68e0
 md"""
-## _Por que estudar métodos quantitativos?_
+# _Por que estudar métodos quantitativos?_
 
 ### Aperfeiçoamento da forma de pensar sobre o mundo
 
@@ -32,7 +29,7 @@ md"""
 
 - Por que a taxa de homicídios é calculada por 100 mil?
 
-- Como baseados em pesquisas de opinâno podemos ter segurança para dizer  que as mulheres apoiam majoritariamente Lula na corrida para presidente em 2022?
+- Como podemos ter segurança para dizer que as mulheres apoiam majoritariamente Lula na corrida eleitoral de 2022?
 
 - A desigualdade está crescendo ou diminuindo no Brasil?
 
@@ -51,7 +48,7 @@ md"""
 
 ### Ampliação das oportunidades profissionais
 
-- Estágio e oportunidades profissionais para versados em programação e estatística
+- Estágio e oportunidades profissionais para alunos que têm familiaridade com programação e estatística
 
 - Predileção das revistas por artigos baseados em pesquisa quantitativa
 
@@ -69,7 +66,7 @@ html"""
 """
 
 # ╔═╡ 2a855a38-80a9-11ec-24ad-41330e14806e
-md"## _Minha história com dados_
+md"## _Jairo Nicolau: minha história com os dados_
 
 Há exatos 40 anos  atrás eu comecei o curso de ciências sociais na Universidade Federal Fluminense (UFF), em Nitérói. Quase todas as discplinas do curso  tinham um formato semelhante. O professor indicava um texto para ser lido na aula seguinte; a aula consistia em diversas formas em torno do texto selecionado: exposição do professor, exposição de um aluno (ou grupo de alunos) ou uma discussão livre. Nas primeiras semanas de aula, estranhei esse formato, pois estava acostumado com o modelo do ensino médio, de fazer a leitura dos livros após a aula.
 
@@ -98,30 +95,29 @@ Uma das melhores coisas que aconteceram na minha carreira foi ter aprendido a us
 # ╔═╡ 0a4f64f5-2ccf-4b38-9b85-79c340452fe0
 md"""
 
-## População e amostra
+# População e amostra
 
-##### População
+#### População
 
 É o conjunto de todas as observações de interesse: os moradores do Complexo da Maré, os estudantes do Pedro II, os jogadores que participam da Série A do brasileiro
 
-##### Amostra
+#### Amostra
 
 É um segmento da população cujos os dados estão disponíveis: os ndivíduos que responderam à PNAD; os alunos do Pedro II sorteados para realizar um teste de desempenho escolar; os respondentes de uma pesquisa de opinião do Instituto Quaest.
 
+O objetivo da maioria das análises de dados é aprender sobre a população. Mas quase sempre é necessário, e mais prático, observar apenas amostras dessa população. Por exemplo: o Datafolha ouv cerca de 1.000  brasileiros para coletar informações a respeito das opiniões e crenças da população.
 
-O objetivo da maioria das análises de dados é aprender sobre as populações. Mas quase sempre é necessário, e mais prático, observar apenas amostras dessas populações. Por exemplo: as organizações de pesquisa, como Datafolha, ouvem cerca de 1.000 a 2.000 brasileiros para coletar informações sobre as opiniões e as crenças da população.
-
-A **estatística inferencial** fornece avaliações sobre uma população com base em dados de uma amostra. Por exemplo, uma pesquisa realizada nos EUA em 2018 perguntou: “Você acredita no céu?” A população de interesse era composta por todos os adultos dos Estados Unidos. Dos 1.141 sujeitos da amostra, 81% responderam que sim. Estamos interessados, no entanto, não apenas nessas 1.141 pessoas, mas na população de mais de 250 milhões de adultos nos Estados Unidos.
+A **estatística inferencial** fornece avaliações sobre uma população com base em dados de uma amostra. Por exemplo, uma pesquisa realizada nos EUA em 2018 perguntou: “Você acredita no céu?” A população de interesse era composta por todos os adultos dos Estados Unidos. Dos 1.141 indivíduos da amostra, 81% responderam que sim. Estamos interessados, no entanto, não apenas nessas 1.141 pessoas, mas na população de mais de 250 milhões de adultos que residem nos Estados Unidos.
 
 
 """
 
 # ╔═╡ a4053934-3722-447b-a348-d88ef2c52472
-md"## Casos e Variáveis
+md"# _Casos e Variáveis_
 
 Nas pesquisas quantitativas é fundamental enteder o que é um caso, o que é uma variável.
 
-##### Caso
+#### Caso
 
 Um caso é um indivíduo/objeto de uma determinada população.
 
@@ -129,13 +125,13 @@ Imagine, por exemplo, a população de municípios brasileiros (5570 municípios
 
 Um pesquisador que estuda o PSDB, dedica-se a entender um caso de uma população de partidos brasileiros. Atualmente, existem 34 partidos regsitrados no Brasil.
 
-##### Variável
+#### Variável
 
 Uma variável é um atributo ou característica dos indivíduos/objetos.
 
 O termo variável dá ênfase ao fato de que os atributos dos indivíduos variam. Numa população de mulheres, o sexo não é uma variável.
 
-Em uma pesquisa eleitoral, a idade e a escolaridade são variáveis, já que que temos pessoas de idades e escolaridades diferentes na população.
+Em uma pesquisa eleitoral, a idade e a escolaridade são variáveis, já que que observamos pessoas de diferentes idades e escolaridades na população.
 
 
 "
@@ -151,12 +147,12 @@ md"""
 ### Tipos de variáveis 
 
 #### Variável quantitativa (numérica)
-Porta algum valor numérico que é passíveil de operação matemática (soma, divisão, multiplicação): idade, número de filhos, renda per capita, anos de estudo
+Porta algum valor numérico que é passível de operação matemática (soma, divisão, multiplicação): idade, número de filhos, renda per capita, anos de estudo
 
 #### Variável categórica
-Cada observação pertence a uma categoria, em conjunto de categorias:
+Cada observação pertence a uma categoria, em um conjunto de categorias:
 - Gênero: masculino, feminino
-- Religião: católica, evangélica, espírita, budista 
+- Religião: católica, evangélica, espírita, budista, outras 
 - Tipo de moradia: apartamento, casa
 - Crença na vida após a morte: sim, não
 
@@ -197,7 +193,7 @@ html"""
 
 # ╔═╡ 32311376-80ad-4f7f-b422-a0559e75a28d
 md"""
-## Dados Tabulares
+# _Dados Tabulares_
 
 Quase todos  os dados que os pesquisadore lidam estão no formato tabular
 
@@ -224,21 +220,21 @@ md"""
 
 Um banco de dados com 1807 observações e 8 variáveis:
 
-- **y** interviewer rating, categórica com os levels Very Low Fairly Low Average Fairly High Very High
+- **y** classificação do entrevistador com os levels: Very Low, Fairly Low, Average, Fairly High, Very High
 
-- **collegeDegree** categóricas com levels No Yes
+- **collegeDegree** categóricas com levels: No, Yes
 
-- **female** categórica com os levels No Yes
+- **female** categórica com os levels: No, Yes
 
 - **agea** numérica com a idade dos respondente em anos
 
-- **homeOwn** categórica com levels No Yes
+- **homeOwn** categórica com levels: No, Yes
 
-- **govt** acategórica com levels No Yes
+- **govt** categórica com levels: No, Yes
 
-- **length numérica**, a duração da entrevista em minutos
+- **length** numérica, mostra a duração da entrevista em minutos
 
-- **id** um único identificador para cada respondente
+- **id** um número que identifica cada respondente
 
 """
 
@@ -248,12 +244,16 @@ Informação_Política = dataset("pscl", "politicalInformation")
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 RDatasets = "ce6b1742-4840-55fa-b093-852dadbb1d8b"
+SymPy = "24249f21-da20-56a4-8eb1-6a02cf4ae2e6"
 
 [compat]
+DataFrames = "~1.3.2"
 PlutoUI = "~0.7.32"
 RDatasets = "~0.7.7"
+SymPy = "~1.1.4"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -290,6 +290,18 @@ git-tree-sha1 = "c308f209870fdbd84cb20332b6dfaf14bf3387f8"
 uuid = "324d7699-5711-5eae-9e2f-1d82baa6b597"
 version = "0.10.2"
 
+[[deps.ChainRulesCore]]
+deps = ["Compat", "LinearAlgebra", "SparseArrays"]
+git-tree-sha1 = "c9a6160317d1abe9c44b3beb367fd448117679ca"
+uuid = "d360d2e6-b24c-11e9-a2a3-2a2ae2dbcce4"
+version = "1.13.0"
+
+[[deps.ChangesOfVariables]]
+deps = ["ChainRulesCore", "LinearAlgebra", "Test"]
+git-tree-sha1 = "bf98fa45a0a4cee295de98d4c1462be26345b9a1"
+uuid = "9e997f8a-9a97-42d5-a9f1-ce6bfc15e2c0"
+version = "0.1.2"
+
 [[deps.CodecZlib]]
 deps = ["TranscodingStreams", "Zlib_jll"]
 git-tree-sha1 = "ded953804d019afa9a3f98981d99b33e3db7b6da"
@@ -302,6 +314,16 @@ git-tree-sha1 = "024fe24d83e4a5bf5fc80501a314ce0d1aa35597"
 uuid = "3da002f7-5984-5a60-b8a6-cbb66c0b333f"
 version = "0.11.0"
 
+[[deps.CommonEq]]
+git-tree-sha1 = "d1beba82ceee6dc0fce8cb6b80bf600bbde66381"
+uuid = "3709ef60-1bee-4518-9f2f-acd86f176c50"
+version = "0.2.0"
+
+[[deps.CommonSolve]]
+git-tree-sha1 = "68a0743f578349ada8bc911a5cbd5a2ef6ed6d1f"
+uuid = "38540f10-b2f7-11e9-35d8-d573e4eb0ff2"
+version = "0.2.0"
+
 [[deps.Compat]]
 deps = ["Base64", "Dates", "DelimitedFiles", "Distributed", "InteractiveUtils", "LibGit2", "Libdl", "LinearAlgebra", "Markdown", "Mmap", "Pkg", "Printf", "REPL", "Random", "SHA", "Serialization", "SharedArrays", "Sockets", "SparseArrays", "Statistics", "Test", "UUIDs", "Unicode"]
 git-tree-sha1 = "44c37b4636bc54afac5c574d2d02b625349d6582"
@@ -311,6 +333,12 @@ version = "3.41.0"
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
+
+[[deps.Conda]]
+deps = ["Downloads", "JSON", "VersionParsing"]
+git-tree-sha1 = "6e47d11ea2776bc5627421d59cdcc1296c058071"
+uuid = "8f4d0f93-b110-5947-807f-2305c1781a2d"
+version = "1.7.0"
 
 [[deps.Crayons]]
 git-tree-sha1 = "249fe38abf76d48563e2f4556bebd215aa317e15"
@@ -350,6 +378,12 @@ uuid = "8bb1440f-4735-579b-a4ab-409b98df4dab"
 [[deps.Distributed]]
 deps = ["Random", "Serialization", "Sockets"]
 uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+
+[[deps.DocStringExtensions]]
+deps = ["LibGit2"]
+git-tree-sha1 = "b19534d1895d702889b219c382a6e18010797f0b"
+uuid = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
+version = "0.8.6"
 
 [[deps.Downloads]]
 deps = ["ArgTools", "LibCURL", "NetworkOptions"]
@@ -415,21 +449,49 @@ version = "1.1.2"
 deps = ["Markdown"]
 uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
 
+[[deps.InverseFunctions]]
+deps = ["Test"]
+git-tree-sha1 = "a7254c0acd8e62f1ac75ad24d5db43f5f19f3c65"
+uuid = "3587e190-3f89-42d0-90ee-14403ec27112"
+version = "0.1.2"
+
 [[deps.InvertedIndices]]
 git-tree-sha1 = "bee5f1ef5bf65df56bdd2e40447590b272a5471f"
 uuid = "41ab1584-1d38-5bbf-9106-f11c6c58b48f"
 version = "1.1.0"
+
+[[deps.IrrationalConstants]]
+git-tree-sha1 = "7fd44fd4ff43fc60815f8e764c0f352b83c49151"
+uuid = "92d709cd-6900-40b7-9082-c6be49f344b6"
+version = "0.1.1"
 
 [[deps.IteratorInterfaceExtensions]]
 git-tree-sha1 = "a3f24677c21f5bbe9d2a714f95dcd58337fb2856"
 uuid = "82899510-4779-5014-852e-03e436cf321d"
 version = "1.0.0"
 
+[[deps.JLLWrappers]]
+deps = ["Preferences"]
+git-tree-sha1 = "abc9885a7ca2052a736a600f7fa66209f96506e1"
+uuid = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
+version = "1.4.1"
+
 [[deps.JSON]]
 deps = ["Dates", "Mmap", "Parsers", "Unicode"]
 git-tree-sha1 = "8076680b162ada2a031f707ac7b4953e30667a37"
 uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 version = "0.21.2"
+
+[[deps.LaTeXStrings]]
+git-tree-sha1 = "f2355693d6778a178ade15952b7ac47a4ff97996"
+uuid = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
+version = "1.3.0"
+
+[[deps.Latexify]]
+deps = ["Formatting", "InteractiveUtils", "LaTeXStrings", "MacroTools", "Markdown", "Printf", "Requires"]
+git-tree-sha1 = "a6552bfeab40de157a297d84e03ade4b8177677f"
+uuid = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
+version = "0.15.12"
 
 [[deps.LazyArtifacts]]
 deps = ["Artifacts", "Pkg"]
@@ -458,8 +520,20 @@ uuid = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
 deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
+[[deps.LogExpFunctions]]
+deps = ["ChainRulesCore", "ChangesOfVariables", "DocStringExtensions", "InverseFunctions", "IrrationalConstants", "LinearAlgebra"]
+git-tree-sha1 = "e5718a00af0ab9756305a0392832c8952c7426c1"
+uuid = "2ab3a3ac-af41-5b50-aa03-7779005ae688"
+version = "0.3.6"
+
 [[deps.Logging]]
 uuid = "56ddb016-857b-54e1-b83d-db4d58db5568"
+
+[[deps.MacroTools]]
+deps = ["Markdown", "Random"]
+git-tree-sha1 = "3d3e902b31198a27340d0bf00d6ac452866021cf"
+uuid = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
+version = "0.5.9"
 
 [[deps.Markdown]]
 deps = ["Base64"]
@@ -494,6 +568,16 @@ uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
 uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
+[[deps.OpenLibm_jll]]
+deps = ["Artifacts", "Libdl"]
+uuid = "05823500-19ac-5b8b-9628-191a04bc5112"
+
+[[deps.OpenSpecFun_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "13652491f6856acfd2db29360e1bbcd4565d04f1"
+uuid = "efe28fd5-8261-553b-a9e1-b2916fc3738e"
+version = "0.5.5+0"
+
 [[deps.OrderedCollections]]
 git-tree-sha1 = "85f8e6578bf1f9ee0d11e7bb1b1456435479d47c"
 uuid = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
@@ -521,6 +605,12 @@ git-tree-sha1 = "db3a23166af8aebf4db5ef87ac5b00d36eb771e2"
 uuid = "2dfb63ee-cc39-5dd5-95bd-886bf059d720"
 version = "1.4.0"
 
+[[deps.Preferences]]
+deps = ["TOML"]
+git-tree-sha1 = "de893592a221142f3db370f48290e3a2ef39998f"
+uuid = "21216c6a-2e73-6563-6e65-726566657250"
+version = "1.2.4"
+
 [[deps.PrettyTables]]
 deps = ["Crayons", "Formatting", "Markdown", "Reexport", "Tables"]
 git-tree-sha1 = "dfb54c4e414caa595a1f2ed759b160f5a3ddcba5"
@@ -530,6 +620,12 @@ version = "1.3.1"
 [[deps.Printf]]
 deps = ["Unicode"]
 uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+
+[[deps.PyCall]]
+deps = ["Conda", "Dates", "Libdl", "LinearAlgebra", "MacroTools", "Serialization", "VersionParsing"]
+git-tree-sha1 = "1fc929f47d7c151c839c5fc1375929766fb8edcc"
+uuid = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+version = "1.93.1"
 
 [[deps.RData]]
 deps = ["CategoricalArrays", "CodecZlib", "DataFrames", "Dates", "FileIO", "Requires", "TimeZones", "Unicode"]
@@ -596,9 +692,21 @@ version = "1.0.1"
 deps = ["LinearAlgebra", "Random"]
 uuid = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 
+[[deps.SpecialFunctions]]
+deps = ["ChainRulesCore", "IrrationalConstants", "LogExpFunctions", "OpenLibm_jll", "OpenSpecFun_jll"]
+git-tree-sha1 = "5ba658aeecaaf96923dce0da9e703bd1fe7666f9"
+uuid = "276daf66-3868-5448-9aa4-cd146d93841b"
+version = "2.1.4"
+
 [[deps.Statistics]]
 deps = ["LinearAlgebra", "SparseArrays"]
 uuid = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+
+[[deps.SymPy]]
+deps = ["CommonEq", "CommonSolve", "Latexify", "LinearAlgebra", "Markdown", "PyCall", "RecipesBase", "SpecialFunctions"]
+git-tree-sha1 = "1763d267a68a4e58330925b7ce8b9ea2ec06c882"
+uuid = "24249f21-da20-56a4-8eb1-6a02cf4ae2e6"
+version = "1.1.4"
 
 [[deps.TOML]]
 deps = ["Dates"]
@@ -643,6 +751,11 @@ uuid = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
 [[deps.Unicode]]
 uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
 
+[[deps.VersionParsing]]
+git-tree-sha1 = "58d6e80b4ee071f5efd07fda82cb9fbe17200868"
+uuid = "81def892-9a0e-5fdd-b105-ffc91e053289"
+version = "1.3.0"
+
 [[deps.WeakRefStrings]]
 deps = ["DataAPI", "InlineStrings", "Parsers"]
 git-tree-sha1 = "c69f9da3ff2f4f02e811c3323c22e5dfcb584cfa"
@@ -669,13 +782,12 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╔═╡ Cell order:
 # ╟─c44e9567-3e8d-417c-b120-5e8fefa6c03b
 # ╟─da0d0218-a5c4-4e86-b398-d3c586127b51
-# ╟─46c966b4-60d0-4528-92d4-d7602916be96
 # ╟─c5d6f5a0-b6ef-43ca-81b0-8c4f93ab68e0
 # ╟─3e22f68e-7402-4847-a1de-885ecb6fc78f
 # ╟─2ba16c5d-cc73-47fe-b9b3-d4796ccdf549
 # ╟─2a855a38-80a9-11ec-24ad-41330e14806e
 # ╟─0a4f64f5-2ccf-4b38-9b85-79c340452fe0
-# ╟─a4053934-3722-447b-a348-d88ef2c52472
+# ╠═a4053934-3722-447b-a348-d88ef2c52472
 # ╟─afe1c9bc-a6da-43f0-a041-8ccc732da956
 # ╟─54813f12-bbe6-4cff-aed0-eeeab29d9f67
 # ╟─67a8efb8-f39a-45ef-820c-eab27b3a271c
