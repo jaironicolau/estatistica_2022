@@ -17,19 +17,19 @@ Programa:
 
 24/02 - quartis, percentis e decis
 
-08/03 - range, iqr, desvio-padrão
+08/03 - z-score e curva normal
 
-10/03 - range, iqr, desvio-padrão
+10/03 - z score e curva normal
 
-15/03 - z-score e curva normal
+15/03 - manipulação de dados com o o R: Dplyr
 
-17/03 - z score e curva normal
+17/03 - manipulação de dados com o o R: Dplyr
 
-24/03 - laboratório - R
+24/03 - manipulação de dados com o o R: Dplyr
 
-29/03 - laboratório - R
+29/03 - manipulação de dados com o o R: Dplyr
 
-31/03 - laboratório - R
+31/03 - manipulação de dados com o o R: Dplyr
 
 INTERVALO A1
 
