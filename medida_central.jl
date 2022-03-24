@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.7
+# v0.18.1
 
 using Markdown
 using InteractiveUtils
@@ -23,9 +23,6 @@ p = plot(sort(g1), (1:n)./n,
     title = "Empirical Cumulative Distribution", label = "")
 	
 end
-
-# ╔═╡ e32f7fde-b87d-4687-b944-c1c7d6b91ac1
-PlutoUI.TableOfContents(title= "Conteúdo", indent= true)
 
 # ╔═╡ f6dfb126-8367-11ec-290e-8b3a346eae2c
 md"""
@@ -522,7 +519,7 @@ SymPy = "~1.1.3"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.7.1"
+julia_version = "1.7.2"
 manifest_format = "2.0"
 
 [[deps.AbstractPlutoDingetjes]]
@@ -1593,8 +1590,7 @@ version = "0.9.1+5"
 """
 
 # ╔═╡ Cell order:
-# ╟─eae781b5-86ff-4a26-b49e-a37a8b510a8b
-# ╟─e32f7fde-b87d-4687-b944-c1c7d6b91ac1
+# ╠═eae781b5-86ff-4a26-b49e-a37a8b510a8b
 # ╟─f6dfb126-8367-11ec-290e-8b3a346eae2c
 # ╟─d345ee2b-9d49-4af1-926b-94c99f25a4dd
 # ╟─456f635d-69b2-491f-bbf6-3ec2439ccf8c

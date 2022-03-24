@@ -1,0 +1,98 @@
+---
+title: "Medidas de tendência central e dispersão"
+author: "Jairo Nicolau"
+date: "13/03/2022"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(here)
+```
+
+
+```{r}
+df2 <- read_csv(here("bairros_rio.csv"))
+```
+
+
+
+### Fazendo sinteses
+
+```{r}
+df2 %>% 
+  group_by(GPP) %>%
+  summarize(media_favela = mean (pct_favela),
+            mediana_evangelico = median(pct_evangelico),
+            desvio_favela = sd(pct_favela)) 
+```
+
+
+#### Sumário de 5 Números
+
+
+
+
+```{r}
+df2 %>% 
+  summarize( n = n(), 
+             Min = min(pct_favela),
+             Q1 = quantile(pct_favela, .25),
+             Avg = mean(pct_favela), 
+             Q3 = quantile(pct_favela, .75),
+             Max = max(pct_favela)
+             )
+```
+
+```{r}
+df2 %>% 
+   
+  summary
+```
+
+
+
+```{r}
+df2 %>% 
+select(pct_favela) %>%
+  summary()
+```
+
+### Encontrando quartis específicos
+
+```{r}
+df2 %>% 
+  summarize( 
+             bottom_10 = quantile(pct_evangelico, .10),
+             mediana = mean(pct_favela), 
+             top_25 = quantile(pct_evangelico, .75),
+             top_1 = quantile(pct_evangelico, .99)
+             )
+```
+
+
+#### Calculando o z-score
+
+
+
+```{r}
+mean(df2$pct_favela)
+```
+
+```{r}
+sd(df2$pct_favela)
+```
+
+```{r}
+df2 %>% 
+  mutate(zscore = (pct_favela- mean(pct_favela))/sd(pct_favela)) ->df2
+```
+
+```{r}
+ggplot(df2, aes(zscore)) +
+  geom_histogram()
+```
+
+
+
+
