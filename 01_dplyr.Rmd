@@ -120,23 +120,10 @@ Agregar por uma variavel categorica
 ```{r}
 gapminder %>%
   group_by(continent) %>%
-  summarize(casos = n())
-```
-
-```{r}
-gapminder %>%
-  group_by(continent) %>%
-  count() %>% 
-  ungroup() %>% 
+  summarize(n = n()) %>% 
   mutate(prop = n/(sum(n))*100)
 ```
 
-```{r}
-gapminder %>%
-  group_by(continent) %>%
-  summarize(n = n(),
-            n_observacoes = n_distinct(year))
-```
 
 #### Sumarização geral
 
