@@ -8,7 +8,56 @@ output: html_document
 ```{r}
 library(tidyverse)
 library(here)
+
 ```
+
+## Banco do Rio de Janeiro
+
+```{r}
+library(readxl) # para ler arquivos excel
+
+#library(here) # para ler dados nas pastas
+
+#df <- read_excel(here("dados_originais","bairro_rio_2008.xlsx"))
+
+df <- read_excel("bairro_rio_2008.xlsx")
+
+```
+
+```{r}
+glimpse(df)
+```
+
+#### selecionando as variaveis importantes
+
+```{r}
+bairro <- df %>% 
+  select(Bairro_IPP, GPP, RegAdmin, Dom, DomFav, Pop2000, PopF, RDom_Media, Rlg_EMis_pc,Rlg_EPtc_pc)
+
+glimpse(bairro)
+```
+
+
+#### criando variáveis
+
+
+```{r}
+bairro %>% 
+mutate(pct_favela = DomFav/ Dom,
+       pct_feminino = PopF/Pop2000,
+       pct_evangelico = Rlg_EMis_pc + Rlg_EPtc_pc) -> bairro 
+```
+
+
+#### salvando o banco
+
+```{r}
+#library(readr)
+write_csv(bairro, "bairros_rio.csv")
+```
+
+
+## Começão de um banco criado
 
 
 ```{r}
@@ -31,8 +80,6 @@ df2 %>%
 #### Sumário de 5 Números
 
 
-
-
 ```{r}
 df2 %>% 
   summarize( n = n(), 
@@ -46,7 +93,6 @@ df2 %>%
 
 ```{r}
 df2 %>% 
-   
   summary
 ```
 
@@ -72,8 +118,6 @@ df2 %>%
 
 
 #### Calculando o z-score
-
-
 
 ```{r}
 mean(df2$pct_favela)

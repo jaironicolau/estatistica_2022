@@ -7,12 +7,7 @@ output: html_document
 
 # Manipulaçãod e dados com o DPLYR
 
-
-
 ### Carregando o banco
-
-
-
 
 ```{r}
 library(tidyverse) 
@@ -113,7 +108,7 @@ gapminder %>%
   
 ```
 
-### *Groupby* + *Summarize*
+###  *Summarize*, em geral, com *Groupby* +
 
 Agregar por uma variavel categorica
 
@@ -147,47 +142,7 @@ gapminder %>%
 ```
 
 
-#### Exercicio
 
-
-```{r}
-library(readxl) # para ler arquivos excel
-library(here) # para ler dados nas pastas
-
-df <- read_excel(here("bairro_rio_2008.xlsx"))
-
-View(df)
-```
-
-```{r}
-glimpse(df)
-```
-
-#### selecionando as variaveis importantes
-
-```{r}
-bairro <- df %>% 
-  select(Bairro_IPP, GPP, RegAdmin, Dom, DomFav, Pop2000, PopF, RDom_Media, Rlg_EMis_pc,Rlg_EPtc_pc)
-```
-
-
-#### criando variáveis
-
-
-```{r}
-bairro %>% 
-mutate(pct_favela = DomFav/ Dom,
-       pct_feminino = PopF/Pop2000,
-       pct_evangelico = Rlg_EMis_pc + Rlg_EPtc_pc) -> bairro 
-```
-
-
-#### salvando o banco
-
-```{r}
-#library(readr)
-write_csv(bairro, "bairros_rio.csv")
-```
 
 
 
