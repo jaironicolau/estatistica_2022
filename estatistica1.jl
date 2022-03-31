@@ -13,7 +13,7 @@ using RDatasets
 end
 
 # ╔═╡ da0d0218-a5c4-4e86-b398-d3c586127b51
-PlutoUI.TableOfContents(title= "Conteúdo", indent= true)
+
 
 # ╔═╡ c5d6f5a0-b6ef-43ca-81b0-8c4f93ab68e0
 md"""
@@ -780,7 +780,7 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 """
 
 # ╔═╡ Cell order:
-# ╠═c44e9567-3e8d-417c-b120-5e8fefa6c03b
+# ╟─c44e9567-3e8d-417c-b120-5e8fefa6c03b
 # ╠═da0d0218-a5c4-4e86-b398-d3c586127b51
 # ╟─c5d6f5a0-b6ef-43ca-81b0-8c4f93ab68e0
 # ╟─3e22f68e-7402-4847-a1de-885ecb6fc78f

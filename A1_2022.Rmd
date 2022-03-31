@@ -1,0 +1,58 @@
+---
+title: "Avaliação - A1"
+author: "Jairo Nicolau"
+date: '2022-03-30'
+output: html_document
+---
+
+Use o banco de dados do censo de 2010 sobre o Rio de Janeiro.
+
+Ao final, salve o banco em formato word e "suba" lá no e-class.
+
+1) caregue o Banco
+
+```{r}
+
+```
+
+
+2) O banco é composto de quantas variávies categóricas e quantas variáveis quantitativas ?
+
+
+3) Renomeie 3 variáveis do banco:
+
+```{r}
+
+```
+
+
+4) Crie 2 novas variáveis a partir das variáveis do banco:
+
+```{r}
+
+```
+
+5) Quais as razões de você ter criado essas duas variáveis?
+
+
+6) Escolha uma variável, agregue por RA ou GPP, tire a média e mediana:
+
+```{r}
+
+```
+
+7) Existe alguma diferença entre os valores na questão 6 que te chama a atenção?
+
+
+8) Escolha uma outra variável, agregue por RA ou GPP,  e calcule a
+a média, mediana, q1, q3
+
+```{r}
+
+```
+
+9) Como você explicaria os valores do q1, mediana e q3?
+
+
+
+

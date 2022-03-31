@@ -32,7 +32,7 @@ glimpse(df)
 
 ```{r}
 bairro <- df %>% 
-  select(Bairro_IPP, GPP, RegAdmin, Dom, DomFav, Pop2000, PopF, RDom_Media, Rlg_EMis_pc,Rlg_EPtc_pc)
+  select(Bairro_IPP, GPP, RegAdmin, Dom, DomFav, Pop2000, PopF,PopM, RDom_Media, Rlg_CAR, Rlg_EMis_pc,Rlg_EPtc_pc, AEstu_Media)
 
 glimpse(bairro)
 ```
@@ -54,7 +54,10 @@ mutate(pct_favela = DomFav/ Dom,
 ```{r}
 #library(readr)
 write_csv(bairro, "bairros_rio.csv")
+
 ```
+
+
 
 
 ## Começão de um banco criado
