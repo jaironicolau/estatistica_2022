@@ -44,7 +44,6 @@ glimpse(bairro)
 ```{r}
 bairro %>% 
 mutate(pct_favela = DomFav/ Dom,
-       pct_feminino = PopF/Pop2000,
        pct_evangelico = Rlg_EMis_pc + Rlg_EPtc_pc) -> bairro 
 ```
 
@@ -72,45 +71,54 @@ df2 <- read_csv(here("bairros_rio.csv"))
 ### Fazendo sinteses
 
 ```{r}
-df2 %>% 
+bairro %>% 
   group_by(GPP) %>%
-  summarize(media_favela = mean (pct_favela),
+  summarize(total_bairros = n(),
+            media_favela = mean (pct_favela)*100,
             mediana_evangelico = median(pct_evangelico),
-            desvio_favela = sd(pct_favela)) 
+            desvio_favela = sd(pct_favela),
+            total_pop = sum (Pop2000)) -> SUMARIO 
+  
+  
 ```
+
+
+
+
+
 
 
 #### Sumário de 5 Números
 
 
 ```{r}
-df2 %>% 
+bairro %>% 
   summarize( n = n(), 
              Min = min(pct_favela),
              Q1 = quantile(pct_favela, .25),
-             Avg = mean(pct_favela), 
+             Media = mean(pct_favela), 
              Q3 = quantile(pct_favela, .75),
              Max = max(pct_favela)
              )
 ```
 
 ```{r}
-df2 %>% 
+bairro %>% 
   summary
 ```
 
 
 
 ```{r}
-df2 %>% 
+bairro %>% 
 select(pct_favela) %>%
   summary()
 ```
 
-### Encontrando quartis específicos
+### Encontrando quantis específicos
 
 ```{r}
-df2 %>% 
+bairro %>% 
   summarize( 
              bottom_10 = quantile(pct_evangelico, .10),
              mediana = mean(pct_favela), 
@@ -123,20 +131,20 @@ df2 %>%
 #### Calculando o z-score
 
 ```{r}
-mean(df2$pct_favela)
+mean(bairro$pct_favela)
 ```
 
 ```{r}
-sd(df2$pct_favela)
+sd(bairro$pct_favela)
 ```
 
 ```{r}
-df2 %>% 
-  mutate(zscore = (pct_favela- mean(pct_favela))/sd(pct_favela)) ->df2
+bairro %>% 
+  mutate(zscore = (pct_favela- mean(pct_favela))/sd(pct_favela)) ->bairro
 ```
 
 ```{r}
-ggplot(df2, aes(zscore)) +
+ggplot(bairro, aes(zscore)) +
   geom_histogram()
 ```
 

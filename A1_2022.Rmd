@@ -5,11 +5,12 @@ date: '2022-03-30'
 output: html_document
 ---
 
-Use o banco de dados do censo de 2010 sobre o Rio de Janeiro.
+Use o banco de dados do censo de 2008 sobre o Rio de Janeiro.
+Data da entrega:  até o dia 10 de abril às 23.59
 
 Ao final, salve o banco em formato word e "suba" lá no e-class.
 
-1) caregue o Banco
+1) Carregar  o Banco
 
 ```{r}
 
@@ -26,7 +27,7 @@ Ao final, salve o banco em formato word e "suba" lá no e-class.
 ```
 
 
-4) Crie 2 novas variáveis a partir das variáveis do banco:
+4) Crie 2 novas variáveis, a partir das variáveis do banco:
 
 ```{r}
 
@@ -35,17 +36,16 @@ Ao final, salve o banco em formato word e "suba" lá no e-class.
 5) Quais as razões de você ter criado essas duas variáveis?
 
 
-6) Escolha uma variável, agregue por RA ou GPP, tire a média e mediana:
+6) Escolha uma variável, agregue por Região Administrativa ou GPP, tire a média e mediana:
 
 ```{r}
 
 ```
 
-7) Existe alguma diferença entre os valores na questão 6 que te chama a atenção?
+7) Existe alguma diferença entre os valores na questão 6 que te chama à atenção?
 
 
-8) Escolha uma outra variável, agregue por RA ou GPP,  e calcule a
-a média, mediana, q1, q3
+8) Escolha uma outra variável, agregue por região adminsitrativa ou GPP,  e calcule a média, mediana, q1, q3
 
 ```{r}
 
