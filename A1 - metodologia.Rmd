@@ -1,0 +1,112 @@
+---
+title: "Prova A1"
+author: "Idalie"
+date: "09/04/2022"
+output:
+  word_document: default
+  html_document: default
+---
+```{r}
+install.packages("tidyverse")
+install.packages("gapminder")
+install.packages("readr")
+install.packages("readxl")
+install.packages("here")
+install.packages("glimpse")
+library(tidyverse) 
+library(gapminder)
+library(readr)
+library(readxl) 
+library(here)
+library(dplyr)
+library(glimpse)
+```
+
+
+1)Carregar ou Banco
+
+
+Carregado via import datasets::
+
+Mas poderia ter sido importado dessa maneira:
+
+library(tidyverse) 
+library(readr)
+library(readxl)
+install.packages("glimpse")
+
+bairro_rio <- read_excel("bairro_rio_2008.xlsx")
+
+View(bairro_rio)
+glimpse(bairro_rio) 
+
+  
+2) O banco é composto de quantas variávies categóricas e quantas variáveis ​​quantitativas ?
+
+6 variáveis categóricas e 73 variáveis quantitativas
+```
+
+
+```{r}
+3) Renomeie 3 variáveis ​​do banco :
+```
+
+
+```{r}
+install.packages("glimpse")
+```
+
+
+```{r}
+bairro_rio_2008%>%
+  rename(cod.gpp=CdGPP,
+         x.GPP=GPP,
+         regiaoAd=RegAdmin)->bairro_rio_2008
+         
+```
+
+
+4) Crie 2 novas variáveis, a partir das variáveis ​​do banco :
+
+```{r}
+bairro_rio_2008 %>%
+  mutate(mediaComp = (T1Comp + T2Comp)/2)-> bairro_rio_2008
+  
+bairro_rio_2008 %>%
+  mutate(mediaBran = (T1Bran + T2Bran)/2)-> bairro_rio_2008
+  
+```
+
+5) Quais as razões de você ter criado essas duas variáveis ?
+
+Eu queria achar a media dos votantes que compareceram e daqueles que votaram em branco.
+
+
+```
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
