@@ -57,7 +57,7 @@ INTERVALO A1
 
 26/05 - Laboratorio de dados: gastos de campanha
 
-31/05 - Como fazer uma apresentaçnao de dados
+31/05 - Como fazer uma apresentaçao de dados
 
 02/06 - Seminário Final
 
