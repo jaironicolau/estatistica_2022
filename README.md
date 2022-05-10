@@ -49,13 +49,13 @@ INTERVALO A1
 
 12/05 - Diagrama de dispersão, correlação
 
-17/05 - gráficos para lidar com a passagem do tempo
+17/05 - Laboratorio de dados: gastos de campanha
 
-19/05 - gráficos para lidar com a passagem do tempo
+19/05 - Laboratorio de dados: escravos
 
 24/05 - Laboratório de dados: dados da PNAD
 
-26/05 - Laboratorio de dados: gastos de campanha
+26/05 - Polindo e salvando gráficos
 
 31/05 - Como fazer uma apresentaçao de dados
 
