@@ -33,36 +33,34 @@ Programa:
 
 INTERVALO A1
 
-12/04 - Introdução à probabilidade
+12/04 - Avaliação de A1
 
-14/04 - Introdução à probabilidade
+14/04 - Introdução ao ggplot
 
-19/04 - Probabilidade Condicional
+26/04 - Introdução ao ggplot
 
-26/04 - Teorema de Bayes
+28/04 - ggplot para  quantidades: vários modelos de gráficos de barra
 
-28/04 - Teorema de Bayes
+03/05 - ggplot para  quantidades: vários modelos de gráficos de barra
 
-03/05 - laboratório - R
+05/05 - ggplot para  quantidades: vários modelos de gráficos de barra
 
-05/05 - laboratório - R
+10/05 - Diagrama de dispersão 
 
-10/05 - Fundamento da amostra, margem de erro e intevalo de confiança
+12/05 - Diagrama de dispersão, correlação
 
-12/05 - Fundamento da amostra, margem de erro e intevalo de confiança
+17/05 - Laboratorio de dados: gastos de campanha
 
-17/05 - Fundamento da amostra, margem de erro e intevalo de confiança
+19/05 - Laboratorio de dados: escravos
 
-19/05 - laboratório - R
+24/05 - Laboratório de dados: dados da PNAD
 
-24/05 - laboratório - R
+26/05 - Polindo e salvando gráficos
 
-26/05 - Tipos de amostra e pesquisa de opinião
+31/05 - Como fazer uma apresentaçao de dados
 
-31/05 - Tipos de amostra e pesquisas de opinião
+02/06 - Seminário Final
 
-02/06 - Tipos de maostra e pesquisas de opinião
+07/06 - Seminário Final
 
-07/06 - laboratório R
-
-09/06 - laboratório R
+09/06 - Seminário Final
